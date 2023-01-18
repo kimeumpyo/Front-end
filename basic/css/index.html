@@ -5,10 +5,10 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>CSS</title>
 </head>
 
-<body>
+<!-- <body>
   <h1>CSS</h1>
 
   <h3>CSS 기초</h3>
@@ -54,10 +54,230 @@
   <h3>이미지</h3>
   <ul>
     <li>image/background-image</li>
+  </ul> -->
+
+<!----------------------------------------------------------------->
+
+<!-- <h1>선택자: 엘리먼트 선택자</h1>
+  
+  <style> 
+    ul {
+      border: 1px solid;
+    }
+    li {
+      text-decoration: line-through;  
+    }
+  </style>
+
+  <ul>
+    <li>list item</li>
+    <li>list item</li>
+    <li>list item</li>
+  </ul> -->
+
+<!----------------------------------------------------------------->
+
+<!-- <h1>class 선택자</h1>
+
+  <style>
+    ul {
+      border: 1px solid;
+    }
+    .line-through {
+      text-decoration: line-through;
+    }
+    .italic {
+      font-style: italic;
+    }
+  </style>
+
+  <ul class="border">
+    <li class="line-through">list item</li>
+    <li class="line-through italic">list item</li>
+    <li>list item</li> 
+  </ul> -->
+
+<!----------------------------------------------------------------->
+
+<!-- <h1>id 선택자</h1>
+
+  <style>
+    ul {
+      border: 1px solid;
+    }
+    #first {
+      text-decoration: line-through
+    }
+  </style>
+
+  <ul>
+    <li id="first">list item</li>   
+    <li>list item</li>
+    <li>list item</li>
+  </ul> -->
+
+<!----------------------------------------------------------------->
+
+<!-- <h1>children 선택자</h1>
+  
+  <style>
+    /* list2 에 들어있는 li 들만 적용시켜준다 */
+    #list2 li {                                                           
+      text-decoration: line-through;            
+    }
+  </style>
+
+  <ul>
+    <li>list item</li>
+    <li>list item</li>
+    <li>list item</li>
   </ul>
 
+  <ul id="list2">                                                       
+    <li>list item</li>                    
+    <li>list item</li>
+    <li>list item</li>
+  </ul> -->
+
+<!----------------------------------------------------------------->
+
+<!-- <h1>pseudo 클래스</h1>
+  <p>특별한 상태의 엘리먼트를 선택한다</p>
+  
+  <style>
+    /* selector:pseudo-class */
+    /* li속한 2번째만 적용시켜준다 */
+    li:nth-child(2) {
+      font-style: italic;
+    }
+    li:hover {
+      text-decoration: underline;                                 
+    }
+  </style>
+  
+  <ul>
+    <li>list item</li>
+    <li>list item</li>                                            
+    <li>list item</li>
+  </ul> -->
+
+<!----------------------------------------------------------------->
+
+<!-- <h1>pseudo 엘리먼트</h1>
+<p>가상의 엘리먼트를 만들고 선택한다</p>
+
+<style>
+  /* li의 앞 뒤로 {}를 추가해준다 */                                                           
+  li::before {
+    content: '{';
+    color: #000;
+  }
+
+  li::after {
+    content: '}';
+    color: #000;
+  }
+</style>
+
+<ul>
+  <li>list item</li>
+  <li>list item</li>
+  <li>list item</li>
+</ul> -->
+
+<!----------------------------------------------------------------->
+
+
+<!-- <h1>형제 선택자</h1>
+ 
+<style>
+  /* 첫번째 선택자의 다음 li를 적용시킨다  */
+  #first + li {
+    text-decoration: line-through;
+  }
+
+</style>
+
+<ul>
+  <li id="first">list item</li>
+  <li>list item</li>
+  <li>list item</li>
+</ul> -->
+
+<!----------------------------------------------------------------->
+
+<!-- <h1>Q.CSS 선택자</h1>
+
+  <h3>맥주</h3>
+
+  <style>
+    ul {
+      border: 1px solid;
+    }
+
+    .line-through {
+      text-decoration: line-through;
+    }
+    .fout-bold {
+      font-weight:bold;
+    }
+
+  </style>
+
+  <ul>
+    <li">Heineken</li>
+    <li class="line-through">Guinness</li>
+    <li>Budwiser</li>
+    <li>Asahi</li>
+    <li class="fout-bold">Kloud</li>
+  </ul> -->
+  
+<!----------------------------------------------------------------->
+
+<h1>CSS 단위</h1>
+
+<style>
+  ul {
+    font-size: 1.5rem;
+  }
+  .px {
+    font-size: 16px;
+  }
+  .rem {
+    /* rem: root element */
+    /* 1rem = 브라우저의 기본 글자크기 */
+    
+    font-size: 1rem;
+  }
+  .em {
+    /* 1em = 부모 엘리먼트의 글자크기 */
+    font-size: 1em;
+  }
+  .percent {
+    /* 100% = 부모 엘리먼트의 글자크기 */
+    font-size: 100%;
+  }
+  .vw {
+    /* 100vw = view port의 넓이(width) */
+    /* 웹의 가로폭에 맞추어 글자크기가 변화한다 */
+    font-size: 10vw;
+  }
+  .vh {
+    /* 100vh = view port의 높이(height) */
+    /* 웹의 세로폭에 맞추어 글자크기가 변화한다 */
+    font-size: 10vh;
+  }
+</style>
+
+<ul>
+  <li class="px">font-size: 16px</li>
+  <li class="rem">font-size: 1rem</li>
+  <li class="em">font-size: 1em</li>
+  <li class="percent">font-size: 100%</li>
+  <li class="vw">font-size: 10vw</li>
+  <li class="vh">font-size: 10vh</li>
+</ul>
+
+
 </body>
-
 </html>
-
-
