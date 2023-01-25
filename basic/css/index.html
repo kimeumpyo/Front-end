@@ -234,7 +234,7 @@
   
 <!----------------------------------------------------------------->
 
-<h1>CSS 단위</h1>
+<!-- <h1>CSS 단위</h1>
 
 <style>
   ul {
@@ -276,8 +276,502 @@
   <li class="percent">font-size: 100%</li>
   <li class="vw">font-size: 10vw</li>
   <li class="vh">font-size: 10vh</li>
-</ul>
+</ul> -->
 
+<!----------------------------------------------------------------->
+
+<!-- <h1>CSS 색상 표기법</h1>
+
+<style>
+  li:first-child{
+    /* 이름 */
+    color: red;
+  }
+  li:nth-child(2){
+    /* rgb(red, green, blue) */
+    /* 각 0 - 255 */
+    color:rgb(255 0 0)
+  }
+  li:nth-child(3){
+    /* rgba(red, green, blue, / opacity투명도) */
+    /* opacity: 0 (완전투명) - 1 (완전불투명) */
+    color:rgba(255 0 0 / 0.5)
+  }
+  li:nth-child(4){
+    /* hex (haxadecimal), 16진수 */
+    /* #rrggbb */
+    /* 0 - f */
+    color:#ff0000;
+  }
+  li:last-child{
+     /* 3 hex */
+     /* rr,  gg, bb가 각각 모두 같을 때 사용할 수 있다 */
+     /* #rgb */
+    color:#f00;
+  }
+</style>
+
+<ul>
+  <li>list item</li>
+  <li>list item</li>
+  <li>list item</li>
+  <li>list item</li>
+  <li>list item</li>
+</ul> -->
+
+<!----------------------------------------------------------------->
+
+<!-- <h1>font style</h1>
+
+<style>
+  .not-italic {
+    /* 기본값 */
+    font-style: normal;
+  }
+  .italic {
+
+    font-style: italic
+  }
+</style>
+
+<ul>
+  <li>list item</li>
+  <li class="not-italic">list item</li>
+  <li class="italic">list item</li>
+</ul> -->
+
+<!----------------------------------------------------------------->
+
+<!-- <h1>font weight</h1>
+
+<style>
+  .font-thin {font-weight: 100;}
+  .font-normal {font-weight: 400;}
+  /* 기본값 */
+  .font-bold {font-weight: 700;}
+</style>
+
+<ul>
+  <li class="font-thin">list item</li>
+  <li class="font-normal">list item</li>
+  <li class="font-bold">list item</li>
+</ul> -->
+
+<!----------------------------------------------------------------->
+
+<!-- <h1>text align (정렬)</h1>
+
+<style>
+  .text-left {text-align: left} 
+  /* 왼쪽 정렬 */
+  .text-center {text-align: center}
+  /* 가운데 정렬 */
+  .text-right {text-align: right}
+  /* 오른쪽 정렬 */
+</style>
+
+<ul>
+  <li class="text-left">list item</li>
+  <li class="text-center">list item</li>
+  <li class="text-right">list item</li>
+</ul> -->
+
+<!----------------------------------------------------------------->
+
+<!-- <h1>letter spacing (글자 간격)</h1>
+
+<style>
+  .tracking-tightest {letter-spacing: -0.05em};
+  .tracking-nirmal {letter-spacing: 0em}
+  /* 기본값 */
+  .tracking-widest {letter-spacing: 0.1em}
+</style>
+
+<ul>
+  <li class="tracking-tightest">list item</li>
+  <li class="tracking-normal">list item</li>
+  <li class="tracking-widest">list item</li>
+</ul> -->
+
+<!----------------------------------------------------------------->
+
+<!-- <h1>line height 줄간격</h1>
+
+<style>
+  .leading-none {line-height: normal}
+  .leading-8 {line-height: 2rem}
+</style>
+
+<p class="leading-none">
+Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+Delectus explicabo blanditiis numquam odit voluptate fuga debitis
+ soluta nobis beatae consectetur corporis, tempora dolore rerum 
+ ipsam neque culpa doloremque illo tenetur.
+</p>
+<p class="leading-8">
+Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+Hic accusantium nulla a repellat architecto nesciunt ratione 
+odio error ea ipsa. Dolorum cumque quam obcaecati non esse 
+eius fugit sapiente minima.
+</p> -->
+
+<!----------------------------------------------------------------->
+
+<!-- 예제2)
+
+<h1>Q. Typography</h1>
+
+ <style>
+  .text1 {
+    text-align: center;
+    line-height: 2rem;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+  }
+  .text2 {
+    text-align: center;
+    line-height: 2rem; 
+  }
+  
+  .text3 {
+    text-align: center;
+    line-height: 2rem;
+    font-style: italic;
+  }
+  
+ </style>
+
+<ul>
+  <p class="text1">GUINNESS</p>
+  <p class="text2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+    Beatae adipisci magni incidunt, in obcaecati praesentium sapiente
+     hic illo. Magnam debitis, sequi sit totam ipsa quidem ullam labore
+      asperiores nostrum amet?</p>
+  <p class="text3">- Dublin, lreland</p>
+</ul> -->
+
+<!----------------------------------------------------------------->
+
+<!-- 예제2)풀이
+
+<h1>Q. Typography</h1>
+
+ <style>
+  .tracking-widest {
+    letter-spacing: 0.1em;
+  }
+  .leading-8 {
+    line-height: 2rem; 
+  }
+  .text-center {
+    text-align: center;
+  }
+  .italic {
+    font-style: italic;
+  }
+  
+ </style>
+
+<ul>
+  <h3 class="text-center tracking-widest">GUINNESS</h3>
+  <p class="text-center leading-8">Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+    Beatae adipisci magni incidunt, in obcaecati praesentium sapiente
+     hic illo. Magnam debitis, sequi sit totam ipsa quidem ullam labore
+      asperiores nostrum amet?</p>
+  <p class="text-center italic">- Dublin, lreland</p>
+</ul> -->
+
+<!----------------------------------------------------------------->
+
+<!-- 
+<h1>color/background-color</h1>
+
+<style>
+  li {
+    background-color: #333;
+    color:#fff;
+  }
+</style>
+
+<ul>
+  <li>list item</li>
+  <li>list item</li>
+  <li>list item</li>
+</ul> -->
+
+<!----------------------------------------------------------------->
+
+<!-- 
+<h1>border</h1>
+<p>엘리먼트의 경계선(border)</p>
+
+<style>
+  .item {
+    display: inline-block;
+  }
+  .border {
+    border-width: 1px;
+    border-style: solid;
+    border-color: #000;
+  }
+  .border-t{
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: #000;
+  }
+  .border-x{
+    border-left-width: 1px;
+    border-left-style: solid;
+    border-left-color: #000;
+    border-right-width: 1px;
+    border-right-style: solid;
+    border-right-color: #000;
+  }
+</style>
+
+<div class="item border">border</div>
+<div class="item border-t">border top</div>
+<div class="item border-x">border x</div> -->
+
+<!----------------------------------------------------------------->
+
+
+<!-- 예제3)
+
+<h1>Q. background-color, border</h1>
+
+<style>
+  .border-1{
+    border-bottom: 4px;
+    border-bottom-style: solid;
+    border-bottom-color: orange;
+  }
+  .text-white{
+    color:#fff;
+  }
+  .background{
+    background-color: #333;
+  }
+</style>
+
+<div class="background">
+  <h1 class="border-1 text-white background">GUINNESS</h1>
+  <p class="border text-white background">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+    Tenetur amet porro sequi neque? Vitae beatae soluta neque c
+    orrupti ad consequuntur in corporis dolore ipsa. Cumque nemo 
+    tempore sed pariatur id.</p>
+</div> -->
+
+
+<!----------------------------------------------------------------->
+
+<!-- 예제3)풀이
+
+<h1>Q. background-color, border</h1>
+
+<style>
+  .bg-black{
+    background-color: #333;
+  }
+  .text-white{
+    color:#fff;
+  }
+  .border-b{
+    border-bottom: 4px solid goldenrod;
+  }
+  .text-gray{
+    color: #888;
+  }
+</style>
+
+<div class="bg-black">
+  <h1 class="text-white border-b">GUINNESS</h1>
+  <p class="text-gray">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+    Tenetur amet porro sequi neque? Vitae beatae soluta neque c
+    orrupti ad consequuntur in corporis dolore ipsa. Cumque nemo 
+    tempore sed pariatur id.</p>
+</div> -->
+
+<!----------------------------------------------------------------->
+
+<!-- <h1>padding</h1>
+<p>엘리먼트 내부의 공간</p>
+
+<style>
+  .item {
+    display: inline-block;
+    border: 1px dashed;
+  }
+  .p-2 {
+    padding: 0.5rem;
+  }
+  .pt-2 {
+    padding-top: 0.5rem;
+  }
+  .px-2 {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+</style>
+
+<div class="item">padding 0</div>
+<div class="item p-2">padding all</div>
+<div class="item pt-2">padding top</div>
+<div class="item px-2">padding left/right</div> -->
+
+<!----------------------------------------------------------------->
+
+<!-- <h1>margin</h1>
+<p>엘리먼트 외부의 공간</p>
+
+<style>
+  .item {
+    border: 1px dashed;
+    display: inline-block;
+  }
+  .m-2 {
+    margin: 1rem;
+  }
+  .mt-2 {
+    margin-top: 1rem;
+  }
+  .mx-2 {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+</style>
+
+<div class="item">margin 0</div>
+<div class="item m-2">margin all</div>
+<div class="item mt-2">margin top</div>
+<div class="item mx-2">margin left/right</div> -->
+
+<!----------------------------------------------------------------->
+
+<!-- 예제 4)
+
+<style>
+  .pd-bt{
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+  .mg-lf {
+    margin-left: 0.5rem;
+  }
+</style>
+
+<h1> Q. Buttons </h1>
+
+<h3>Are you sure to submit?</h3>
+
+<button class="pd-bt">submit</button>
+<button class="pd-bt mg-lf">Cancel</button> -->
+
+<!----------------------------------------------------------------->
+
+<!-- <h1>box-sizing</h1>
+<p>엘리먼트의 크기 조절</p>
+
+<style>
+  .item {
+    width: 100px;
+    height: 100px;
+    padding: 10px;
+    background-color: #ddd;
+    border: 2px solid #888;
+  }
+  .content-box {
+    /* 기본값 */
+    /* padding과 border가 width,height 밖으로 적용된다 */
+    box-sizing: content-box;
+  }
+  .border-box {
+    /* padding과 border가 width, height 안으로 적용된다 */
+    box-sizing: border-box;
+  }
+</style>
+
+<h3>box-sizing: content-box</h3>
+<div class="item cintent-box">124 x 124</div>
+
+<h3>box-sizing: border-box</h3>
+<div class="item border-box">100 x 100</div> -->
+
+<!----------------------------------------------------------------->
+
+<!-- <h1>display</h1>
+<p>엘리먼트를 어떻게 배치할 것인가</p>
+<p>block, inline-block, inline, none ...</p>
+
+<style>
+
+  .item {
+    background-color: #ddd;
+    /* 부모의 넓이를 모드 차지한다 */
+    /* body, div, p, nav, 기타 */
+    display: block;
+  }
+</style>
+
+<div class="item">block</div>
+<div class="item">block</div> -->
+
+<!----------------------------------------------------------------->
+
+<!-- <h1>display</h1>
+<p>inline-block</p>
+
+<style>
+  .item {
+    background-color: #ddd;
+    /* 콘텐츠에 필요한 만큼만 넓이를 차지한다0 */
+    /* button, input, img 등 */
+    display: inline-block;
+  }
+</style>
+
+<div class="item">inline-block</div>
+<div class="item">inline-block</div> -->
+
+<!----------------------------------------------------------------->
+
+<!-- <h1>display</h1>
+<p>display: inline</p>
+
+<style>
+  .item {
+    /* 
+    레이아웃용으로 적합하지 않다
+    - width, height가 적용되지 않는다
+    - y축 padding과 margin이 적용되지 않는다
+
+    span, a
+    */
+    background-color: #ddd;
+    display: inline;
+  }
+</style>
+
+<div class="item">inline</div>
+<div class="item">inline</div> -->
+
+<!----------------------------------------------------------------->
+
+<h1>display</h1>
+<p>display, none</p>
+
+<style>
+  .item {
+    /* 웹에 표시되지 않는다. 공간차지 x */
+
+    background-color: #ddd;
+    display: none;
+  }
+</style>
+
+<div class="item">none</div>
+
+<!----------------------------------------------------------------->
 
 </body>
 </html>
