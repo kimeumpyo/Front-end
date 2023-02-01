@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+
+  <!-- <h1>Search Form</h1>
+
+  <style>
+    form {
+      /* border: 1px dashed; */
+      max-width: 24rem;
+      /* top/bottom left/right */
+      margin: 0 auto;
+      display: flex;
+    }
+    input {
+      padding: 0.5rem;
+      flex-grow: 1;
+    }
+    button {
+      cursor: pointer;
+    }
+  </style>
+  
+  <form action="#">
+    <input type="text" placeholder="Search Google">  
+    <button type="submit">Submit</button>
+  </form> -->
+
+  <!----------------------------------------------------------------->
+
+  <!-- <h1>personal Form</h1>
+
+  <style>
+    form {
+      /* border: 1px dashed */
+      max-width: 24rem;
+      margin: 0 auto;
+    }
+    label {
+      /* 위 아래로 정렬해준다 */
+      display: block;
+    }
+    input, select {
+      padding: 0.3rem;
+      width: 100%;
+      /* width를 사용해 튀어나온 부분을 박스안으로 넣어준다 */
+      box-sizing: border-box;
+    }
+    button {
+      padding: 0.3rem;
+      cursor: pointer;
+    }
+    .mb-2 {
+      margin-bottom: 0.5rem;
+    }
+    .flex {
+      display: flex;
+    }
+    .basis-50 {
+      /* 성과 이름이 50% 비율로 칸을 차지한다. */
+      flex-basis: 50%;
+    }
+    .ml-2 { 
+      margin-left: 0.5rem;
+    }
+
+  </style>
+
+  <form action="" autocomplete="off">
+    <h2>Personal Information</h2>
+
+    <div class="mb-2 flex">
+      <div class="basis-50 ">
+        <label for="fname">First Name</label>
+        <input type="text" id="fname" placeholder="Doe">
+      </div>
+      <div class="basis-50 ml-2">
+        <label for="lname">Last Name</label>
+        <input type="text" placeholder="Jihn">
+      </div>
+    </div>
+
+    <div class="mb-2">
+      <label for="email">Email</label>
+      <input type="text" id="email" placeholder="John Doe@example.com">
+    </div>
+
+    <div class="mb-2">
+      <label for="city">City</label>
+      <select name="city" id="city">
+        <option value="seoul">Seoul</option>
+        <option value="incheon">Incheon</option>
+        <option value="buson">buson</option>
+      </select>
+    </div>
+
+    <button type="submit">Save</button>
+
+  </form> -->
+
+<!----------------------------------------------------------------->
+
+<!-- <h1>Login Form</h1>
+
+<style>
+form {
+      /* border: 1px dashed; */
+      max-width: 20rem;
+      margin: 0 auto;
+}
+.text-center {
+      text-align: center
+}
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
+label {
+  display: block;
+}
+input {
+  padding: 0.3rem;
+  width: 100%;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+}
+button {
+  width: 100%;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+.flex {
+  display: flex;
+}
+.justify-between {
+  justify-content: space-between;
+}
+
+</style>
+
+<form action="">
+  <h2 class="text-center">🌐Login</h2>
+  <div>
+    <div class="mb-2">
+      <label for="username">username</label>
+      <input type="text">
+    </div>
+    <div class="mb-2">
+      <label for="password">Password</label>
+      <input type="password" id="password">
+    </div>
+  </div>
+
+  <button type="submit">Login</button>
+
+  <div class="flex justify-between">
+    <a href="#">Sign Up</a>
+    <a href="#">Forgot Password?</a>
+  </div>
+</form> -->
+
+<!----------------------------------------------------------------->
+
+<!-- <h1>Table</h1>
+
+<style>
+  table {
+    /* 기본값은 separate */
+    border-collapse: collapse;
+  }
+  caption {
+    text-align: left;
+    caption-side: bottom;
+  }
+  td[scope=row] {
+    font-weight: bold;
+  }
+  thead tr {
+    border-bottom: 1px solid;
+  }
+  th, td {
+    padding: 0.5rem;
+  }
+  /* odd는 홀수행, even은 짝수행 */
+  tbody tr:nth-child(odd) {
+    background-color: #ddd;
+  }
+</style>
+
+<table>
+  <caption>* caption</caption>
+  <thead>
+    <tr>
+      <th scope="col">NO</th>
+      <th scope="col">Name</th>
+      <th scope="col">origin</th>
+      <th scope="col">Available</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td scope="row">1</td>
+      <td>Heineken</td>
+      <td>Netherlands</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td scope="row">2</td>
+      <td>Guinness</td>
+      <td>Ireland</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td scope="row">3</td>
+      <td>Budwiser</td>
+      <td>USA</td>
+      <td>Yes</td>
+    </tr>
+  </tbody>
+</table> -->
+
+<!----------------------------------------------------------------->
+<style>
+  .container {
+    /* border: 1px dashed; */
+    /* 버튼에 필요한 공간만 반응시킨다. */
+    display: inline-block;
+  }
+  .container:hover ul {
+    /* 버튼에 마우스를 올려두어 ul을 표시해준다 */
+    display: block;
+  }  
+  button {
+    padding: 0.5rem;
+    cursor: pointer;
+  }
+  ul {
+    /* ul에 기본적으로 제공하는 padding과 margin을 지워준다 */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 200px;
+    border: 1px solid #ddd;
+    /* 숨김 */
+    display: none;
+    /* 컨텐츠가 문장을 밀어내지 않는다 */
+    position: absolute;
+    background-color: #fff;
+  }
+  a {
+    /* bloke을 사용해  padding을 적용시켜준다 클릭범위 증가!! */
+    /* 글자외 부분도 클릭이 가능해진다 */
+    display: block;
+    padding: 0.5rem;
+  }
+  a:hover {
+    background-color: #ddd;
+  }
+</style>
+
+<h1>Dropdown</h1>
+
+<div class="container">
+  <button>Dropdown</button>
+  <ul>
+    <li>
+      <a href="#">list item</a>
+    </li>
+    <li>
+      <a href="#">list item</a>
+    </li>
+    <li>
+      <a href="#">list item</a>
+    </li>
+  </ul>
+</div>
+
+<p>
+  Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
+  Officiis iusto cumque quasi rem facilis, animi pariatur ipsa 
+  quae culpa? Eaque soluta nulla quasi ad consectetur, pariatur
+   quas enim rem placeat?
+</p>
+
+</body>
+</html>
