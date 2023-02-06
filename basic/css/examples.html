@@ -229,7 +229,7 @@ button {
 </table> -->
 
 <!----------------------------------------------------------------->
-<style>
+<!-- <style>
   .container {
     /* border: 1px dashed; */
     /* 버튼에 필요한 공간만 반응시킨다. */
@@ -289,7 +289,288 @@ button {
   Officiis iusto cumque quasi rem facilis, animi pariatur ipsa 
   quae culpa? Eaque soluta nulla quasi ad consectetur, pariatur
    quas enim rem placeat?
-</p>
+</p> -->
+
+<!----------------------------------------------------------------->
+
+<!-- <style>
+  body {
+    height: 1000px;
+  }
+  nav {
+    /* 상단에 고정시켜준다 */
+    /* border: 1px dashed; (범위를 파악) */
+    border-bottom: 1px solid #ddd;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+  }
+
+  ul {
+    /* ul 의 불필요한 부분을 지워준다 */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+  }
+
+  a {
+    /* 각각 블럭으로 지정해주고 0.5rem 씩 띄워준다 */
+    display: block;
+    padding: 0.5rem;
+  }
+
+  a:hover {
+    /* Link에 마우스를 올려두면 글배경에 회색으로 표시가 된다 */
+    background-color: #ddd;
+  }
+
+  main {
+    margin-top: 4rem;
+  }
+
+</style>
+
+<nav>
+  <ul>
+    <li>
+      <a href="#">Link</a>
+    </li>
+    <li>
+      <a href="#">Link</a>
+    </li>
+    <li>
+      <a href="#">Link</a>
+    </li>
+    <li>
+      <a href="#">Link</a>
+    </li>
+  </ul>
+</nav>
+
+<main>
+  <h1>Nav bar</h1>
+  <p>
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi, 
+    impedit animi? Vel voluptatum totam placeat expedita nemo, esse quam
+     ex vitae beatae repellendus quasi? Sequi culpa blanditiis consequatur
+      iste libero?
+  </p>
+</main> -->
+
+<!----------------------------------------------------------------->
+
+<!-- <style>
+  body {
+    height: 1000px;
+  }
+
+  nav {
+    border-right: 1px solid #ddd;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    width: 16rem;
+    height: 100%;
+  }
+  main {
+    margin-left: 16rem;
+    /* top/bottom left/right */
+    padding: 0 1rem;
+    max-width: 1000px;
+  }
+  nav h1 {
+    /* h1의 글을 가운데정렬 시켜준다 */
+    text-align: center;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  a {
+    display: block;
+    padding: 0.75rem;
+  }
+  a:hover {
+    background-color: #ddd;
+  }
+</style>
+
+<nav>
+  <h1>Logo</h1>
+  <ul>
+    <li><a href="#">Link</a></li>
+    <li><a href="#">Link</a></li>
+    <li><a href="#">Link</a></li>
+    <li><a href="#">Link</a></li>
+  </ul>
+</nav>
+
+<main>
+  <h1>Side Bar</h1>
+  <p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+    Doloremque optio nobis nemo fugit cumque non quasi repellendus 
+    molestias alias enim est, dolor mollitia minima iure, itaque ipsa 
+    repudiandae debitis dolore.
+  </p>
+</main> -->
+
+<!----------------------------------------------------------------->
+
+<!-- <style>
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    border-bottom: 1px solid #ddd;
+  }
+
+  input[type=checkbox] {
+    display: none;
+  }
+  label {
+    display: block;
+    padding: 0.5rem;
+    cursor: pointer;
+  }
+
+  label::after {
+    /* label 텍스트 오른쪽에 +표시를 띄워준다 */
+    content: "+";
+    float: right;
+    transition: transform 0.2s;
+  }
+
+  input[type=checkbox]:checked ~ label::after {
+    transform: rotate(45deg);
+  }
+
+  .content {
+    /* border: 1px dashed; */
+    max-height: 0;
+    /* content의 글을 숨김 */
+    overflow-y: hidden;
+    /* 컨텐츠를 여는 시간이.0.2초 걸린다 */
+    transition: max-height 0.2s;
+  }
+  input[type=checkbox]:checked ~ .content {
+    /* 체크박스의 뒤에오는 컨텐츠를 띄워준다 */
+    max-height: 8rem;
+  }
+
+  
+</style>
+
+
+  <h1>Accordion</h1>
+
+  <ul>
+    <li>
+      <input type="checkbox" name="" id="acc0">
+      <label for="acc0">Title</label>
+      <div class="content">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Hic voluptate maiores assumenda non? Magnam, explicabo a
+          ? Ducimus, ullam neque? Adipisci vel atque impedit magni
+            recusandae maiores enim cum necessitatibus animi.
+        </p>
+      </div>
+    </li>
+  </ul>
+  <ul>
+    <li>
+      <input type="checkbox" name="" id="acc1">
+      <label for="acc1">Title</label>
+      <div class="content">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+           Hic voluptate maiores assumenda non?
+        </p>
+      </div>
+    </li>
+  </ul>
+  <ul>
+    <li>
+      <input type="checkbox" name="" id="acc2">
+      <label for="acc2">Title</label>
+      <div class="content">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        </p>
+      </div>
+    </li>
+  </ul> -->
+
+<!----------------------------------------------------------------->
+
+
+<style>
+  .container {
+    border: 1px dashed;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  input[type=radio] {
+    display: none;
+  }
+
+  label {
+    /* label에 버튼모양을 부여한다 */
+    padding: 0.5rem;
+    cursor: pointer;
+  }
+
+  p {
+    width: 100%;
+    display: none;
+    /* Tab이 아래로 내려가는 현상을 없애준다 (order 기본값 0) */
+    order: 1;
+  }
+
+  input[type=radio]:checked + label + p {
+    display: block;
+  }
+  input[type=radio]:checked + label {
+    /* 버튼을 클릭시 아래 밑줄과 글을 더 잘보이게한다 */
+    font-weight: 600;
+    border-bottom: 2px solid;
+  }
+</style>
+
+<h1>Tab content</h1>
+
+<div class="container">
+  <!-- input 속성에 checked를 입력해주어 첫화면에 글을 미리 띄워준다-->
+  <input type="radio" name="tab-name" id="tab0" checked>    <!-- name을 지정해 그룹화시켜 체크를 1개만 하게 만들어준다-->
+  <label for="tab0">Tab 1</label>
+  <p>
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima eos,
+     necessitatibus sunt nihil facilis ipsam? Minus totam aspernatur praesentium,
+      repellat dignissimos maxime? Earum, molestias architecto ad error aut hic omnis!
+  </p>
+  <input type="radio" name="tab-name" id="tab1">
+  <label for="tab1">Tab 2</label>
+  <p>
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima eos,
+     necessitatibus sunt nihil facilis ipsam? 
+  </p>
+  <input type="radio" name="tab-name" id="tab2">
+  <label for="tab2">Tab 3</label>
+  <p>
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
+  </p>
+</div>
+
 
 </body>
 </html>
