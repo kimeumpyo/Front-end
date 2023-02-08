@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+<!-- <style>
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color:rgba(0 0 0/ 0.2);
+}
+
+.modal {
+  padding: 1rem;
+  background-color: #fff;
+  max-width: 20rem;
+  /* margin: top left/right bottom */
+  margin: 100px auto 0;
+  /* 모서리부분을 둥글게 만들어준다 */
+  border-radius: 1rem;
+}
+
+button {
+  width: 100%;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+</style>
+
+<h1>Modal</h1>
+
+<div class="overlay">
+  <div class="modal">
+    <h1>Heading</h1>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      Natus, quam. Reprehenderit aspernatur, error tempora eaque
+      voluptas quasi, explicabo obcaecati id cumque dicta, laborum
+      totam ea eos debitis alias in ipsum.
+    </p>
+    <button type="button">Close</button>
+  </div>
+</div> -->
+
+
+<!----------------------------------------------------------------->
+
+
+  <!-- <h1>Avatar</h1>
+ <style>
+  img {
+    border: 1px solid #ddd;
+    width: 4rem;
+    height: 4rem;
+    object-fit: cover;
+    /* 둥글게 표현 사진 크기의 절반*/
+    border-radius: 2rem;
+  }
+  .container {
+    display: flex;
+  }
+  h3 {
+    /* h3는 원래 위아래 margin이 있다 */
+    margin-left: 0.5rem;
+  }
+</style>
+
+
+<div class="container">
+  <img src="https://product.cdn.cevaws.com/var/storage/images/_aliases/reference/media/feliway-2017/images/kor-kr/1_gnetb-7sfmbx49emluey4a/6341829-1-kor-KR/1_gNETb-7SfMBX49EMLUeY4A.jpg" alt="">
+  <h3>Kitty</h3>
+
+</div> -->
+
+<!----------------------------------------------------------------->
+
+<!-- <h1>Responsive image</h1>
+
+<style>
+  img {
+    /* auto 웹 크기에따라 그림이 커지고 작아진다 */
+    width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+  }
+</style>
+
+<img src="https://product.cdn.cevaws.com/var/storage/images/_aliases/reference/media/feliway-2017/images/kor-kr/1_gnetb-7sfmbx49emluey4a/6341829-1-kor-KR/1_gNETb-7SfMBX49EMLUeY4A.jpg" alt=""> 
+-->
+
+<!----------------------------------------------------------------->
+
+<!-- <h1>Scalable Image</h1>
+
+<style>
+  .container {
+    border: 1px solid #ddd;
+    width: 200px;
+    height: 200px;
+    /* 넘어가는 부분을 숨겨준다 */
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  img {
+    /* 이미지가 컨테이너 만큼 공간을 차지한다 */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.2s;
+  }
+
+  .container:hover img{
+    /* 마우스를 올리면 이미지 크기가 1.1배 증가한다 */
+    transform: scale(1.1);
+  }
+</style>
+
+<div class="container">
+  <img src="https://product.cdn.cevaws.com/var/storage/images/_aliases/reference/media/feliway-2017/images/kor-kr/1_gnetb-7sfmbx49emluey4a/6341829-1-kor-KR/1_gNETb-7SfMBX49EMLUeY4A.jpg" alt="">
+</div> -->
+
+<!----------------------------------------------------------------->
+
+<!-- <h1>Overlay on Image</h1>
+
+<style>
+  .container {
+    border: 1px solid #ddd;
+    width: 200px;
+    height: 200px;
+    position: relative;
+  }
+
+  img {
+    /* inherit = 부모로부터 상속받는다 */
+    width: inherit;
+    height: inherit;
+    object-fit: cover;
+  }
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: inherit;
+    height: inherit;
+    /* 이미지의 색을 어둡게한다 */
+    background-color: rgba(0 0 0 / 0.5);
+    
+  }
+  .text-composer {
+    /* 텍스트의 위치를 중앙에 배치 */
+    width: inherit;
+    height: inherit;
+    display: flex;
+    flex-direction: column;
+    /* item의 수직정렬 중앙에 배치 */
+    justify-content: center;
+    /* 수직정렬된 item을 수평 중앙에 배치 */
+    align-items: center;
+  }
+  .text {
+    color: #fff;
+  }
+
+  
+</style>
+
+<div class="container">
+  <img src="https://product.cdn.cevaws.com/var/storage/images/_aliases/reference/media/feliway-2017/images/kor-kr/1_gnetb-7sfmbx49emluey4a/6341829-1-kor-KR/1_gNETb-7SfMBX49EMLUeY4A.jpg" alt="">
+  <div class="overlay">
+    <div class="text-composer">
+      <p class="text">Text on overlay</p>
+    </div>
+  </div>
+  
+</div> -->
+
+<!----------------------------------------------------------------->
+
+<!-- <h1>Main Image</h1>
+
+<style>
+  .container {
+    border: 1px solid #ddd;
+    height: 300px;
+    background-image: url(https://product.cdn.cevaws.com/var/storage/images/_aliases/reference/media/feliway-2017/images/kor-kr/1_gnetb-7sfmbx49emluey4a/6341829-1-kor-KR/1_gNETb-7SfMBX49EMLUeY4A.jpg);
+    background-size: cover;
+    background-position: center;
+    background-color: rgba(0 0 0 / 0.5);
+  }
+
+  .text-composer {
+    /* 부모의 크기를 받아온다 inherit */
+    width: inherit;
+    height: inherit;
+    display: flex;
+    /* 수직 */
+    flex-direction: column;
+    /* 아래정렬 */
+    justify-content: flex-end;
+    /* 기본값 */
+    align-items: stretch;
+    /* 글의 폭범위를 지정해준다 500px */
+    max-width: 500px;
+    /* 좌우 간격을 동일하게 간격을 띄워준다 */
+    margin: 0 auto;
+  }
+  .text {
+    color: #fff;
+    /* 텍스트의 위치를 가운데정렬 시킨다 */
+    /* align-items: center;로도 가능하다 */
+    text-align: center;
+  }
+
+  
+</style>
+
+<div class="container">
+  <div class="text-composer">
+    <h1 class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. </h1>
+  </div>
+</div> -->
+
+<!----------------------------------------------------------------->
+
+<!-- <h1>Spinner</h1>
+
+<style>
+  #spinner {
+    width: 3rem;
+    height: 3rem;
+    border: 4px solid;
+    /* border 위쪽만 투명하게 해준다 */
+    border-top: 4px  solid transparent;
+    /* 둥글게 만들어준다 */
+    border-radius: 50%;
+    
+    
+    animation-name: spin;
+    /* 한바퀴 걸리는시간 */
+    animation-duration: 1.5s;
+    /* 반복횟수 infinite(무한반복) */
+    animation-iteration-count: infinite; /* count로 횟수를 정할 수 있다*/
+    /* 속도조절 linear(속도가 일정하다) */
+    animation-timing-function: linear;
+  }
+
+  @keyframes spin {
+    /* 움직이는 모션을 사용하기위한 명령어 (spin 부분은 개발자가 정한다)  */
+    from {
+      transform: totate(0deg);
+    } to {
+      transform: rotate(360deg);
+    }
+  }
+</style>
+<div id="spinner"></div> -->
+
+<!----------------------------------------------------------------->
+
+<!-- <h1>Menu button</h1>
+
+<style>
+  .bars {
+    width: 50px;
+    height: 20px;
+    /* 필요한 공간만큼 차지한다 inline */
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .bar {
+    width: inherit;
+    height: 4px;
+    background-color: #000;
+    /* 움직임에 딜레이를 준다 0.2s */
+    transition: transform 0.2s;
+  }
+
+  .bars:hover .bar:first-child {
+    /* 첫번째 bar  아래로 8px이동 시계방향*/
+    transform: translateY(8px) rotate(45deg);
+  }
+  .bars:hover .bar:last-child{
+    /* 첫번째 bar  위로 8px이동 반시계반향*/
+    transform: translateY(-8px) rotate(-45deg);
+  }
+</style>
+
+<div class="bars">
+  <div class="bar"></div>
+  <div class="bar"></div>
+</div> -->
+
+<!----------------------------------------------------------------->
+
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    background-color: #000;
+  }
+
+  #earth {
+    width: 200px;
+    height: 200px;
+    background-color: #000;
+    /* 원으로 만들어준다 */
+    border-radius: 50%;
+    /* 그림자효과 : 수평 / 수직 / blur(흐리게)-px / spread(퍼짐)-px / color / inset(박스쉐도우가 안으로 기본값은 밖으로 나간다) */
+    /* 기본옵션은 수평 수직 나머지는 선택적용*/
+    box-shadow: 0 0 40px 0px #00f inset;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    /* 자신의 크기가 기준 200 * 200 의 위, 왼쪽으로 절반(100px) 이동  */
+    transform: translate(-50%, -50%);
+  }
+
+  #moon {
+    width: 30px;
+    height: 30px;
+    background-color: #000;
+    border-radius: 50%;
+    box-shadow: 0 0 40px 0px #ddd inset;
+  }
+</style>
+
+<div id="earth"></div>
+
+<div id="orbit-creator">
+  <div id="moon"></div>
+</div>
+
+</body>
+</html>

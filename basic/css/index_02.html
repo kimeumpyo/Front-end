@@ -423,21 +423,26 @@ button {
 
 <!----------------------------------------------------------------->
 
-<!-- <style>
+<style>
   ul {
+    /* ul의 불필요한 요소 제거 */
     list-style: none;
     margin: 0;
     padding: 0;
   }
 
   li {
+    /* li에 밑줄생성 */
     border-bottom: 1px solid #ddd;
   }
 
   input[type=checkbox] {
+    /* checkbox 숨김 */
     display: none;
   }
+
   label {
+    /* label을 블럭지정 0.5rem씩 띄우고 반응추가 */
     display: block;
     padding: 0.5rem;
     cursor: pointer;
@@ -447,10 +452,11 @@ button {
     /* label 텍스트 오른쪽에 +표시를 띄워준다 */
     content: "+";
     float: right;
-    transition: transform 0.2s;
+    transition: transform 0.2s; 
   }
 
   input[type=checkbox]:checked ~ label::after {
+    /* Title 클릭시 +표시가 45도 돌아간다 */
     transform: rotate(45deg);
   }
 
@@ -509,12 +515,12 @@ button {
         </p>
       </div>
     </li>
-  </ul> -->
+  </ul>
 
 <!----------------------------------------------------------------->
 
 
-<style>
+<!-- <style>
   .container {
     border: 1px dashed;
     display: flex;
@@ -550,8 +556,8 @@ button {
 <h1>Tab content</h1>
 
 <div class="container">
-  <!-- input 속성에 checked를 입력해주어 첫화면에 글을 미리 띄워준다-->
-  <input type="radio" name="tab-name" id="tab0" checked>    <!-- name을 지정해 그룹화시켜 체크를 1개만 하게 만들어준다-->
+  <!-- input 속성에 checked를 입력해주어 첫화면에 글을 미리 띄워준다
+  <input type="radio" name="tab-name" id="tab0" checked>    <!-- name을 지정해 그룹화시켜 체크를 1개만 하게 만들어준다
   <label for="tab0">Tab 1</label>
   <p>
     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima eos,
@@ -569,7 +575,7 @@ button {
   <p>
     Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
   </p>
-</div>
+</div> -->
 
 
 </body>

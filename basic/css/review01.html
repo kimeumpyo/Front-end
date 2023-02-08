@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+<h1>style 기능 정리</h1>
+
+<style>
+    #p { 
+        /* 텍스트를 감싸는 테두리 두께1px 색상 red 선의모양 solid  */
+        /* 범위확인에 많이 사용된다*/
+        border: 1px red solid ; 
+        /* 글 중앙에 선을 만든다 */
+        text-decoration: line-through;
+        /* 글에 기울임을 넣어준다 */
+        font-style: italic;
+        /* 글에 굵기를 넣어준다 */
+        font-weight:bold;
+        /* 글의 정렬을 도와준다 lefr/center/right */
+        text-align: center;
+        /* 엘리먼트의 내부의 공간을 0.5rem 추가해준다 */
+        padding: 0.5rem;
+        /* 엘리먼트의 외부의 공간을 3rem 추가해준다 */
+        /* margin: top left/right bottom */
+        margin: 100px auto 0;
+        /* 글에 반응을 추가한다 */
+        cursor: pointer;
+        /* h1의 글을 가운데정렬 시켜준다 */
+        text-align: center;
+   
+    }
+
+
+    #pp {/* id 선택자는 앞에 #으로 표시한다 */}
+    .pp {/* class 선택자는 앞에 .으로 표시한다 */}
+    li:nth-child(2) {/* li속한 2번째만 적용시켜준다 
+                    /* odd는 홀수행, even은 짝수행 */*/}
+    list2 li {/* list2 에 들어있는 li 들만 적용시켜준다 */}   
+    li::before {content: '{';/* li의 앞에 {를 추가해준다 */}
+    #first + li {/* 첫번째 선택자의 다음 li를 적용시킨다  */}
+
+    #p2 {
+        /* 글자간의 간격을 조절한다 0.1em */
+        letter-spacing: 0.5em
+    }
+
+    #p3 {
+        /* 줄의 간격을 조절한다 */
+        line-height: 2rem
+    }
+
+    #bk1 {
+        /* 배경색 지정 */
+        background-color: #333;
+        /* 글자색 지정 */
+        color:#fff;
+        /* 폭을 설정해준다 앞에 max최대폭, min최소폭 을 사용가능*/
+        /* inherit = 부모로부터 상속받는다 */
+        width: 900px; /*inherit*/
+        /* 높이 설정 - 폭과 동일하다 기본값은auto */
+        height: 500px;
+    }
+
+    .bd1 {
+        /* 테두리를 부분적으로도 사용가능(아래만 적용) */
+        border-bottom: 3px orange solid;
+        /* 모서리부분을 둥글게 만들어준다 */
+        /* 사진의 크기 절반을 넣어주면 이미지가 원형이된다 */
+        border-radius: 1rem;
+    }
+
+    .display {
+        /* 한 줄에 다른 엘리먼트와 나란히 배치시켜준다 */
+        /* background 를 사용할시 콘텐츠에 필요한 만큼만 넓이만 색이 사용된다 button, input, img 등 */
+        display: inline-block;
+            /* 원래 자신의 위치를 기준으로 밀려나듯 이동한다 */
+            /* 예시 <div class="item relative top-2 left-2">relative</div> */
+            position: relative;
+                /* 부모를 기준으로 위치한다 */
+                /* 컨텐츠가 문장을 밀어내지 않는다 */
+                position: absolute;
+
+            /*상단 메뉴얼에 많이 사용된다  */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+        /* 레이아웃용으로 적합하지 않다 
+        - width, height가 적용되지 않는다
+        - y축 padding과 margin이 적용되지 않는다 span, a */
+        display: inline;
+        /* 웹에 표시되지 않는다. 공간차지 x */
+        display: none;
+
+        display: flex;
+            /*  한 줄의 글을 작성하는 방향대로 뒤에-reverse를 추가시 역방향*/
+            flex-direction: row;
+                /* item 의 수평정렬 */
+                justify-content: flex-start;/*왼쪽정렬*/
+                justify-content: center;/*가운데정렬*/
+                justify-content: space-between;/*등분정렬*/
+                justify-content: flex-end;/*오른쪽정렬*/
+                    /*justify-content 후 수직정렬*/
+                    align-items: stretch;/*기본값*/
+                    align-items: center;/*가운데정렬*/
+                    align-items: baseline;/*위로정렬*/
+                    align-items: flex-end;/*아래로정렬*/
+            /* 글 여러 줄이 쌓이는 방향대로 reverse 동일*/
+            flex-direction: column;
+                /* item 의 수직정렬 위와 동일*/
+                /* justify-content:; */
+                    /*justify-content 후 수평정렬*/
+                    /* align-items:; */
+
+
+            /* 아이템이 감싸지지 않으면 아래칸으로 밀려난다 */
+            flex-wrap: wrap;
+            /* 아이템이 감싸지지 않으면 아이템의 크기가 줄어든다(기본값) */
+            flex-wrap: nowrap;
+            /* item의 남은공간을 차지한다 */
+            flex-grow: 1;
+            /* 웹의 크기가 축소하면 아이템의 크기도 축소한다. */
+            flex-shrink: 1;
+            /* 웹의 크기에 맞추어 item끼리 공간의 절반씩 차지한다 */
+            flex-basis: 50%
+           
+    }
+
+    .overflow {
+        /* 정해진 규격에만 글자가 나타난다 */
+        overflow: hidden;
+        /* x축과 y축에 스크롤이 생긴다 */
+        overflow: scroll;
+        /* 오버플로우가 발생하는 부분만 스크롤이 생긴다 */
+        overflow: auto; 
+        /* 오버플로우가 발생해도 글자가 보이게 처리한다 */
+        overflow: visible;
+    }
+
+    .transform {
+        /* translate(x,y) 오른쪽 1rem 아래로 1rem 이동*/
+        transform: translate(1rem, 1rem);
+        /* 크기를 1.1배 증가시킨다 */
+        transform:  scale(1.1);
+        /* 12도 회전을 시켜준다 */
+        transform: rotate(12deg);
+    }
+    
+    .whitespace {
+    /* 부모 엘리먼트의 넓이가 부족하면 아래칸으로 넘어간다 */
+    white-space: normal;
+    /* 부모 엘리먼트의 넓이가 부족하면 오버플로우가 발생 */
+    white-space: nowrap;
+    }
+    .clear-both {
+        /* 다음에 오는 엘리먼트가 바로 옆으로 붙어서 한 칸 띄워준다 */
+        clear: both;
+    }
+    .float-right {
+        /* 엘리먼트의 위치를 오른쪽으로 띄운다(float) */
+        float: right;
+    }
+
+    .order-1 {
+        /* item의 작성순서와 상관없이 제일먼저 띄워준다 */
+        order: 1;
+    }
+
+    .title:after {
+    /* 웹 크기에따라 해당 문구를 다르게 표기한다 */
+    content: "Extra small devices";}
+    @media (min-width:640px) {
+    .title:after {content: "Small devices";}}
+    @media (min-width:768px) {
+    .title:after {content: "Medium devices";}}
+
+    .object-cover {
+    /* 이미지의 사이즈에 맞게 크기를 조절해준다 */
+    object-fit: cover;
+    }
+
+    .bg-image {
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-i1TsJ0G4Y6js4IjWLRBmaiTxjWFoyBd2uw&usqp=CAU);
+    background-size: cover;
+    background-position: center;}
+
+
+
+    /* ====================================================== */
+
+    .display1 {
+        border: 1px dashed;
+        overflow: auto;
+        background-color: #fff;
+        height: 100px;
+    }
+    .item2{
+        background-color: #ddd;
+        padding: 0.5rem;
+        
+    }
+    .overflow2 {
+            overflow: auto; 
+        }
+    .transform_item {
+        background-color: green;
+        width: 100px;
+        height: 100px;
+        transform: rotate(12deg);
+        margin-left: 30px;
+        display: inline-block;
+    }
+    .margin {
+        margin-right: 1rem;
+    }
+    .display2 {
+        display: flex;
+    }
+    .item3 {
+        width: 200px;
+        height: 200px;
+    }
+
+
+
+    </style>
+<div id="bk1" class="overflow2">
+    <p id="p">list item</p>
+    <p id="p2" class="bd1">list item</p>
+    <p id="p3">Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
+        Laboriosam voluptatem porro ut vero quae deserunt, commodi 
+        inventore reprehenderit tenetur aperiam, libero alias, rerum fugiat
+         perspiciatis impedit ab beatae debitis eveniet.</p>
+    <div class="display1">
+        <div class="transform_item" ></div>
+        <div class="transform_item" ></div>
+        <div class="transform_item" ></div>
+    </div>
+    <div class="display2 float-right itme2">
+        <div class="margin" >itme1</div>
+        <div class="margin order-1" >itme2</div>
+        <div class="margin" >itme3</div>
+    </div>
+    
+    
+</div>
+
+
+<div class="container">
+    <h3 class="title">Devices: </h3>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+      Beatae hic quod distinctio iure quia eius dolore? Mollitia 
+      dolorum autem nemo vel molestias a quibusdam cupiditate tempore 
+      dolores, voluptas esse eaque.
+    </p>
+  </div>    
+
+  <h3>img</h3>
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-i1TsJ0G4Y6js4IjWLRBmaiTxjWFoyBd2uw&usqp=CAU"  alt="" class="item3 object-cover ">
+  
+  <h3>background image</h3>
+  <div class="item3 bg-image"></div>
+
+</body>
+</html>

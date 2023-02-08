@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+<style>
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  li {
+    border-bottom: 1px solid #ddd;
+  }
+
+  input[type=checkbox] {
+    display: none;
+  }
+
+  label {
+    display: block;
+    padding: 0.5rem;
+    cursor: pointer;
+  }
+  label::after {
+    content: "+";
+    float: right;
+    transition: transform 0.2s;
+  }
+</style>
+
+
+  <h1>Accordion</h1>
+
+<ul>
+  <li>
+    <input type="checkbox" name="" id="acc0">
+    <label for="acc0">Title</label>
+    <div>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+    </div>
+  </li>
+</ul>
+
+<div>
+
+</div>
+
+
+  
+</body>
+</html>

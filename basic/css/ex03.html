@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <h1>Q.Modal Image</h1>
+
+  <style>
+    .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color:rgba(0 0 0/ 0.5);
+    }
+    .modal {
+      width: 20rem;
+      height: 20rem;
+      margin: 100px auto 0;
+
+    }
+    img {
+      width: inherit;
+      height: inherit;
+      object-fit: cover;
+      border-radius: 2rem;
+
+    }
+    button {
+      font-size: 2rem;
+      /* 백그라운드를 투명으로 해준다 */
+      background-color: transparent;
+      /* 버튼은 기본적으로 있기때문에 없애준다 */
+      border: none;
+      color: #fff;
+      /* 마우스 커서를 가져가면 손모양으로 반응한다 */
+      cursor: pointer;
+      padding: 0.5rem 1rem;
+      /* 버튼을 우측에 배치해준다 */
+      float: right;
+    }
+    
+    
+    
+
+    
+  </style>
+  <div class="overlay">
+    <!--&times; x버튼을 만들어준다-->
+    <button>&times;</button>
+    <div  class="modal">
+          <img src="https://product.cdn.cevaws.com/var/storage/images/_aliases/reference/media/feliway-2017/images/kor-kr/1_gnetb-7sfmbx49emluey4a/6341829-1-kor-KR/1_gNETb-7SfMBX49EMLUeY4A.jpg" alt="">
+    </div>
+  </div>
+
+</body>
+</html>
