@@ -257,7 +257,7 @@ button {
   @keyframes spin {
     /* 움직이는 모션을 사용하기위한 명령어 (spin 부분은 개발자가 정한다)  */
     from {
-      transform: totate(0deg);
+      transform: rotate(0deg);
     } to {
       transform: rotate(360deg);
     }
@@ -326,13 +326,46 @@ button {
     transform: translate(-50%, -50%);
   }
 
-  #moon {
-    width: 30px;
-    height: 30px;
-    background-color: #000;
-    border-radius: 50%;
-    box-shadow: 0 0 40px 0px #ddd inset;
+  #orbit-creator {
+    /* 달이 회전할수있는 틀을 만들어준다. */
+    /* border: 1px dashed #fff; */
+    width: 200px;
+    height: 200px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    
+    /* 애니메이션 효과를 위한 명령어 */
+    animation-name: move;
+    /* 한바퀴 걸리는시간 */
+    animation-duration: 10s;
+    /* 반복횟수 infinite(무한반복) */
+    animation-iteration-count: infinite; /* count로 횟수를 정할 수 있다*/
+    /* 속도조절 linear(속도가 일정하다) */
+    animation-timing-function: linear;
   }
+
+  #moon {
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 15px 0px #ddd;
+    border-radius: 50%;
+
+  }
+
+    
+    @keyframes move {
+    from {
+      transform: translate(-50%, -50%) rotate(0deg);
+    } to {
+      transform: translate(-50%, -50%) rotate(360deg);
+    }
+  }
+
+  
 </style>
 
 <div id="earth"></div>

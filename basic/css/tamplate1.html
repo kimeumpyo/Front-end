@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- 테일윈드 사용 스크립트 -->
+  <!-- 명령어들을 직접 커스텀한다 -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- 폰트관련 링크 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" rel="stylesheet">
+
+<style>
+  body {
+    /* 폰트적용 */
+    font-family: 'Inconsolata', monospace;
+  }
+</style>
+
+</head>
+<!-- 백그라운드 컬러 -->
+<body class="bg-neutral-200">
+  <!-- 글사이즈 / 글씨굵기 / margin -->
+  <!-- <h1 class="text-4xl font-semibold my-8">hello tailwindcss</h1>
+  <p>hello tailwindcss</p> -->
+
+<!-- NAVBAR-->
+<!-- sticky /  position top0 / padding 2 / width-full(100%) / z-index-10 / background color-black   -->
+<!-- sticky를 사용해서 메뉴가 그림을 가리지않게 한다 -->
+<nav class="sticky top-0 p-2 w-full z-10 bg-black">
+  <ul class="flex">
+    <li class="w-1/4">
+      <a href="#" class="block p-2 text-center text-white hover:bg-white hover:text-black">HOME</a>
+    </li>
+    <li class="w-1/4">
+      <a href="#" class="block p-2 text-center text-white hover:bg-white hover:text-black">ABOUT</a>
+    </li>
+    <li class="w-1/4">
+      <a href="#" class="block p-2 text-center text-white hover:bg-white hover:text-black">MENU</a>
+    </li>
+    <li class="w-1/4">
+      <a href="#" class="block p-2 text-center text-white hover:bg-white hover:text-black">WHERE</a>
+    </li>
+  </ul>
+</nav>
+
+<!-- MAIN IMAGE -->
+<!-- grayscale(약간흐리게 처리) -->
+<div class="h-[500px] bg-[url('https://images.pexels.com/photos/585753/pexels-photo-585753.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')] bg-cober bg-center 
+grayscale-[50%]">
+  <div class="h-[450px] flex flex-col justify-center">
+    <h1 class="text-8xl text-center text-white">
+      <!-- br 줄바꿈 -->
+      the <br>
+      
+      <span class="inline-block mt-8">
+        cafe
+      </span>
+    </h1>
+  </div>
+  <div class="mt-4 px-4 flex justify-between">
+    <!-- 배경 / 글자크기 / 글자색 /x축 페딩/ 숨김(공간차지x) / breakpoint prefix md:모바일사이즈 이상은 보이게 표시-->
+    <span class="bg-black text-sm text-white px-2 invisible md:visible">Open form 6am th 5pm</span>
+    <span class="text-sm text-white">15 Abr street, 5015</span>
+  </div>
+</div>
+<main class="max-w-2xl mx-auto px-4">
+  <!-- ABOUT-->
+  <div id="about" class="py-16">
+    <!-- 글자크기 / 글자위치 / 글자간격 letter spacing -->
+    <h1 class="text-2xl text-center tracking-widest ">
+      <!-- span을 사용하면 글자만큼만 배경색을 적용가능 -->
+      <span class="bg-black text-white ps-2">ABOUT THE CAFE</span>
+    </h1>
+  </div>
+
+  <p class="text-lg my-4"> 
+    The Cafe was founded in blavla by Mr.
+    Smith in lorem dolor sit amet, consectetye adipiscing elit,
+    sed do eiusmod rempor incididunt ut labore et dolore magna aliqua.
+    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat.
+  </p>
+  <p class="text-lg my-4"> 
+    Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
+    Voluptate expedita alias nobis nihil. 
+  </p>
+</main>
+
+
+
+
+</body>
+</html>
