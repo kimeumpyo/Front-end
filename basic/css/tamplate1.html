@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<!-- scroll-smooth 스크롤이 이동시 부드러운 움직임을준다 -->
+<html lang="en" class="scroll-smooth">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>cafe</title>
   <!-- 테일윈드 사용 스크립트 -->
   <!-- 명령어들을 직접 커스텀한다 -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -14,12 +16,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" rel="stylesheet">
 
-<style>
-  body {
-    /* 폰트적용 */
-    font-family: 'Inconsolata', monospace;
-  }
-</style>
+  <style>
+    body {
+      /* 폰트적용 */
+      font-family: 'Inconsolata', monospace;
+    }
+  </style>
 
 </head>
 <!-- 백그라운드 컬러 -->
@@ -28,71 +30,257 @@
   <!-- <h1 class="text-4xl font-semibold my-8">hello tailwindcss</h1>
   <p>hello tailwindcss</p> -->
 
-<!-- NAVBAR-->
-<!-- sticky /  position top0 / padding 2 / width-full(100%) / z-index-10 / background color-black   -->
-<!-- sticky를 사용해서 메뉴가 그림을 가리지않게 한다 -->
-<nav class="sticky top-0 p-2 w-full z-10 bg-black">
-  <ul class="flex">
-    <li class="w-1/4">
-      <a href="#" class="block p-2 text-center text-white hover:bg-white hover:text-black">HOME</a>
-    </li>
-    <li class="w-1/4">
-      <a href="#" class="block p-2 text-center text-white hover:bg-white hover:text-black">ABOUT</a>
-    </li>
-    <li class="w-1/4">
-      <a href="#" class="block p-2 text-center text-white hover:bg-white hover:text-black">MENU</a>
-    </li>
-    <li class="w-1/4">
-      <a href="#" class="block p-2 text-center text-white hover:bg-white hover:text-black">WHERE</a>
-    </li>
-  </ul>
-</nav>
+  <!-- NAVBAR-->
+  <!-- sticky /  position top0 / padding 2 / width-full(100%) / z-index-10 / background color-black   -->
+  <!-- sticky를 사용해서 메뉴가 그림을 가리지않게 한다 -->
+  <!-- # 테그를 통해서 해당 글이있는곳으로 이동시켜준다 -->
+  <nav class="sticky top-0 p-2 w-full z-10 bg-black">
+    <ul class="flex">
+      <li class="w-1/4">
+        <a href="#" class="block p-2 text-center text-white hover:bg-white hover:text-black">HOME</a>
+      </li>
+      <li class="w-1/4">
+        <a href="#about" class="block p-2 text-center text-white hover:bg-white hover:text-black">ABOUT</a>
+      </li>
+      <li class="w-1/4">
+        <a href="#menu" class="block p-2 text-center text-white hover:bg-white hover:text-black">MENU</a>
+      </li>
+      <li class="w-1/4">
+        <a href="#where" class="block p-2 text-center text-white hover:bg-white hover:text-black">WHERE</a>
+      </li>
+    </ul>
+  </nav>
 
-<!-- MAIN IMAGE -->
-<!-- grayscale(약간흐리게 처리) -->
-<div class="h-[500px] bg-[url('https://images.pexels.com/photos/585753/pexels-photo-585753.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')] bg-cober bg-center 
-grayscale-[50%]">
-  <div class="h-[450px] flex flex-col justify-center">
-    <h1 class="text-8xl text-center text-white">
-      <!-- br 줄바꿈 -->
-      the <br>
+  <!-- MAIN IMAGE -->
+  <!-- grayscale(약간흐리게 처리) -->
+  <div class="h-[500px] bg-[url('https://images.pexels.com/photos/585753/pexels-photo-585753.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')] bg-cover bg-center 
+              grayscale-[50%]">
+    <div class="h-[450px] flex flex-col justify-center">
+      <h1 class="text-8xl text-center text-white">
+        <!-- br 줄바꿈 -->
+        the <br>
+
+        <span class="inline-block mt-8">
+          cafe
+        </span>
+      </h1>
+    </div>
+    <!-- margin-top / padding-x축 / display-flex / -->
+    <div class="mt-4 px-4 flex justify-between">
+      <!-- 배경 / 글자크기 / 글자색 /x축 페딩/ 숨김(공간차지x) / breakpoint prefix md:모바일사이즈 이상은 보이게 표시-->
+      <span class="bg-black text-sm text-white px-2 invisible md:visible">Open form 6am th 5pm</span>
+      <span class="text-sm text-white">15 Abr street, 5015</span>
+    </div>
+  </div>
+  <main class="max-w-2xl mx-auto px-4">
+    <!-- ABOUT-->
+    <div id="about" class="py-16">
+      <!-- 글자크기 / 글자위치 / 글자간격 letter spacing -->
+      <h1 class="text-2xl text-center tracking-widest ">
+        <!-- span을 사용하면 글자만큼만 배경색을 적용가능 -->
+        <span class="bg-black text-white px-2">ABOUT THE CAFE</span>
+      </h1>
+    </div>
+
+    <p class="text-lg my-4">
+      The Cafe was founded in blavla by Mr.
+      Smith in lorem dolor sit amet, consectetye adipiscing elit,
+      sed do eiusmod rempor incididunt ut labore et dolore magna aliqua.
+      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+      nisi ut aliquip ex ea commodo consequat.
+    </p>
+    <p class="text-lg my-4">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, accusantium sapiente,
+      ab quas et animi voluptas culpa deserunt corrupti ipsum odit recusandae rerum impedit
+      ex sed soluta repudiandae id maxime.
+    </p>
+
+
+    
+    <!-- margin-top / padding-x축 / background-color / border left 8px / border left 색상 / -->
+    <div class="mt-8 px-4 py-2 bg-gray-200 border-l-8 border-l-gray-300">
+      <!-- margin / text / 글스타일 -->
+      <p class="my-4 text-lg italic">
+        "Use prodycts from nature for what it's worth - but necer too early, nor too late." 
+        Fresh is the new sweet.
+      </p>
+      <p class="my-4 text-lg">
+        Chef, Coffeeist and Owner: Liam Brown
+      </p>
+    </div>
+
+
+
+    <!-- margin-top / 색상을 흐리게 -->
+    <img class="mt-8 grayscale-[80%]" src="https://images.pexels.com/photos/2074130/pexels-photo-2074130.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="">
+
+    <p class="my-4 text-lg">
+      <!-- font-weight: 600; (100~900까지 있다) -->
+      <span class="font-semibold">Opening house:</span> everyday form 6am to 5pm
+    </p>
+    <p class="my-4 text-lg">
+      <span class="font-semibold">Address:</span> 15 adr street, 5015, NY
+    </p>
+    
+    <!-- MENU -->
+    <div id="menu" class="py-16">
+      <h1 class="text-2xl text-center tracking-widest">
+        <span class="bg-black text-white px-2">THE MENU</span>
+      </h1>
+    </div>
+
+    <!-- MENU-LIST -->
+    <!-- box shadow -->
+    <!-- flex-wrap 하는이유 3번째 item을 아래로 내려주기위함 -->
+    <!-- tailwindcss는 flex order 속성을 부여없이 사용이가능하다  (input끼리 나란히 사용가능)-->
+    <div class="border bg-white shadow-lg flex flex-wrap px-4 py-2">
+      <!-- peer(형제관계) / id와 for을 일치시킨다. / input의 name과 type을 일치시켜 한가지를 선택하게 만들어준다-->
+      <input type="radio" class="hidden peer/eat" name="menu" id="eat" checked>
+      <!-- peer-checked/eat:bg-neutral-400  peer-checked/eat:text-white
+          (라벨이 활성화시 배경을 회색으로 바꿔주고 글은 흰색으로 바꿔준다) -->
+      <label for="eat"
+        class="w-1/2 text-lg text-center font-semibold cursor-pointer peer-checked/eat:bg-neutral-400 peer-checked/eat:text-white">
+        Eat
+      </label>
+    
+      <input type="radio" class="hidden peer/drink" name="menu" id="drink" checked>
+      <label for="drink"
+        class="w-1/2 text-lg text-center font-semibold cursor-pointer peer-checked/drink:bg-neutral-400 peer-checked/drink:text-white">
+        Drink
+      </label>
+
+      <!-- MENU: Eat -->
+      <div class="py-4 w-full hidden peer-checked/eat:block">
+        <div class="py-4">
+          <h3 class="my-4 text-xl font-semibold">Bread Basket</h3>
+          <p class="my-4 text-lg text-gray-500">Assortment of fresh baked fruit breads and muffins 5.50</p>
+        </div>
+      </div>
+      <div class="py-4 w-full hidden peer-checked/eat:block">
+        <div class="py-4">
+          <h3 class="my-4 text-xl font-semibold">Honey Almond Granola with Fruits</h3>
+          <p class="my-4 text-lg text-gray-500">Natural cereal of honey toasted oats, raisins, almonds and dates 7.00</p>
+        </div>
+      </div>
+      <div class="py-4 w-full hidden peer-checked/eat:block">
+        <div class="py-4">
+          <h3 class="my-4 text-xl font-semibold">Belgian Waffle</h3>
+          <p class="my-4 text-lg text-gray-500">Vanilla flavored batter with malted flour 7.50</p>
+        </div>
+      </div>
+      <div class="py-4 w-full hidden peer-checked/eat:block">
+        <div class="py-4">
+          <h3 class="my-4 text-xl font-semibold">Scrambled eggs</h3>
+          <p class="my-4 text-lg text-gray-500">Scrambled eggs, roasted ted pepper and garlic, with green onions 7.50</p>
+        </div>
+      </div>
+      <div class="py-4 w-full hidden peer-checked/eat:block">
+        <div class="py-4">
+          <h3 class="my-4 text-xl font-semibold">Blueberry Pancakes</h3>
+          <p class="my-4 text-lg text-gray-500">With syrup, butter and lots of berries 8.50</p>
+        </div>
+      </div>
       
-      <span class="inline-block mt-8">
-        cafe
-      </span>
-    </h1>
-  </div>
-  <div class="mt-4 px-4 flex justify-between">
-    <!-- 배경 / 글자크기 / 글자색 /x축 페딩/ 숨김(공간차지x) / breakpoint prefix md:모바일사이즈 이상은 보이게 표시-->
-    <span class="bg-black text-sm text-white px-2 invisible md:visible">Open form 6am th 5pm</span>
-    <span class="text-sm text-white">15 Abr street, 5015</span>
-  </div>
-</div>
-<main class="max-w-2xl mx-auto px-4">
-  <!-- ABOUT-->
-  <div id="about" class="py-16">
-    <!-- 글자크기 / 글자위치 / 글자간격 letter spacing -->
-    <h1 class="text-2xl text-center tracking-widest ">
-      <!-- span을 사용하면 글자만큼만 배경색을 적용가능 -->
-      <span class="bg-black text-white ps-2">ABOUT THE CAFE</span>
-    </h1>
-  </div>
+      
+      <!-- MENU: Drink -->
+      <div class="py-4 w-full hidden peer-checked/drink:block">
+        <div class="py-4">
+          <h3 class="text-xl font-semibold my-4">Coffee</h3>
+          <p class="mt-4 text-lg text-gray-500 my-4">Regular coffee 2.50</p>
+        </div>
+      </div>
+      <div class="py-4 w-full hidden peer-checked/drink:block">
+        <div class="py-4">
+          <h3 class="my-4 text-xl font-semibold">Chocolato</h3>
+          <p class="my-4 text-lg text-gray-500">Chocolate espresso with milk 4.50</p>
+        </div>
+      </div>
+      <div class="py-4 w-full hidden peer-checked/drink:block">
+        <div class="py-4">
+          <h3 class="my-4 text-xl font-semibold">Corretto</h3>
+          <p class="my-4 text-lg text-gray-500">Whiskey and coffee 5.00</p>
+        </div>
+      </div>
+      <div class="py-4 w-full hidden peer-checked/drink:block">
+        <div class="py-4">
+          <h3 class="my-4 text-xl font-semibold">Iced tea</h3>
+          <p class="my-4 text-lg text-gray-500">Hot tea, except not hot 3.00</p>
+        </div>
+      </div>
+      <div class="py-4 w-full hidden peer-checked/drink:block">
+        <div class="py-4">
+          <h3 class="my-4 text-xl font-semibold">Soda</h3>
+          <p class="my-4 text-lg text-gray-500">Coke, Sprite, Fanta, etc. 2.50</p>
+        </div>
+      </div>
+    </div>
+    
+    <img class="mt-8 grayscale-[80%]" src="https://images.pexels.com/photos/1727123/pexels-photo-1727123.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="">
 
-  <p class="text-lg my-4"> 
-    The Cafe was founded in blavla by Mr.
-    Smith in lorem dolor sit amet, consectetye adipiscing elit,
-    sed do eiusmod rempor incididunt ut labore et dolore magna aliqua.
-    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-    consequat.
-  </p>
-  <p class="text-lg my-4"> 
-    Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
-    Voluptate expedita alias nobis nihil. 
-  </p>
-</main>
+    <!-- WHERE -->
+    <div id="where" class="py-16">
+      <h1 class="text-2xl text-center tracking-widest">
+        <span class="bg-black text-white px-2">WHERE TO FIND US</span>
+      </h1>
+    </div>
 
+    <P class="text-lg my-4">
+      find us at some address at some place.
+    </P>
+
+    <img class="mt-4 grayscale-[80%]" src="https://images.pexels.com/photos/3845121/pexels-photo-3845121.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="">
+
+    <p class="my-4 text-lg">
+      <span class="bg-black text-white px-2 py-1">FYI!</span>
+      We offer full-service catering for any event, large or small.
+      We understand your needs and we will cater the food to
+      satisfy the biggerst criteria of them all, both look and taste.
+    </p>
+     
+    <form action="" class="">
+      <p class="my-4 text-lg">
+        Reserve a table, ask for today's special or just send us a message:
+      </p>
+      <div class="mb-4">
+        <label>
+          <!-- border 방향이 없으면 전체 두깨가 없으면 1px -->
+          <input type="text" class="border text-lg -px02 py-4 w-full" placeholder="Name">
+        </label>
+      </div>
+      <div class="mb-4">
+        <label>
+          <input type="number" class="border text-lg -px02 py-4 w-full" placeholder="How many people">
+        </label>
+      </div>
+      <div class="mb-4">
+        <label>
+          <input type="date" class="border text-lg -px02 py-4 w-full" value="2023-01-16">
+        </label>
+      </div>
+      <div class="mb-4">
+        <label>
+          <input type="text" class="border text-lg -px02 py-4 w-full" placeholder="Message \ Special requirements">
+        </label>
+      </div>
+      
+      <button class="bg-black text-lg text-white px-4 py-2 hover:bg-gray-400 hover:text-black">
+        SEND MESSAGE
+      </button>
+    </form>
+  </main>
+
+  <!-- FOOTER -->
+  <!-- main 바깥쪽에 위치한다 -->
+  <footer class="mt-16 bg-gray-200 py-16">
+    <p class="text-center text-lg">
+      <!-- underline 글 아래 밑줄 -->
+      Powered by <a href="#" class="underline">Name</a>
+    </p>
+  </footer>
+  
 
 
 
 </body>
+
 </html>
