@@ -40,3 +40,4 @@
 9. semrush.com  html참고 사이트 
 
 https://laracon.net/#schedule
+https://www.youtube.com/watch?v=Az_TbiPAyDs

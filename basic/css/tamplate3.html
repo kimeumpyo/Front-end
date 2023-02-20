@@ -84,8 +84,60 @@
     <div class="scale-75 translate-x-4 skew-y-3 md:transform-none">
       Lorem ipsum dolor sit amet consectetur adipisicing elit. 
     </div>
+    <q>Lorem ipsum dolor sit amet consectetur adipisicing elit. </q><br> <!--q 를 사용하면 "안에 들어간다"-->
+    <cite>Lorem ipsum dolor sit amet consectetur adipisicing elit.</cite>
+    <em>Lorem ipsum dolor sit amet consectetur adipisicing elit.</em> <!-- 강조-->
 </div>
 
+
+<!-- ======================================================================================== -->
+
+<style>
+  #div1 {
+    position: absolute;
+    left: 50px;
+    /* calc 를 사용해서 100px 만큼 좌우의 길이를 빼준다 */
+    width: calc(100% - 100px);
+    border: 1px solid black;
+    background-color: yellow;
+    padding: 5px;
+    text-align: center;
+  }
+  </style>
+  </head>
+  <body>
+  
+  <h1>The calc() Function</h1>
+  
+  <p>Create a div that stretches across the window, with a 50px gap between both sides of the div and the edges of the window:</p>
+  
+  <div id="div1">Some text...</div><br>
+
+
+<!-- ======================================================================================== -->
+
+<h1 class="mt-16">divide-x-2</h1>
+
+<h1 class="mt-4">column-counth</h1>
+<style>
+  
+  
+  #myDIV {
+    margin-top: 4rem;
+    background-color:#FFFFFF;
+    column-count:3;
+    column-rule-style: solid;
+    column-width: 100px;
+  }
+  </style>
+  </head>
+  <body>
+  
+  <h1 class="mt-4">The column-count property</h1>
+  
+  <div id="myDIV">
+  Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum.
+  </div>
 
 
 
