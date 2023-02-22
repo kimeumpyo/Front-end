@@ -41,3 +41,15 @@
 
 https://laracon.net/#schedule
 https://www.youtube.com/watch?v=Az_TbiPAyDs
+https://for-it-study.tistory.com/93
+
+html, css, js(java scropt) 연결
+https://kd3302.tistory.com/549
+https://tnrn211.tistory.com/362
+https://velog.io/@breeeeze/TIL-htmlcss-javascript-%EC%97%B0%EA%B2%B0
+https://salix97.tistory.com/158
+
+drop down
+https://velog.io/@kauthenticity/HTML-CSS-%EB%93%9C%EB%A1%AD%EB%8B%A4%EC%9A%B4-%EB%A9%94%EB%89%B4-%EB%A7%8C%EB%93%A4%EA%B8%B0
+https://blog.naver.com/PostView.naver?blogId=bgpoilkj&logNo=221150512824
+https://stickode.tistory.com/306
