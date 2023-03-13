@@ -38,7 +38,7 @@
    bootstrap  코드가 충돌위험
 
 9. semrush.com  html참고 사이트 
-
+*** https://ssimplay.tistory.com/category/coding/html%20%2B%20css  
 https://laracon.net/#schedule
 https://www.youtube.com/watch?v=Az_TbiPAyDs
 https://for-it-study.tistory.com/93
@@ -56,3 +56,16 @@ https://stickode.tistory.com/306
 
 브라우저 크기에 비례하여 스타일 적용
 https://lcw126.tistory.com/155
+
+
+10. javascript
+- NodeJS
+  - 서버구축이 가능하다
+  - 컴파일러 = 코드를 0111010101 처럼변환
+
+NodeJS 다운후 cmd 접속 
+npm list -g 리스트 확인후 노드몬이 없으면
+npm install nodemon -g  노드몬을 인스톨 해준다
+npm install yarn -g    
+
+파일 우클릭 경로복사
