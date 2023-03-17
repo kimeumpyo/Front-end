@@ -550,22 +550,23 @@
     */
 
     // 함수 선언식
-        // function f() {
-        //     console.log('함수 선언식 : foo');
-        // }
+        function f001() {
+            console.log('함수 선언식 : foo');
+        }
+        f001()
 
     // 함수 표현식
     // 변수에 익명함수를 할당한다
-        // var f = function (){
-        //     console.log('함수 표현식 : goo');
-        // }
-
+        var f002 = function (){
+            console.log('함수 표현식 : goo');
+        }
+        f002()
     // 화살표 함수
     // 간단하게 사용이가능
-        // var f = () => {
-        //     console.log('화살표 함수 : hoo');
-        // }
-    
+        var f003 = () => {
+            console.log('화살표 함수 : hoo');
+        }
+        f003()
     /*
         2) 게양 (Hoisting)    
     */
@@ -573,52 +574,285 @@
         // f()
     // 함수선언식에만 적용된다
     // 함수의 정의가 호출 시점보다 올라간다
-        // function f() {
-        // console.log('게양 : ioo');
-        // }
+        function f004() {
+            console.log('게양 : ioo');
+        }
 
-        // let f = finction () {
-        //     console.log('ggr');
-        // }
-        // f()
-
+        let ff04 = function () {
+            console.log('ggr');
+        }
+        f004()
     // 3) parameter (인자, 매개변수)
 
-        // function add(x, y){ //x, y 는 파라미터
-        //     console.log(x + y);
-        // }
+        function adde(x, y){ //x, y 는 파라미터
+            console.log(x + y);
+        }
 
-        // add(1, 2);
+        adde(1, 2);
 
     // 4) return
-        // function add(x, y){
-        //     return x + y;
-        // }
+        function addz(x, y){
+            return x + y;
+        }
 
-        // var r = add(1, 2);
-        //  console.log(r);
+        var r = addz(1, 2);
+         console.log(r);
 
     // 5) 콜백(callback)
     // 다른 함수의 인자가 되는 함수
 
-        // function f(callback){
-        //     let r = callback(); //  f함수 내부에서 콜백이 행되었다
-        //     console.log(r);
-        // }
+        function fr(callback){
+            let ri = callback(); //  f함수 내부에서 콜백이 행되었다
+            console.log(ri);
+        }
 
-        // function cb() { // 콜백
-        //     return 'foo';
-        // }
-        // f(cb);
+        function cb() { // 콜백
+            return 'foo';
+        }
+        f(cb);
 
         // 콜백 예시
          function getTime() {
             let time = new Date().toLocaleTimeString(); // 현재시간
             console.log(time);
          }
-         
+         console.log('\n');
          // setInterval(callback, ms)
          // ms마다 callback을 실행하는 함수
-        //  setInterval(getTime, 1000);
+         // setInterval(getTime, 1000);
+    
+    // Q. 인자에 따라서 성인인지 아닌지를 말해주는 함수를 만들어 보세요
+         
+         // 함수 선언
+         function getage(age3) {    // age: 매개변수(parameter)
+            if (typeof age3 !== 'number'){
+                console.log('인자는 숫자만 가능합니다');
+                return; // return 아래 코드는 실행되지 않는다
+            }
+
+            if (age3 >= 20) {
+               console.log('성인입니다');
+            }
+            else{
+               console.log('성인이 아닙니다.');
+            }
+            
+         }
+         // 함수 호출
+         getage(20); // 성인입니다 20 : 인자(argument), 함수에 실제 전달하는 값
+         getage(15); // 성인이 아닙니다.
+
+         getage('hello');  // ?
 
 
+/*
+    7. 배열 (Array)         
+
+    한개 이상의 값을 갖는 데이터 타입
+
+         1) 배열에 접근하기
+         2) 배열 메서드
+         3) 배열과 반복문
+ */
+
+    // 1) 배열에 접근하기
+
+        var arr = ['foo', 'bar', 'baz']; // 문자열 배열
+
+        // 첫번쨰 아이템의 index는 0이다
+        console.log(arr[0]); // foo
+        console.log(arr[1]); // bar
+        console.log(arr[2]); // baz
+        console.log(arr.length); // item의 갯수
+        console.log('\n');
+
+        // 아이템 업데이트 하기
+        arr[2] = 'Baz';
+        console.log(arr); // [ 'foo', 'bar', 'Baz' ]
+
+        // 아이템 추가하기
+        arr[3] = 'duck';
+        console.log(arr); // [ 'foo', 'bar', 'Baz', 'duck' ]
+
+        arr[5] = 'duck';    // 5번째를 빼고 6번째를 추가했을시 현상
+        console.log(arr,'6번째 추가');   //[ 'foo', 'bar', 'Baz', <1 empty item>, 'duck' ]
+        console.log(arr[3]);    // undefined
+    
+    /*
+         2) 배열 메서드
+            - Array.push()
+            - Array.pop()
+            - Array.concat()
+            - Array.sort()
+            - Array.reverse()
+            - Array.shift()
+            - Array.unshift()
+            - Array.splice()
+    */
+
+    // Array.push(newItem1, newItem2, ...)
+
+         var arr = ['foo', 'bar'];
+         arr.push('bar');   // 새로운 아이템을 추가한다
+         console.log(arr,'새로운 아이템 추가');
+
+    // Array.pop()
+
+         var arr1 = ['foo', 'bar', 'baz'];
+         arr1.pop();         // 가장 마지막 아이템을 제거한다
+         console.log(arr1,'가장 마지막 아이템 제거');
+
+    // Array.concat(Array2) 
+    // Array3뒤에 Array4을 합친다
+        var arr3 = ['foo', 'bar'];
+        var arr4 = ['baz'];
+        var result = arr3.concat(arr4); // concatenate
+        console.log(result,'arr3 + arr4');
+
+    // Array.sort()
+
+        var arrr = ['aoo', 'bar', 'caz'];
+        arrr.sort(); // 정렬 메서드
+        // 문자열의 기본값은 알파벳순으로 정렬한다
+        console.log(arrr,'알파벳순 정렬');
+    
+    // Array.reverse()
+
+        var artt = ['aoo', 'bar', 'caz'];
+        artt.reverse(); // 정렬 메서드
+        console.log(artt,'알파벳순 반대정렬');
+
+    // Array.shift()
+
+        var arrt = ['foo', 'bar', 'baz'];
+        arrt.shift();
+        console.log(arrt,'첫번째 아이템 제거');
+
+    // Array.unshift()
+
+        var arre = ['foo', 'bar', 'baz'];
+        arre.unshift('goo');
+        console.log(arre,'첫번째 아이템 추가');
+
+    // Array.splice()
+
+        var arre = ['foo', 'bar', 'baz'];
+        // 3번째 라인에 추가후 뒤에0개의 아이템 제거
+        arre.splice(2, 0,'goo','eer');
+        console.log(arre,'3번째 추가');
+        console.log('\n');
+        
+/*
+     7. 반복문과 배열
+
+     배열에 특정한 작업을 수행할 수 있다.
+*/
+
+        var arri = ['foo', 'bar', 'baz'];
+        let text = ""
+        // 배열의 아이템에 특정한 작업을 수행할 수 있다
+        for (var i = 0; i < arri.length; i++){
+            // toUpperCase(item들을 대문자로 만들어준다)
+            // console.log(arri[i].toUpperCase());
+            text += arri[i].toUpperCase() + ' '; 
+        }
+        console.log(text);
+        console.log('\n');
+
+    // 필터링 작업
+
+        var arry =['foo', 'bar', 'baz'];
+        for (var i = 0; i < arry.length; i++){
+            if (arry[i][0] === 'b'){
+                console.log(arry[i],'b로 시작하는 item출력')
+            }
+        }
+        console.log('\n');
+
+        console.log('   foo     ');
+        console.log('   foo     '.trim()); // 문자열공백을 제거
+        // trimstart    앞 공백 제거
+        // trimend      뒤 공백 제거
+        console.log('\n');
+
+        console.log('foo, bar, baz'.split(',')) // [ 'foo', ' bar', ' baz' ]
+        console.log('\n');
+
+    // Q1. beers 배열에 미국 맥주를 추가해보세요
+
+        var beers = ['기네스', '하이네켄'];
+        var americanBeer = '버드와이저';
+
+        beers.push(americanBeer);
+        console.log(beers);
+
+        beers[2] = americanBeer;
+        // console.log(beers);
+        console.log('\n');
+
+    // Q2. 성인의 나이만 출력하는 코드를 작성해보세요
+    // 반복문 사용
+
+        var ages = [12, 19, 23, 30];
+        for (var i = 0; i < ages.length; i++){
+            if (ages[i]>= 20){ // 조건
+                console.log(ages[i],'세 성인입니다');
+            }
+        }
+        console.log('\n');
+
+/*
+    8. 객체(Object)
+    데이터와 함수의 집합
+*/
+
+        var cat = {
+            // 객체의 속성 (porperty)
+            name: '치즈',
+            home: null,
+            sound: function(){ // 메서드 (method)
+                return'야옹'
+            }
+        }
+        console.log(cat);
+        console.log(cat.name);          // name 속성에 접근
+        console.log(cat['name']);       // name 속성에 접근
+        console.log(cat.color,'\n');    // 존재하지 않는 속성에 접근 undefined
+
+        // 메서드 호출시 ()붙여준다.
+        console.log(cat.sound(),'\n');  // 메서드 호출
+    
+    // 새로운 속성 추가
+
+        cat.age = 2;                    // age 속성 추가
+        console.log(cat);
+
+    // 속성 업데이트
+
+        cat.home = '삼산동'             // home 속성 업데이트
+        console.log(cat);
+
+    // 속성 삭제
+        delete cat.home;                // home 속성 삭제
+        console.log(cat);
+        console.log('\n')
+
+    // Q. 네덜란드 맥주의 이름에 접근해보세요
+
+        var beers = [
+            {name: '기네스', origin: '아일랜드'},
+            {name: '하이네켄', origin: '네덜란드'},
+            {name: '버드와이저', origin: '미국'},
+        ]
+
+        let text1 = ""
+
+        for (var i = 0; i < beers.length; i++){
+            if (beers[i]){ // 조건
+                // console.log(beers[i].name);
+                text1 += beers[i].name + ' '
+            }
+        }
+
+        console.log(text)
+        
