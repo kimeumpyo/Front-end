@@ -619,6 +619,6 @@
          
          // setInterval(callback, ms)
          // ms마다 callback을 실행하는 함수
-         setInterval(getTime, 1000);
+        //  setInterval(getTime, 1000);
 
 
