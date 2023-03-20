@@ -644,6 +644,7 @@
 
          getage('hello');  // ?
 
+/* ======================================================================================= */        
 
 /*
     7. 배열 (Array)         
@@ -749,14 +750,14 @@
 */
 
         var arri = ['foo', 'bar', 'baz'];
-        let text = ""
+        let text1 = ""
         // 배열의 아이템에 특정한 작업을 수행할 수 있다
         for (var i = 0; i < arri.length; i++){
             // toUpperCase(item들을 대문자로 만들어준다)
             // console.log(arri[i].toUpperCase());
-            text += arri[i].toUpperCase() + ' '; 
+            text1 += arri[i].toUpperCase() + ' '; 
         }
-        console.log(text);
+        console.log(text1);
         console.log('\n');
 
     // 필터링 작업
@@ -801,6 +802,8 @@
         }
         console.log('\n');
 
+/* ======================================================================================= */        
+
 /*
     8. 객체(Object)
     데이터와 함수의 집합
@@ -829,13 +832,13 @@
 
     // 속성 업데이트
 
-        cat.home = '삼산동'             // home 속성 업데이트
+        cat.home = '삼산동';           // home 속성 업데이트
         console.log(cat);
 
     // 속성 삭제
         delete cat.home;                // home 속성 삭제
         console.log(cat);
-        console.log('\n')
+        console.log('\n');
 
     // Q. 네덜란드 맥주의 이름에 접근해보세요
 
@@ -845,14 +848,290 @@
             {name: '버드와이저', origin: '미국'},
         ]
 
-        let text1 = ""
+        let text2 = "";
 
         for (var i = 0; i < beers.length; i++){
             if (beers[i]){ // 조건
                 // console.log(beers[i].name);
-                text1 += beers[i].name + ' '
+                text2 += beers[i].name + ' ';
             }
         }
 
-        console.log(text)
+        console.log(text2);
+
+/* ======================================================================================= */        
+
+/*
+    9. 클래스(class)
+    객체를 생성하기 위한 템플릿
+
+        1) 클래스 인스턴스
+        2) static 속성과 static 메서드
+        3) 미리 정의된 클래스
+        4) 리터럴 표기법
+*/
+
+    // 1) 클래스 인스턴스
+        // 생성자 함수 : 인스턴스 속성을 설정하기 위해 사용된다
+        class Cat1 {  // 클래스의 첫글자는 대문자
+            constructor(name, age){
+                this.name = name;
+                this.age = age;
+            }
+
+            // 클래스 멤버 (속성)
+            home = null;
+
+            // 클래스 멤버 (메서드)
+            sound() {
+                return '양옹';
+            }
+        }
+
+        // Cat 클래스의 인스턴스
+        const cat2 = new Cat1('치즈', 2);
+
+        console.log(cat);
+
+        console.log(cat2 instanceof Cat1); // cat2 는 Cat1의 인스턴스이다 (true)
+
+        // 상속 (코드 재사용)
+        console.log(cat2.home,"코드 재사용");
+
+        // 상속 
+        console.log(cat.sound()); // 야옹
+        console.log('\n');
+
+    /*
+        2) static 속성과 static 메서드
+
+        클래스와 인스턴스의 관련된 유틸리티를 제공한다
+    */
+
+        class Dog {
+
+            // ...(생성자, 멤버 등)
+
+            // static 속성
+            static family = "강아지과";
+
+            // static 메서드
+            static isAdult(age){
+                if (age < 1){
+                    return " 아기강아지";
+                }else{
+                    return "성체 강아지";
+                }
+            }
+        }
+
+        // static 속성과 메서드는 클래스 자체가 호출한다
+        console.log(Dog.family);    // 강아지과
+
+        console.log(Dog.isAdult(2)); // 성체 강아지
+
+        var pi = Math.PI;
+        console.log(pi); // 원주율
+        console.log('\n');
+    /*
+        3) 미리 정의된 클래스
+
+        - 문자처리: String
+        - 숫자 및 날짜: Number, Math, Date
+        - 인덱스가 있는 콜렉션: Array
+        - 에러: SyntaxError, ReferenceError 기타 에러 등
+        - 기타: Primise, JSON
+    */
+
+    
+    // 4) 리터럴 표기법
+
+        // String클래스의 인스턴스
+        var jjo = new String('hello');      // 클래스를 이용
+        console.log(jjo,"클래스 표기법");
+
+        var jjo = 'Hello';                  // 리터럴 표기법 (값만 적는다)
+        console.log(jjo,"리터럴 표기법");
+
+        console.log(jjo.toUpperCase());     // .toUpperCase() <- 대문자로 바꿔준다
+
+        // Number의 인스턴스
+
+        var year4 = new Number(2023);       // 클래스
+        var year4 = 2023;                   // 리터럴 표기
+
+        // Object의 인스턴스
+        // var o = new Objeact({prop1: 'foo', prop2: 'bar'});  // 클래스
+        // var o = { prop1: 'foo', prop2: 'bar'};
+
+    /*
+        Q. 다음을 클래스로 정의해보세요
+
+        클래스 이름: Beer
+
+        인스턴스의 속성: name, origin(원산지)
+
+        클래스 속성 멤버
+        history: B.C 3000
+
+        클래스 메서드 멤버
+        recipe(제조법):  보리, 홉, 효모, 물 등
+
+        static 속성
+        caution(경고): 지나친 음주는 돈이 많이 듭니다.
+    */
+
+    class Beer {
+
+        // 인스턴스의 속성 생성 (this)
+        constructor(name, origin){
+            this.name = name;
+            this.origin = origin;
+        }
+
+        // 속성 멤버
+        history = "B.C 3000";
         
+        // 메서드 멤버
+        recipe (){
+            return "보리, 홉, 효모, 물 등";
+        }
+
+        // static 속성
+        static caution = "지나친 음주는 돈이 많이 듭니다";
+    }
+
+    // Beer의 인스턴스          
+        var irishBeer = new Beer('기네스', '아일랜드');     // (name, origin)
+        var dutchBeer = new Beer('하이네켄', '네덜란드');   //  class 에 적용시킨다
+
+        console.log(irishBeer);                            
+        console.log(dutchBeer); 
+
+        // 메서드
+        console.log(irishBeer.recipe());    // 추가된 irishBeer의 recipe 출력
+
+        // static 속성
+        console.log(Beer.caution);          // Beer클래스의 coution을 출력
+        console.log("\n");
+
+/* ======================================================================================= */        
+    
+/*
+    10. 에러와 에러처리
+
+        1) 에러개념
+        2) 에러처리
+        3) 에러 종류
+        4) 커스텀 에러
+*/
+
+    /*
+        1) 에러개념
+        에러는 프로그램의 실행을 중단시킨다
+        에러는 처리가 되어야 한다
+    */
+
+        // console.log(foof)
+        // ReferenceError: foo is not defined.
+
+        // ReferenceError: name
+        // foo is not defined: message
+        // at Object...: stack          // 에러에 대한 자세란 설명 (위치
+
+        // > app crashed(실행 중단)     // 서버가 다운
+
+    /*
+        2) 에러 처리
+
+        try/ catch
+    */
+
+        // try {
+
+        //     // 코드...
+
+        //     console.log(foof);      // 에러가 발생하면 catch에서 처리한다
+        // }
+        // catch(error){
+        //     // 에러 처리
+        //     console.log(error);
+        // }
+
+    /*
+        3) 에러의 종류
+
+            - ReferenceError (참조 에러)
+            - SyntaxError (문법 에러)
+            - TypeError (타입 에러) 
+            - RangeError (범위 에러)
+            - URIError (URI 에러)
+    */
+
+    // ReferenceError (참조 에러)
+    // 존재하지 않는 변수를 참조할 떄 발생한다
+
+        // console.log(x);          
+            // ReferenceError
+
+    // SyntaxError (문법 에러)
+    // 문법이 잘못되었을 때 발생한다
+    // 컴파일 에러를 발생시킨다
+    // 에러 처리를 할 수 없다 (직접 수정이 필요하다)
+
+        // console.log(2023));  
+            // SyntaxError: Unexpected token ')'
+    
+    // TypeError (타입 에러)
+    // 변수 또는 매개변수가 유효한 타입이 아닐 때 발생한다
+
+        // setInterval(callback, ms)
+        // setInterval(null, 1000);
+            // TypeError [ERR_INVALID_ARG_TYPE]:
+            // The 'callback' argument must be of type function. Received null.
+    
+    // RangeError (범위 에러)
+    // 값이 지정된 범위를 벗어났을 때 발생한다
+
+        // var pi = Math.PI;
+
+        // console.log(pi);
+
+        // console.log(pi.toPrecision(200));   
+            // RangeError: 
+            // toPrecision() argument must be between 1 and 100
+
+    // URIError (URI 에러)
+    // encodeURI 또는 decodeURI 함수가 유효하지 않은 인자를 전달받았을 때 발생한다
+
+        // console.log(decodeURI('%'));
+            // URIError:
+            // URI malformed
+
+    
+    // 4) 커스텀 에러 
+        // (데이터베이스 에서 사용자정보와 일치하지 않을때 로그인 등에서 사용)
+
+        try {
+        var age_1 = 15;
+
+        console.log('학생:', '아저씨 담배하나 주세요');
+            
+        // 에러를 발생시켰다
+        if (age_1 < 18){
+            // throw 커스텀 에러
+            throw '미성년자는 담배를 살 수 없습니다'
+        }
+
+        // throw 아래 코드는 실행되지 않는다
+        console.log('CU직원:', '여기 있습니다');
+
+    } catch (error){
+        console.error('실패:', error);
+    } finally{
+        // 에러 발생 여부와 상관없이 항상 실행된다
+        console.log('끝');
+    }
+
+    /* ======================================================================================= */
+    
