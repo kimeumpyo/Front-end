@@ -1126,12 +1126,345 @@
         // throw 아래 코드는 실행되지 않는다
         console.log('CU직원:', '여기 있습니다');
 
-    } catch (error){
-        console.error('실패:', error);
-    } finally{
+        } catch (error){
+            console.error('실패:', error);
+        } finally{
         // 에러 발생 여부와 상관없이 항상 실행된다
-        console.log('끝');
-    }
+            console.log('끝');
+        }
+/* ======================================================================================= */
 
-    /* ======================================================================================= */
+/*
+    11. 비동기 작업 (Asynchronous operations)
+
+    블로킹을 방지하기 위해 사용된다
+    예) 서버에 데이터 요청 등
+
+        1) 동기 작업
+        2) 비동기 작업
+*/
+
+    // 1) 동기 작업 (Synchronous operation)
+    // 호출된 순서대로 코드가 실행된다
+
+        // function f() {5
+        //     console.log('작업 1');
+        // } 
+        // f();
+        // console.log('작업 2');
+
+    // 2) 비동기 작업(Asynchronous operation)
+    // 빠른것부터 처리된다
+
+        // // 서버에 데이터를 요청하고 받는데 1초가 걸린다고 가정
+        // function fetchData(callback){ // 비동기 함수
+        //     var data1 = { foo: 'bar'};
+
+        //     // setTimout(callback, ms): ms 뒤에 callvack을 실행한다
+        //     setTimeout(function () {
+        //         callback(null, data1);
+        //     }, 1000);
+        // }
+        
+        // fetchData(function (error1, data1){
+        //     if (error1){
+        //         return console.error(error1);
+        //     }
+
+        //     console.log('서버에서 받은 데이터:', data1);
+        // });    // 페치데이터를 호출 파라미터 2개(error1, data1)
+
+        // console.log('다음 작업');
+/* ======================================================================================= */
+
+/*
+    12. 프로미스
+
+    비동기 작업의 성공 실패 여부와 그 결과를 나타내는 객체
+    비동기 작업의 가독성을 향상시키기 위해 사용된다
+
+        1) 프로미스 객체의 구조
+        2) 실제 예시
+        3) async/await
+*/
+
+    /*
+        1) 프로미스 객체의 구조
+
+            - 프로미스 인스턴스 생성
+                생성자 함수에 두개의 매개변수를 가진 콜백을 전달한다
+
+                첫번째 매개변수(resolve): 비동기 작업이 성공했을 경우 호출한다
+                두번째 매개변수(rejected): 비동기 작업이 실패했을 경우 호출한다
+            
+            - 프로미스의 상태
+                fullfilled: 작업의 성공
+                rejected: 작업의 실패
+                pending: 작업이 끝나기를 기다리는 상태
+
+            - 프로미스 인스턴스의 메서드
+                Promise.then(): 성공했을 경우 데이터를 다루는 메서드
+                Promise.catch(): 실패했을 경우 에러를 다루는 메서드
+                Promise.finally(): 실패/성공 여부와 상관없이 실행되는 코드를 다루는 메서드
+    */
+
+            // const promise1 = new Promise(function(res, rej) {
+            //     res({ foo: 'bar1'});
+            // })
+            // console.log(promise1);   //fullfilled
+
+            // const promise1 = new Promise(function (res, rej){
+            //     rej({ error: '..'}); // rejected
+            // })
+            
+
+            // const promise2 = new Promise(function(res, rej){})
+            // console.log(promise2); 
+
+            
+            // const promise3 = new Promise(function (res, rej){
+            //     res({foo: 'bar3'});
+            // });
+
+            // promise3
+            //     .then(function (value){  // 데이터를 다루는 부분
+            //         console.log(value);
+            //     })
+            //     .catch(function (error2){
+            //         console.error(error2);
+            //     })
+    /*
+         2) 실제 사용 예시:
+        서버에 데이터 요청
+    */ 
+            // 서버에 데이터를 요청하는 함수
+            // 결과를 프로미스 객체로 리턴한다
+            // function fetchData(){
+            //     const promise4 = new Promise(function(res, rej){
+            //         res({foo: 'bar4'});
+            //     })
+                
+            //     return promise4;
+            // }
+
+            // fetchData()
+            //     .then((date4) => {
+            //         console.log('서버에서 받은 data:', date4);
+            //     })
+            //     .catch((error4) => {
+            //         console.error(error4);
+            //     })
+
+            //     console.log('다음 작업');
+
+    /*
+        3) async / await
+
+        프로미스가 결과값을 반환할 때가지 기다린다
+        프로미스가 가독성을 향상시키디 위한 문법
+        try / catch 에서 에러를 처리한다
+    */
+
+            // function fetchData() {
+            //     const promise5 = new Promise((res, rej) =>{
+            //         res({ foo: 'bar5'});
+            //     })
+
+            //     return promise5;
+            // }
+
+            // f();
+            // console.log('다음 작업')
+
+            // async function f(){
+            //     try{
+            //         // ...
+
+            //         const data5 = await fetchData();
+
+            //         console.log('서버에서 받은 데이터:', data5);
+
+            //     } catch(error5){
+            //         console.error(error5)
+            //     }
+            // }
+
+/*
+    13. ES6 문법(2015)
+    
+    새로운 문법이 많이 나온 버전
+
+        1) let, const
+        2) 화살표 삼수
+        3) 구조분해할당
+        4) 스프레드 연산자
+        5) 클래스
+        6) 프로미스
+        7) 심볼
+        8) Array.map()
+*/
+
+    /*
+        3)-1 구조분해할당 - 배열
+
+        간단한 문법을 사용하여 배열의 아이템을 변수에 할당할 수 있다
+    */      
+            console.log('\n구조분해할당 - 배열\n');
+            var beers = ['기네스', '하이네켄', '버드와이저'];
+
+            var irishBeer = beers[0];
+            var dutchBeer = beers[1];
+            var americanBeer = beers[2];
+
+            console.log(irishBeer);     // 기네스
+            console.log(dutchBeer);     // 하이네켄
+            console.log(americanBeer);  // 버드와이저
+            console.log('\n');
+
+            // 구조분해할당
+            
+            var beers = ['기네스', '하이네켄', '버드와이저'];
+
+            var[irishBeer, dutchBeer, americanBeer] = beers; // 인덱스가 필요없다
+
+            console.log(irishBeer);     // 기네스
+            console.log(dutchBeer);     // 하이네켄
+            console.log(americanBeer);  // 버드와이저
+            
+         
+    /*  
+        3)-2 구조분해할당 - 객체
+        
+        간단한 문법으로 객체의 속성을 변수에 할당할 수 있다
+    */
+            console.log('\n구조분해할당 - 객체\n');
+            var irishBeer = { name: '기네스', origin: '아일랜드', available: false};
+
+            var name = irishBeer.name;
+            var origin = irishBeer.origin;
+            var available = irishBeer.available;
+
+            // console.log(name, origin, available)
+            console.log('맥주이름:', name);
+            console.log('원산지:', origin);
+            console.log('판매중:', available ? '예' : '아니오');
+
+            var irishBeer = { name: '기네스', origin: '아일랜드', available: false};
+            
+            // 구조분해할당
+            var{irishBeer, dutchBeer, americanBeer} = irishBeer;
+            
+            console.log(name, origin, available);
+            
+
+    /*
+        3)-3 구조분해할당 - 매개변수
+    */
+            console.log('\n구조분해할당 - 매개변수\n');
+            var irishBeer1 = { name1: '기네스', origin1: '아일랜드', available1: false};
+
+            function f1(beer1){
+
+                console.log(beer1);  
+
+                var name1 = beer1.name1;
+                var origin1 = beer1.origin1;
+                var available1 = beer1.available1;
+
+                console.log(name1, origin1, available1);
+            }
+            f1(irishBeer1);
+
+            var irishBeer2 = { name2: '기네스', origin2: '아일랜드', available2: false};
+            
+            function f2({name2, origin2, available2}){
+                console.log(name2, origin2, available2);
+            }
+            f2(irishBeer2);
+            
+    /*
+        4)-1 스프레드 연산자 - 배열
+
+        배열의 아이템을 간단하게 복사할 수 있다
+        ... 복사할 배열
+    */
+            console.log('\n스프레드 연산자 - 배열\n');
+            var beersd = ['기네스', '하이네켄'];
+            var newBeer = '버드와이저'
+
+            var updatedBeers = [...beersd, newBeer];
+
+            console.log(updatedBeers); // [ '기네스', '하이네켄', '버드와이저' ]
+
+            var europeanBeers = ['기네스', '하이네켄'];
+            var asianBeers = ['아사히', '클라우드'];
+
+            var worldBeers = [...europeanBeers, ...asianBeers]
+
+            console.log(worldBeers); // [ '기네스', '하이네켄', '아사히', '클라우드' ]
+
+    /*
+        4)-2 스프레드 연산자 - 객체
+
+        객체의 속성을 간단하게 복사할 수 있다
+        ...복사할 객체
+    */
+            console.log('\n스프레드 연산자 - 객체\n');
+            var irishBeer = {
+                name: '기네스',
+                origin: '아일랜드',
+                avilable: false
+            }
+
+            // 기네스가 재입고 되었다
+            irishBeer.available = true;
+
+            console.log(irishBeer);
+
+            var updatedIrishBeer = {...irishBeer, available: true};
+
+            console.log(updatedIrishBeer);
+
+    /*
+        ES6 문제
+    */
+
+        // 1. 구조분해할당
+
+            var asianBeers = ['클라우드', '아사히'];
+            // 구조분해할당 문법을 사용해서 각각의 맥주를 변수에 할당해보세요
+
+            // 변수이름
+            // koreanBeer(클라우드), japaneseBeer(아사히)
+
+            var [koreanBeer, japaneseBeer]  = asianBeers;
+
+            console.log(koreanBeer);
+            console.log(japaneseBeer);
+
+        //2. 스프레드 연산자
+
+            var cat = {
+                name: '치즈',
+                age: 1,
+                home: null,
+                sound: function(){
+                    return '야옹'
+                }
+            }
+
+            // 스프레드 연산자를 사용해 치즈의 home을 '삼산동' 으로 업데이트 해보세요
+            // 결과는 updatedCat 변수에 할당
+
+            var updatedCat = {...cat, home: '삼산동'};
+
+            // 입양
+            console.log(updatedCat);
+
+        
+
+
+    
+
+            
     
