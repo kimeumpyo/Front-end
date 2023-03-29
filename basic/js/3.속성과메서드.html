@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>엘리먼트 속성</h1>
+    <ul>
+        <li>attribute</li>
+        <li>classList</li>
+        <li>ctreatElement</li>
+        <li>innerHTML</li>
+    </ul>
+
+    <h1>attribute</h1>
+    <p>엘리먼트의 attribute</p>
+    
+        <!-- <input 
+            type="text"
+            id="input"
+            name="q"
+            style="padding: 0.5rem; width: 16rem;"
+            value="구글 검색"
+        >
+
+        <script>
+            var input = document.getElementById('input')
+
+            // attribute에 접근
+            console.log(input.type);        // text
+            console.log(input.id);          // input
+            console.log(input.name);        // q
+            console.log(input.value);       // 구글 검색
+            console.log(input.style.padding);     // 0.5rem
+            console.log(input.style.width);       // 16rem
+
+            // attribute 수정
+            input.value = "네이버 검색"
+        </script> -->
+
+    <h1>classList</h1>
+    <p>엘리먼트의 클래스 리스트를 저장한다</p>
+
+        <!-- <style>
+            .text-italic{
+                font-style: italic;
+            }
+            .underline{
+                text-decoration: underline;
+            }
+            .font-bold{
+                font-weight: bold;
+            }
+        </style>
+
+        <ul>
+            <li id="foo" class="font-bold text-italic">foo</li>
+            <li>bar</li>
+            <li>baz</li>
+        </ul>
+
+        <script>
+            var foo = document.getElementById('foo');
+
+            console.log(foo.classList);             // DOMTokenList(length);
+
+            console.log(foo.classList[0]);          // font-bold
+            console.log(foo.classList[1]);          // text-italic
+            console.log(foo.classList.length) ;     //  2 (클래스 갯수) 
+
+            // 클래스 이름 추가
+            foo.classList.add('underline');
+
+            // 클래스 이름 삭제
+            foo.classList.remove('font-bold');
+        </script> -->
+
+    <h1>createElement</h1>
+    <p>새로운 엘리먼트를 생성한다</p>
+
+        <!-- <ul id="list"></ul>
+            <li>foo</li>
+            <li>bar</li>
+
+        <script>
+
+            var list = document.getElementById('list');
+
+            var li = documnet.createElement('li');
+
+            // textContent: 엘리먼트의 텍스트 컨텐츠를 저장한다
+            li.textContent = 'baz'
+
+            console.log(li);
+
+            // 클릭시 새로운 아이템을 나타낼때 사용
+            list.appendChild(li);
+        </script> -->
+
+    <h1>innerHTML</h1>
+    <p>문자열의 형태로 tree를 저장한다</p>
+
+        <div id="container">
+            <ul>
+                <li>foo</li>
+                <li>bar</li>
+                <li>baz</li>
+            </ul>
+        </div>
+
+        <script>
+            var container = document.getElementById('container')
+
+            console.log(container.innerHTML);
+            console.log(typeof container.innerHTML);       // string
+
+            // `(백틱)
+            container.innerHTML = `   
+                <ul>
+                    <li>기네스</li>
+                    <li>하이네켄</li>
+                    <li>버드와이저</li>
+                </ul>
+                `
+        </script>
+</body>
+</html>

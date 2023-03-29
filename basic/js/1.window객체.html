@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1>JavaScropt와 HTML</h1>
+    <ul>
+        <li>window 객체</li>
+        <li>선택자</li>
+        <li>속성과 메서드</li>
+        <li>이벤트</li>
+        <li>캔버스 API</li>
+    </ul>
+
+    <h1>window 객체</h1>
+    <p>웹개발을 위한 도구모음</p>
+
+    <script>
+
+        // console.log(window);
+
+        /*
+            window 객체
+
+            1 메시지 또는 컨펌 등
+            window.alert()
+            window.confirm()
+
+        */
+
+            window.alert('저장되었습니다');                  // 새로고침시 문구가나온다
+            window.confirm('제출하시겠습니까?');             // 동작을하고 실행
+
+        /*
+            2 유저 정보 획득
+            유저 정보에 기반한 웹서비스를 대발할 때 사용된다
+            예) 위치기반 서비스, 모바일 또는 PC용 웹앱
+
+            window.navigator.geolocation
+            window.navigator.userAgent
+        */
+
+            console.log(window.navigator.userAgent);        // 어떤 기기에서 접속을 했는지? (접속 환경)
+            console.log(window.navigator.geolocation);       // 지도앱등에서 사용 (유저 위치)
+
+        /*
+            3 브라우저 기록
+            앱 내의 뒤로가기 버튼 만들기 등에 사용될 수 있다
+
+            window.history
+        */
+
+            console.log(window.history); // Prototype (go, back을 사용하여 앞으로 뒤로가는 버튼이 가능하다!)
+
+        /*
+            4 데이터 요청
+
+            window.fetch()
+            window.XMLHttpRequest()
+        */
+
+            console.log(window.fetch);
+            console.log(window.XMLHttpRequest);
+
+        /*
+            5 웹 스토리지
+            브라우저에 데이터를 저장할 수 있도록 한다
+            예) 로그인 토큰, 테마, 장바구니 등등
+
+            window.document.cookie
+            window.localStorage
+        */
+
+            console.log(window.document.cookie);                // 쿠키  
+            console.log(window.localStorage);
+            
+        /*
+            6 뷰 개발
+
+            window.document
+            window.doocment.documentElement
+            window.inneerHeight
+        */
+            console.log(window.document);                           // HTML 문서
+            console.log(window.document.documentElement);
+            console.log(window.innerHeight);                        // 뷰 포트의 높낮이(흰색부분)
+
+
+
+
+    </script>
+
+</body>
+</html>
