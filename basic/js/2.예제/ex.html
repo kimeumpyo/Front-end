@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1>Password toggle</h1>
+
+    <style>
+        #container {
+            /* position relative, absolute 같이 사용된다input안에 버튼사용 */
+            position: relative;     
+            width: 16rem;
+        }        
+        #input {
+            padding: 0.5rem;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        #btn {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+            background-color: transparent;
+            border: none;
+            padding: 0 1rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+    </style>
+
+    <div id="container">
+        <input type="password" id="input">
+        <button id="btn">Show</button>
+    </div>
+
+    <script>
+        // input 과 btn 의 정보를 받아온다
+        var input = document.getElementById('input')
+        var btn = document.getElementById('btn')
+
+        // btn을 클릭시 발생하는 동작
+        btn.addEventListener('click', () => {
+
+            // attribute에 접근
+            console.log(input.type)
+            console.log(btn.textContent)
+
+            // 만약 input의 type이 text 이면 password로 바꿔주고 글을 Show로 바꿔준다
+            if (input.type === 'text'){
+                input.type = 'password'
+                btn.textContent = 'Show'
+            }
+            //  그게 아니라면 type을 text로 바꿔주고 글자를 Hide로 바꿔준다
+            else{
+                input.type = 'text'
+                btn.textContent = 'Hide'
+            }
+        })
+    </script>
+
+</body>
+</html>

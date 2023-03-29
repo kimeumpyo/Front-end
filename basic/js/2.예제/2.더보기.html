@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1>더보기 버튼</h1>
+
+    <style>
+        #container {
+            display: inline;
+        }
+        #btn {
+            border: none;
+            cursor: pointer;
+            background-color: transparent;
+            color: #888;
+            padding: 0;
+        }
+        #btn.hidden{
+            display: none;
+        }
+    </style>
+
+    <p id="container">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem labore
+         delectus dolore iusto ex dolores maxime facilis, eum quidem vel voluptatem aut 
+         ab accusamus nobis, natus provident consequuntur quae at!
+    </p>
+
+    <button id="btn">더보기</button>
+
+    <script>
+        var container = document.getElementById('container')
+        var btn = document.getElementById('btn')
+
+        var fullContent = container.textContent;
+        //                           / 문자열의 메서드 
+        var lessContent = fullContent.substring(0, 50)+ '...';      
+
+        console.log(fullContent);
+        console.log(lessContent);
+
+        // 페이지가 처음 로드되었을 때
+        container.textContent = lessContent;
+
+        // 더보기 버튼을 클릭했을 때
+        btn.addEventListener('click', () => {
+
+            // 글을 모두 나오게한다
+            container.textContent = fullContent;
+
+            // 더보기 버튼을 숨긴다
+            btn.classList.add('hidden');
+        })
+    </script>
+
+</body>
+</html>
