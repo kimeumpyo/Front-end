@@ -41,26 +41,26 @@
     <div class="container">
         <p>First name</p>
         <input type="text" id="input1" placeholder="John">
-        <p id="text1" class="p">First name is required</p>
+        <p id="text1" class="p hidden">First name is required</p>
 
         <p>Last Name</p>
         <input type="text" id="input2" placeholder="Doe">
-        <p id="text2" class="p">Last Name is required</p>
+        <p id="text2" class="p hidden">Last Name is required</p>
 
         <p>E-mail</p>
         <input type="text" id="input3" placeholder="JohnDoe@example.com">
-        <p id="text3" class="p">E-mail is required</p>
+        <p id="text3" class="p hidden">E-mail is required</p>
 
         <button type="submit" id="submit">Submit</button>
     </div>
 
     <script>
-        var input1 = document.getElementsById('input1');
-        var input2 = document.getElementsById('input2');
-        var input3 = document.getElementsById('input3');
-        var text1 = document.getElementsById('text1');
-        var text2 = document.getElementsById('text2');
-        var text3 = document.getElementsById('text3');
+        var input1 = document.getElementById('input1');
+        var input2 = document.getElementById('input2');
+        var input3 = document.getElementById('input3');
+        var text1 = document.getElementById('text1');
+        var text2 = document.getElementById('text2');
+        var text3 = document.getElementById('text3');
         var submit = document.getElementById('submit');
         
         submit.addEventListener('click', () => {
@@ -69,16 +69,16 @@
             }else{
                 text1.classList.add('hidden');
             }
-            // if (input2.value===""){
-            //     text2.classList.remove('hidden');
-            // }else{
-            //     text2.classList.add('hidden');
-            // }
-            // if (input3.value===""){
-            //     text3.classList.remove('hidden');
-            // }else{
-            //     text3.classList.add('hidden');
-            // }
+            if (input2.value===""){
+                text2.classList.remove('hidden');
+            }else{
+                text2.classList.add('hidden');
+            }
+            if (input3.value===""){
+                text3.classList.remove('hidden');
+            }else{
+                text3.classList.add('hidden');
+            }
         })
     </script>
 
