@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <style>
+        .container {
+            width: 29rem;
+        }
+        #input {
+            padding: 0.5rem;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        #list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .item {
+            padding: 0.5rem;
+        }
+        .hidden{
+            display: none;
+        }
+    </style>
+
+    <h1>실시간 검색</h1>
+
+    <div class="container">
+        <input type="text" id="input" placeholder="검색">
+
+        <ul id="list">
+            <li class="item">Guinness</li>
+            <li class="item">Heineken</li>
+            <li class="item">Budwiser</li>
+            <li class="item">Kloud</li>
+            <li class="item">Asahi</li>
+        </ul>
+    </div>
+
+    <script>
+        var input = document.getElementById('input');
+
+        // keyup : 키에서 손가락을 땔 때 발생하는 이벤트
+        input.addEventListener('keyup', (e) => {
+
+            // attribyte(value)
+            // console.log(input.value);
+            // console.log(e.target.value);        // console.log(input.value);과 같은 결과를 발생
+
+            var value = e.target.value.toLowerCase();       // 대문자로 입력해도 소문자로 출력하겠다.
+            var items = document.getElementsByClassName('item');
+
+            // console.log(value);
+            for (var i=0; i<items.length; i++){
+                //                li엘리먼트.엘리먼트 속성(테그 내의 텍스트 저장).
+                var textContent = items[i].textContent.toLowerCase();
+
+                // console.log(textContent);
+                if (textContent.includes(value)){
+                    // 해당 아이템을 보이게 한다
+                    items[i].classList.remove('hidden');
+                }else{
+                    // 해당 아이템을 보이지 않게 한다
+                    items[i].classList.add('hidden');
+                }
+            }
+        })
+    </script>
+
+</body>
+</html>

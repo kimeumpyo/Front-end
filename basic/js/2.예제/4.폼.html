@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1>뉴스레터</h1>
+
+    <style>
+        #form{
+            width: 20rem;
+        }
+        .form-group{
+            display: flex;
+        }
+        input {
+            padding: 0.5rem;
+            flex-grow: 1;
+        }
+        .hidden{
+            display: none;
+        }
+    </style>
+
+    <form action="" id="form">
+        <h1>뉴스레터</h1>
+        <div class="form-group">
+            <input type="text" value="john@example.com">
+            <button type="submit">구독하기</button>
+        </div>
+    </form>
+
+    <div id="success-message" class="hidden">
+        <h1>구독해주셔서 감사합니다</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Molestias odit sed eaque sint vel eligendi voluptatibus 
+            pariatur modi consequuntur recusandae. Sed officia, quos
+             quam obcaecati impedit odit vero vitae molestiae!</p>
+    </div>
+
+    <script>
+        var form = document.getElementById('form');
+        var successMessage = document.getElementById('success-message');
+
+        // 폼 제출
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();     // 폼을 제출하지 않는다
+
+            console.log(e); // 이벤트 객체
+
+            // AJAX 요청 (서버에 데이터 전송)
+
+            // id="from" 숨김
+            form.classList.add('hidden');
+            
+            // id="success-message" 숨김제거
+            successMessage.classList.remove('hidden');
+        })
+    </script>
+</body>
+</html>

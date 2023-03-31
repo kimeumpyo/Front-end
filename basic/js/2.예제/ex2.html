@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        p{
+            margin: 0;
+        }
+        input{
+            width: 16rem;
+            height: 1.5rem;
+        }
+        .container{
+            display: flex;
+            flex-direction: column;
+        }
+        button{
+            display: flex;
+            width: 4rem;
+            flex-direction: row;
+            justify-content: center;
+            height: 2rem;
+            align-items: center;
+        }
+        .p {
+            color: red;
+            margin-bottom: 0.5rem;
+        }
+        .hidden{
+            display: none;
+        }
+
+    </style>
+
+    <h1>Contact From</h1>
+    <div class="container">
+        <p>First name</p>
+        <input type="text" id="input1" placeholder="John">
+        <p id="text1" class="p">First name is required</p>
+
+        <p>Last Name</p>
+        <input type="text" id="input2" placeholder="Doe">
+        <p id="text2" class="p">Last Name is required</p>
+
+        <p>E-mail</p>
+        <input type="text" id="input3" placeholder="JohnDoe@example.com">
+        <p id="text3" class="p">E-mail is required</p>
+
+        <button type="submit" id="submit">Submit</button>
+    </div>
+
+    <script>
+        var input1 = document.getElementsById('input1');
+        var input2 = document.getElementsById('input2');
+        var input3 = document.getElementsById('input3');
+        var text1 = document.getElementsById('text1');
+        var text2 = document.getElementsById('text2');
+        var text3 = document.getElementsById('text3');
+        var submit = document.getElementById('submit');
+        
+        submit.addEventListener('click', () => {
+            if (input1.value===""){
+                text1.classList.remove('hidden');
+            }else{
+                text1.classList.add('hidden');
+            }
+            // if (input2.value===""){
+            //     text2.classList.remove('hidden');
+            // }else{
+            //     text2.classList.add('hidden');
+            // }
+            // if (input3.value===""){
+            //     text3.classList.remove('hidden');
+            // }else{
+            //     text3.classList.add('hidden');
+            // }
+        })
+    </script>
+
+
+
+</body>
+</html>
