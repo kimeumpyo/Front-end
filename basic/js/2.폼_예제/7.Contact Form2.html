@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Contact Form</h1>
+
+    <style>
+        #form {
+            width: 20rem;
+        }
+        .form-group{
+            margin-bottom: 0.5rem;
+        }
+        label{
+            display: block;
+        }
+        input{
+            padding: 0.5rem;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        button[type=submit]{
+            padding: 0.5rem;
+        }
+        .error-message{
+            color: red;
+            margin: 0;
+        }
+        .hidden{
+            display: none;
+        }
+    </style>
+
+    <form action="" id="form">
+        <div class="form-group">
+            <label for="">First Name</label>
+            <input type="text" name="fname" placeholder="John">
+            <p id="fname-error" class="error-message hidden"></p>
+        </div>
+        <div class="form-group">
+            <label for="">Last Name</label>
+            <input type="text" name="lname" placeholder="Doe">
+            <p id="lname-error" class="error-message hidden"></p>
+        </div>
+        <div class="form-group">
+            <label for="">E-mail</label>
+            <input type="text" name="email" placeholder="JohnDoe@example.com">
+            <p id="email-error" class="error-message hidden"></p>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        var form = document.getElementById('form');
+
+        var fnameError = document.getElementById('fname-error');
+        var lnameError = document.getElementById('lname-error');
+        var emailError = document.getElementById('email-error');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            var formData = new FormData(e.target);
+
+            // input name속성을 사용해서 value에 접근한다
+            var fname = formData.get('fname');
+            var lname = formData.get('lname');
+            var email = formData.get('email'); 
+
+            // fname input의 value 접근
+            console.log(fname);
+
+            // 빈 문자열 파악하기
+            console.log(fname==="");
+            console.log(fname.length === 0);
+            console.log(!fname);
+
+            // 이름 방법1
+            // trim() : 문자열의 앞, 뒤 공백을 제거한다
+            // if(!fname.trim()){  // 이름을 입력하지 않았을 때
+            //     // console.log('이름을 입력하세요');
+            //     fnameError.classList.remove('hidden');
+            //     fnameError.textContent = '이름을 입력하세요'
+            // }
+            
+            // 성 유효성 검사
+            // if(!lname.trim()){  
+            //     lnameError.classList.remove('hidden');
+            //     lnameError.textContent = '성을 입력하세요'
+            // }else{  
+            //     lnameError.classList.add('hidden');
+            // }
+
+            // // 이메일 유효성 검사
+            // if(!email.trim()){  
+            //     emailError.classList.remove('hidden');
+            //     emailError.textContent = '이메일을 입력하세요'
+            // }
+            // else{  
+            //     emailError.classList.add('hidden');
+            // }
+
+            // 방법2
+            // function errorHandler(error, container)를 적용
+            if(!fname.trim()){  
+                errorHandler('이름을 입력하세요',fnameError)
+            }
+            else if(fname.length < 3){ // 글자수가 3보다 작으면 발생
+                errorHandler('올바른 이름을 입력하세요',fnameError)
+            }
+            else{  // 이름을 입력했을 때
+                errorHandler(null, fnameError);
+            }
+
+            // 성 유효성 검사
+            if(!lname.trim()){  
+                errorHandler('성을 입력하세요', lnameError);
+            }else{  
+                errorHandler(null, lnameError);
+            }
+
+            // 이메일 유효성 검사
+            if(!email.trim()){  
+                errorHandler('이메일을 입력하세요', emailError);
+            }
+            else{  
+                errorHandler(null, emailError);
+            }
+        })
+
+        function errorHandler(error, container){
+            if (error){
+                container.classList.remove('hidden');
+                container.textContent = error;
+            }else{  // 에러가 없으면 컨테이너를 숨김
+                container.classList.add('hidden');
+            }
+        }
+    </script>
+</body>
+</html>

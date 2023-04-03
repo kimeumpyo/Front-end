@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        body{
+            min-height: 1000px;
+        }
+        header{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            border: 1px solid #ddd;
+        }
+        .container{
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+        }
+        #btn{
+            border: none;
+            background-color: transparent;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+        nav{
+            backdrop-filter: blur(8px);
+        }
+        nav ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        nav a {
+            display: block;
+            text-align: center;
+            padding: 0.5rem;
+            text-decoration: none;
+            color: #555;
+            border-top: 1px solid #ddd;
+        }
+        nav a:hover{
+            color: #000;
+        }
+        main {
+            margin-top: 4rem;
+        }
+        .hidden{
+            display: none;
+        }
+    </style>
+
+    <header id="header">
+        <div class="container">
+            <button id="btn">&#9776</button>
+        </div>
+        <nav class="hidden" id="nav">
+            <ul>
+                <li>
+                    <a href="#">Link</a>
+                </li>
+                <li>
+                    <a href="#">Link</a>
+                </li>
+                <li>
+                    <a href="#">Link</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Top navigation</h1>
+        <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
+            Aliquid fuga, ad adipisci labore at cupiditate expedita modi
+             ex quod cumque id necessitatibus numquam rerum pariatur facilis 
+             error eaque laboriosam et.
+        </p>
+    </main>
+
+    <script>
+        var btn = document.getElementById('btn');
+
+        btn.addEventListener('click', (e) => {
+            var nav = document.getElementById('nav');
+
+            nav.classList.toggle('hidden');
+        })
+
+        // 범위: window(화면전체)
+        window.addEventListener('click', (e) =>{
+            console.log(e.target);      // 이벤트가 발생한 엘리먼트
+
+            // 화면에서 햄버거 버튼이 아닌 곳을 클릭했을 때 숨김
+            if(e.target !== btn){
+                nav.classList.add('hidden');
+            }
+        })
+
+    </script>
+</body>
+</html>

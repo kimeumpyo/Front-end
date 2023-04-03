@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        body{
+            height: 1000px;
+        }
+        #header{
+            background-color: #fff;
+            border-bottom: 1px solid #ddd;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            transition: top 0.2s;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #header.hidden{
+            top: -50px;
+        }
+        main{
+            margin-top: 75px;
+        }
+    </style>
+
+    <header id="header">Header</header>
+
+    <main>
+        <h1>Switch NavBar</h1>
+        <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+            Minus nisi libero, dolores, ullam illum aliquid ea ex veniam
+             iusto aut pariatur nostrum omnis? Voluptates culpa laborum
+             eligendi, libero fugit dignissimos?
+        </p>
+    </main>
+
+    <script>
+        var header = document.getElementById('header');
+        var previousScrollTop = 0;
+
+            window.addEventListener('scroll', (e) => {
+                
+                var scrollTop = document.documentElement.scrollTop;
+
+                consolo.log('이전 scroll top:', previousScrollTop);
+                consolo.log('현재 scroll top:', scrollTop);
+                
+                if (scrollTop - previousScrollTop > 0) {
+                    // 스크롤을 내리고있을 때
+                    header.classList.add('hidden');
+                } else {
+                    // 스크롤을 올리고 있을 때
+                    header.classList.remove('hidden');
+                }
+            
+                previousScrollTop = scrollTop
+            })
+    </script>
+</body>
+</html>
