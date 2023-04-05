@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <style>
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0 0 0 / 0.4);
+        }
+        .imgs{
+            width: 100px;
+            opacity: 0.7;
+            height: 200px;
+        }
+        .imgs_1{
+            width: 300px;
+            height: 500px;
+            display: block;
+            margin: 100px auto;
+            border-radius: 15%;
+        }
+        .imgs:hover{
+            opacity: 1;
+        }
+        .hidden{
+            display: none;
+        }
+        .close-btn {
+            font-size: 2rem;
+            float: right;
+            background-color: transparent;
+            border: none;
+            color: #fff;
+            padding: 1rem;
+            cursor: pointer;
+        }
+
+    </style>
+
+    <h1>Q.Modal Gallery</h1>
+
+    <img src="https://images.pexels.com/photos/15926004/pexels-photo-15926004.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
+    alt="" id="img1" class="imgs">
+    <img src="https://images.pexels.com/photos/5836621/pexels-photo-5836621.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+    alt="" id="img2" class="imgs">
+    <img src="https://images.pexels.com/photos/2974486/pexels-photo-2974486.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
+    alt="" id="img3" class="imgs">
+    
+    <div id="overlay1" class="hidden overlay">
+        <button id="close-btn1" class="close-btn">&times;</button>
+        <img src="https://images.pexels.com/photos/15926004/pexels-photo-15926004.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
+        alt="" class="imgs_1">
+    </div>
+
+    <div id="overlay2" class="hidden overlay">
+        <button id="close-btn2" class="close-btn">&times;</button>
+        <img src="https://images.pexels.com/photos/5836621/pexels-photo-5836621.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+        alt="" class="imgs_1">
+    </div>
+
+    <div id="overlay3" class="hidden overlay">
+        <button id="close-btn3" class="close-btn">&times;</button>
+        <img src="https://images.pexels.com/photos/2974486/pexels-photo-2974486.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
+        alt="" class="imgs_1">
+    </div>
+
+    <script>
+        var img1 = document.getElementById('img1');
+        var img2 = document.getElementById('img2');
+        var img3 = document.getElementById('img3');
+
+        var overlay1 = document.getElementById('overlay1');
+        var overlay2 = document.getElementById('overlay2');
+        var overlay3 = document.getElementById('overlay3');
+
+        var closeBtn1 = document.getElementById('close-btn1');
+        var closeBtn2 = document.getElementById('close-btn2');
+        var closeBtn3 = document.getElementById('close-btn3');
+
+        img1.addEventListener('click', () => {
+            overlay1.classList.remove('hidden');
+        })
+        overlay1.addEventListener('click', (e) => {
+            if(e.target === overlay1){
+                overlay1.classList.add('hidden');
+            }
+            if(e.target === closeBtn1){
+                overlay1.classList.add('hidden');
+            }
+        })
+
+        img2.addEventListener('click', () => {
+            overlay2.classList.remove('hidden');
+        })
+        overlay2.addEventListener('click', (e) => {
+            if(e.target === overlay2){
+                overlay2.classList.add('hidden');
+            }
+            if(e.target === closeBtn2){
+                overlay2.classList.add('hidden');
+            }
+        })
+
+        img3.addEventListener('click', () => {
+            overlay3.classList.remove('hidden');
+        })
+        overlay3.addEventListener('click', (e) => {
+            if(e.target === overlay3){
+                overlay3.classList.add('hidden');
+            }
+            if(e.target === closeBtn3){
+                overlay3.classList.add('hidden');
+            }
+        })
+    </script>
+</body>
+</html>

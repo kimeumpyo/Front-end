@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0 0 0 / 0.2);
+        }
+
+        #modal {
+            background-color: #fff;
+            margin: 100px auto 0;
+            max-width: 20rem;
+            padding: 1rem;
+            border-radius: 1rem;
+        }
+
+        #close-btn {
+            font-size: 2rem;
+            float: right;
+            background-color: transparent;
+            border: none;
+            color: #fff;
+            padding: 1rem;
+            cursor: pointer;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+
+    <h1>Modal</h1>
+
+    <button id="btn">Open</button>
+
+    <div id="overlay" class="hidden">
+        <button id="close-btn">&times;</button>
+        <div id="modal">
+            <h1>Heading</h1>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Officiis repudiandae natus ex, hic molestiae quaerat,
+                assumenda earum adipisci possimus odit quidem qui esse,
+                temporibus nulla impedit aperiam recusandae perferendis
+                aliquid!</p>
+        </div>
+    </div>
+
+    <script>
+        var overlay = document.getElementById('overlay');
+        var btn = document.getElementById('btn');
+        var colseBtn = document.getElementById('close-btn');
+
+        // 모달 열기
+        btn.addEventListener('click', () => {
+            overlay.classList.remove('hidden');
+        })
+        // 모달 닫기
+        // overlay : 클릭을 감지하는 범위
+        overlay.addEventListener('click', (e) => {
+            console.log(e.target); // 이벤트가 발생한 엘리먼트
+
+            // 오버레이를 클릭했을 때
+            if(e.target === overlay){
+                overlay.classList.add('hidden');
+            }
+            // 닫기 버튼을 클랙했을 때
+            if(e.target === colseBtn){
+                overlay.classList.add('hidden');
+            }
+        })
+    </script>
+
+
+</body>
+
+</html>

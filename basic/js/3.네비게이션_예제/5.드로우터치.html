@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        #nav {
+            position: fixed;
+            left: 0;
+            top: 100vh;
+            /*50vh : (가장 상단 : 0) 화면에서 50%위치 */
+            width: 100%;
+            height: 100vh;
+            transition: top 0.5s;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 1rem 1rem 0 0;
+            background-color: #fff;
+        }
+
+        #drawer-handle {
+            width: 100%;
+            padding: 1rem;
+            cursor: grab;
+            border: none;
+            background-color: transparent;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+    </style>
+    <h1>Drawer</h1>
+    <p>Add some drag event</p>
+
+    <nav id="nav" class="hidden">
+        <button id="drawer-handle">Drag me</button>
+        <ul>
+            <li>list item</li>
+            <li>list item</li>
+            <li>list item</li>
+        </ul>
+    </nav>
+
+    <button id="open-btn" type="button">More</button>
+
+    <script>
+        var nav = document.getElementById('nav');
+        var drawerHandle = document.getElementById('drawer-handle');
+        var openBtn = document.getElementById('open-btn');
+        var TOP;    // 대문자 이유 top은 이미 window에 사용중인 언어
+        // console.log(top); // window에 사용중인 언어 확인
+
+        openBtn.addEventListener('click', (e) => {
+            nav.style.top = '20vh';
+        })
+
+        drawerHandle.addEventListener('touchmove', (e) => {
+            console.log('터치 중');
+
+            // 뷰포트 탑과 손가락의 거리
+            var clientY = e.touches[0].clientY;
+            console.log(clientY);
+            // innerHeight 뷰포트의 높이 -> ( 100분율로 만들기 )
+            // 예) 중앙 = 333.5 / 667(홈페이지y값) * 100
+            TOP = clientY / window.innerHeight * 100;
+            console.log(TOP);
+
+            nav.style.top = TOP + 'vh';
+        })
+
+        drawerHandle.addEventListener('touchend', (e) => {
+            console.log('터치 끝');
+
+            if (TOP > 50) { // Draw가 화면 절반 아래로 내려온 경우
+                nav.style.top = '100vh';
+            } else {
+                nav.style.top = '20vh';
+            }
+
+        })
+
+        console.log(333.5 / 667 * 100); 
+    </script>
+
+</body>
+
+</html>
