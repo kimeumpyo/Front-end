@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <style>
+        li{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0 0 0 / 0.4);
+        }
+
+        .imgs {
+            width: 100px;
+            opacity: 0.7;
+            height: 200px;
+            margin-right: 10px;
+        }
+
+        .imgs_1 {
+            width: 300px;
+            height: 500px;
+            display: block;
+            margin: 100px auto;
+            border-radius: 15%;
+        }
+
+        .imgs:hover {
+            opacity: 1;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .close-btn {
+            font-size: 2rem;
+            float: right;
+            background-color: transparent;
+            border: none;
+            color: #fff;
+            padding: 1rem;
+            cursor: pointer;
+        }
+        #img_list{
+            display: flex;
+        }
+    </style>
+
+    <h1>Q.Modal Gallery</h1>
+
+    
+    <div id="img_list">
+            <img src="../3.네비게이션_예제/img/coffee1.jpeg" alt="" id="img1" class="imgs">
+            <img src="../3.네비게이션_예제/img/coffee2.jpg" alt="" id="img2" class="imgs">
+            <img src="../3.네비게이션_예제/img/coffee3.jpg" alt="" id="img3" class="imgs">
+    </div>
+        
+    <div id="overlay_list">
+        <div id="overlay1" class="hidden overlay">
+            <img src="../3.네비게이션_예제/img/coffee1.jpeg" alt="" class="imgs_1">
+        </div>
+        
+        <div id="overlay2" class="hidden overlay">
+            <img src="../3.네비게이션_예제/img/coffee2.jpg" alt="" class="imgs_1">
+        </div>
+        
+        <div id="overlay3" class="hidden overlay">
+            <img src="../3.네비게이션_예제/img/coffee3.jpg" alt="" class="imgs_1">
+        </div>
+
+        <div class="hidden">
+            <button id="close-btn" class="close-btn">&times;</button>
+        </div>
+    </div>
+
+    <script>
+        var Img_list = document.getElementById('img_list');
+        var Imgs = document.getElementsByClassName('imgs')
+
+        var Overlay_list = document.getElementById('overlay_list');
+        var Overlay = document.getElementsByClassName('overlay');
+        var Imgs_1 = document.getElementsByClassName('imgs_1')
+        
+        var closeBtn = document.getElementById('close-btn');
+        
+        console.log(Imgs_1[0]);
+        console.log(Imgs[0]);
+
+
+        for (var i = 0; i < Imgs.length; i++) {
+                // console.log(i);
+                // console.log(Imgs[i]);
+
+                Imgs[i].addEventListener('click', (e)  => {
+                            console.log(e.target);
+
+                            if(e.target === Imgs(i)){
+                                console.log('하이')
+                            }
+                            
+                            console.log(Imgs[i]);
+                        
+                            //  overlay[i].classList.remove('hidden');
+                            //  closeBtn.classList.remove('hidden');
+                        
+
+                     });
+                    }
+
+                //     console.log(i, '번째');
+
+                //     for (var j = 0; j < Imgs_1.length; j++) {
+                //         if (i === j) {
+                //         }
+                //     }
+                // })
+        
+        //     for(var i=0; i<Imgs.length; i++){
+                
+        //         if (i === Imgs_1.length){
+        //             overlay[i].classList.remove('hidden');
+        //             closeBtn.classList.remove('hidden');
+        //         }
+
+        // }
+        // });
+
+           
+                
+
+                // console.log(Img_list);
+                // for(var j=0; j < Img_list.children[i]; j++ ){
+    
+                //     if(j === i){
+                //         overlay[i].classList.remove('hidden');
+                //         closeBtn.classList.remove('hidden');
+                //     }
+                // }
+            
+        
+
+        // overlay1.addEventListener('click', (e) => {
+        //     if (e.target === overlay1) {
+        //         overlay1.classList.add('hidden');
+        //     }
+        //     if (e.target === closeBtn1) {
+        //         overlay1.classList.add('hidden');
+        //     }
+        // })
+
+    </script>
+
+
+
+
+
+</body>
+
+</html>
