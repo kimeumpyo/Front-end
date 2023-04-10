@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .wrap {
+            width: 200px;
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /*images*/
+        #container {
+            width: 600px;
+            height: 300px;
+            display: inline-flex;
+            transition: 0.2;
+        }
+
+        .item {
+            width: 200px;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        /*buttons*/
+        #prev,
+        #next {
+            position: absolute;
+            height: 100%;
+            display: block;
+            align-items: center;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            color: white;
+            font-size: x-large;
+        }
+
+        #prev {
+            top: 0;
+            left: 0;
+        }
+
+        #next {
+            top: 0;
+            right: 0;
+        }
+
+        /*indicator*/
+        .indicator {
+            position: absolute;
+            bottom: 0.25rem;
+            width: 100%;
+            text-align: center;
+        }
+
+        .dot {
+            display: inline-block;
+            width: 0.5rem;
+            height: 0.5rem;
+            background-color: #ddd;
+            border-radius: 50%;
+        }
+
+        /*toggle class*/
+        .hidden {
+            visibility: hidden;
+        }
+
+        .active {
+            background-color: rgb(247, 76, 76)
+        }
+    </style>
+
+    <h1>Carousel</h1>
+    <div class="wrap">
+        <!-- images -->
+        <div id="container">
+            <img class="item" src="../3.네비게이션_예제/img/coffee1.jpeg" alt="">
+            <img class="item" src="../3.네비게이션_예제/img/coffee2.jpg" alt="">
+            <img class="item" src="../3.네비게이션_예제/img/coffee3.jpg" alt="">
+        </div>
+
+        <!-- button -->
+            <button id="prev" class="" onclick="navigateTo(-1)">&#10094;</button>
+            <button id="next" class="" onclick="navigateTo(1)">&#10095;</button>
+
+        <!-- indicator -->
+        <div class="indicator">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+    </div>
+
+    <script>
+        var container = document.getElementById('container');
+        var prev = document.getElementById('prev');
+        var next = document.getElementById('next');
+        var dots = document.getElementsByClassName('dot');
+        var items = document.getElementsByClassName('item');
+        var imageWidth = 200;
+        var previousIndex = 0;
+        var thisIndex = 0;
+
+
+        function navigateTo(data) {
+            console.log("이전 값",previousIndex);
+            console.log("현재 값",thisIndex);
+
+            thisIndex += data;
+            console.log(thisIndex);
+
+            // 이미지 움직이기
+            container.style.transform = `translateX(-${thisIndex * imageWidth}px)`
+
+            // 버튼 토글
+            if (thisIndex === 0) {    // 첫번째 이미지에 있는경우
+                prev.classList.add('hidden');
+            } else {
+                prev.classList.remove('hidden');
+            }
+
+            console.log(items.length);
+            console.log(thisIndex);
+
+            if (thisIndex === items.length - 1) {    // 첫번째 이미지에 있는경우
+                next.classList.add('hidden');
+            } else {
+                next.classList.remove('hidden');
+            }
+
+            // indicator
+            dots[thisIndex].classList.add('active');
+            dots[previousIndex].classList.remove('active');
+
+
+            // 이전 인덱스값 구하기
+            previousIndex = thisIndex;
+        }
+
+
+    </script>
+
+</body>
+
+</html>

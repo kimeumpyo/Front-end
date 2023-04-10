@@ -9,132 +9,111 @@
 </head>
 
 <body>
-
     <style>
-        li{
-            margin: 0;
-            padding: 0;
-            list-style: none;
-        }
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0 0 0 / 0.4);
-        }
+       #overlay{
+        position: fixed;
+        background-color: rgba(0 0 0 / 0.5);
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+       }
 
-        .imgs {
-            width: 100px;
-            opacity: 0.7;
-            height: 200px;
-            margin-right: 10px;
-        }
+       #modal {
+        width: 20rem;
+        height: 20rem;
+        object-fit: cover;
+        display: block;
+        margin: 100px auto 0;
+        border-radius: 1rem;
+       }
 
-        .imgs_1 {
-            width: 300px;
-            height: 500px;
-            display: block;
-            margin: 100px auto;
-            border-radius: 15%;
-        }
+       #close-btn{
+        font-size: 2rem;
+        color: #fff;
+        padding: 0.5rem 1rem;
+        float: right;
+        cursor: pointer;
+        border: none;
+        background-color: transparent;
+       }
+       .container{
+        display: flex;
+       }
 
-        .imgs:hover {
-            opacity: 1;
-        }
+       .container img{
+        width: 100px;
+        height: 200px;
+        object-fit: cover;
+        cursor: pointer;
+        opacity: 0.8;
+        margin-right: 10px;
+       }
 
-        .hidden {
-            display: none;
-        }
+       .container img:hover{
+        opacity: 1;
+       }
 
-        .close-btn {
-            font-size: 2rem;
-            float: right;
-            background-color: transparent;
-            border: none;
-            color: #fff;
-            padding: 1rem;
-            cursor: pointer;
-        }
-        #img_list{
-            display: flex;
-        }
+       .hidden{
+        display: none;
+       }
     </style>
 
     <h1>Q.Modal Gallery</h1>
 
-    
-    <div id="img_list">
-            <img src="../3.네비게이션_예제/img/coffee1.jpeg" alt="" id="img1" class="imgs">
-            <img src="../3.네비게이션_예제/img/coffee2.jpg" alt="" id="img2" class="imgs">
-            <img src="../3.네비게이션_예제/img/coffee3.jpg" alt="" id="img3" class="imgs">
+    <div id="overlay" class="hidden">
+        <button id="close-btn">&times;</button>
+        <img src="" alt="" id="modal">
     </div>
-        
-    <div id="overlay_list">
 
-        <div id="overlay1" class="hidden overlay">
-            <button id="close-btn" class="close-btn">&times;</button>
-            <img src="../3.네비게이션_예제/img/coffee1.jpeg" alt="" class="imgs_1">
-        </div>
-        
-        <div id="overlay2" class="hidden overlay">
-            <button id="close-btn" class="close-btn">&times;</button>
-            <img src="../3.네비게이션_예제/img/coffee2.jpg" alt="" class="imgs_1">
-        </div>
-        
-        <div id="overlay3" class="hidden overlay">
-            <button id="close-btn" class="close-btn">&times;</button>
-            <img src="../3.네비게이션_예제/img/coffee3.jpg" alt="" class="imgs_1">
-        </div>
-
+    <div class="container">
+        <img class="thumbnail" src="../3.네비게이션_예제/img/coffee1.jpeg" alt="">
+        <img class="thumbnail" src="../3.네비게이션_예제/img/coffee2.jpg" alt="">
+        <img class="thumbnail" src="../3.네비게이션_예제/img/coffee3.jpg" alt="">
     </div>
 
     <script>
-        var Img_list = document.getElementById('img_list');
-        var Imgs = document.getElementsByClassName('imgs')
+        var overlay = document.getElementById('overlay');
+        var modal = document.getElementById('modal');
+        var thumbnails = document.getElementsByClassName('thumbnail');
+        var closeBtn = document.getElementById('close-btn');
 
-        var Overlay_list = document.getElementById('overlay_list');
-        var Overlay = document.getElementsByClassName('overlay');
-        var Imgs_1 = document.getElementsByClassName('imgs_1')
-        
-        var Close_Btn = document.getElementById('close-btn');
-    
-        console.log(Imgs_1[0]);
-        console.log(Imgs[0]);
+        console.log(thumbnails); // HtmlCollection(length)
 
+        for(var i=0; i<thumbnails.length; i++){
+            thumbnails[i].addEventListener('click', (e)=>{
 
-        
-        addEventListener('click', (e) => {
-            for (var i = 0; i < Imgs.length; i++) {
-                // console.log("타겟",e.target);
-                    // console.log(i);
-                    // console.log(Imgs[i]);
-                    if (e.target === Imgs[i]) {
-                        // console.log(Imgs[i], '번째');
-                        // console.log(e.target, "타겟");
-                        // console.log(Overlay[i], '번째');
-                        
-                        Overlay[i].classList.remove('hidden');
-            
-                    }
-                    if(e.target === Overlay[i]){
-                        Overlay[i].classList.add('hidden');
-                    }
-                    if(e.target === Close_Btn){
-                        Overlay[i].classList.add('hidden');
-                    }
-                }
-            });
-                    
-
+                // console.log(e.target);
+                // console.log(e.target.src);
                 
+                // 오버레이 보이게하기
+                overlay.classList.remove('hidden');
+
+                // 썸네일의 소스를 모달 이미지에 전달한다
+                modal.src = e.target.src;
+            })
+        }
+        // overlay : 이벤트 감지의 범위
+        overlay.addEventListener('click', (e)=>{
+
+            console.log(e.target) // 이벤트가 발생한 엘리먼트
+
+            // 오버레이를 클릭했을 때
+            if (e.target === overlay){
+                overlay.classList.add('hidden');
+            }
+
+            // 닫기 버튼을 클랙했을 때
+            if (e.target === closeBtn){
+                overlay.classList.add('hidden');
+            }
+
+
+        })
+
 
     </script>
-
-
-
-
 
 </body>
 
