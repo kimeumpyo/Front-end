@@ -69,3 +69,6 @@ npm install nodemon -g  노드몬을 인스톨 해준다
 npm install yarn -g    
 
 파일 우클릭 경로복사
+
+2023.04.12
+https://inpa.tistory.com/entry/%EB%93%9C%EB%9E%98%EA%B7%B8-%EC%95%A4-%EB%93%9C%EB%A1%AD-Drag-Drop-%EA%B8%B0%EB%8A%A5#%EB%93%9C%EB%9E%98%EA%B7%B8__%EB%93%9C%EB%A1%AD_%EC%9D%B4%EB%B2%A4%ED%8A%B8_%EC%A2%85%EB%A5%98

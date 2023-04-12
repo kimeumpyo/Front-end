@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<!-- setinterval(callback, ms)
+1000ms = 1초
+ms마다 callback 실행하는 함수 -->
+
+<body>
+    <style>
+        /*main image*/
+        #main{
+            width: 300px;
+            height: 500px;
+            object-fit: cover;
+            background-color: #ddd;
+            position: absolute;
+        }
+
+        /*thumbnails*/
+        .container{
+            display: flex;
+            width: 150px;
+            height: 100px;
+            position: relative;
+            padding: 120% 25%;
+        }
+
+        .thumbnail{
+            width: 50px;
+            height: 100px;
+            object-fit: cover;
+            cursor: pointer;
+            box-sizing: border-box;
+            padding: 0.5rem;
+        }
+
+        /*toggle class*/
+        .active{
+            outline: 2px solid #0df;
+        }
+        .wrap{
+            width: 300px;
+            height: 500px;
+        }
+
+    </style>
+    <h1>Auto Albums</h1>
+
+    <div class="wrap">
+        <img id="main" src="../3.네비게이션_예제/img/coffee1.jpeg" alt="">
+    
+        <div class="container">
+            <img class="thumbnail active" onclick="callback(0)" src="../3.네비게이션_예제/img/coffee1.jpeg" alt="">
+            <img class="thumbnail" onclick="callback(1)" src="../3.네비게이션_예제/img/coffee2.jpg" alt="">
+            <img class="thumbnail" onclick="callback(2)" src="../3.네비게이션_예제/img/coffee3.jpg" alt="">
+        </div>
+    </div>
+
+    <script>
+        var thumbnails = document.getElementsByClassName('thumbnail');
+        var main = document.getElementById('main');
+        var previousIndex = 0;  
+
+        console.log(thumbnails);
+
+        // HTML의 이벤트 attribute
+        // onEventName = "eventHandler()"
+
+        
+
+        var thisIndex = 0;
+
+        function callback(){
+            
+            thisIndex++;
+
+            console.log('이전 인덱스 값', previousIndex);
+            console.log('현재 인덱스 값', thisIndex);
+            
+            if(thisIndex === thumbnails.length){thisIndex=0};
+
+            // 이벤트 타깃에 active 클래스를 추가한다
+            thumbnails[thisIndex].classList.add('active');
+            
+            // 이전 인덱스를 가진 이벤트 타깃의 active클래스를 제거한다
+            if(previousIndex !== thisIndex){
+                thumbnails[previousIndex].classList.remove('active');
+            }
+            // 썸네일의 소스를 메인 이미지에 전달한다
+            main.src = thumbnails[thisIndex].src;
+            
+            previousIndex = thisIndex;
+        }
+        setInterval(callback,3000);
+
+        
+
+        
+    </script>
+
+    
+
+</body>
+
+</html>

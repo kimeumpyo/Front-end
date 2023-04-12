@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <style>
+        #drop-zone{
+            border: 4px dashed #ddd;
+            width: 200px;
+            height: 100px;
+            padding: 1rem;
+        }
+        #img{
+            width: 100px;
+            height: 100px;
+        }
+
+    </style>
+
+    <h1>Drag and Drop</h1>
+
+    <div id="drop-zone">
+        <p>한개 이상의 파일을 드래그 앤 드랍 해보세요</p>
+    </div>
+
+    <div id="img">
+        <img id="imgs" src="" alt="">
+    </div>
+
+    <script>
+        var dropZone = document.getElementById('drop-zone');
+        var imgs = document.getElementById('imgs')
+
+        dropZone.addEventListener('dragover', dragOverHandler);
+        dropZone.addEventListener('drop', dropHandler);
+
+        function dropHandler(e){
+
+            // 브라우저의 기본 값을 실행하지 않는다(파일 열기)
+            e.preventDefault();
+
+            // 파일
+            console.log(e.dataTransfer.files);  // 수정 불가능한 리스트 객체
+
+            // Array.from(): 순회 가능한 객체를 배열로 만든다
+            var files = Array.from(e.dataTransfer.files);   
+
+            console.log(files);
+
+            console.log('드롭 했습니다')
+
+            for(var i=0; i<files.length; i++){
+                console.log(files[i].name);
+            }
+            // AJAX 요청...
+            alert('제출되었습니다');
+
+            files[i].name = imgs.src;
+            console.log(imageLoader);
+        }
+        function dragOverHandler(e){
+
+            // 브라우저의 기본 값을 실행하지 않는다(파일 열기)
+            e.preventDefault();
+
+            console.log('드래그 중입니다.')
+            
+        }
+
+        
+
+
+    </script>
+</body>
+
+</html>

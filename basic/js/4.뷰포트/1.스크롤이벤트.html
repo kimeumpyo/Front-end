@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        .el{
+            opacity: 0;
+            transition: 0.5s;
+        }
+        .opacity-100{
+            opacity: 1;
+        }
+        
+    </style>
+    <h1>뷰포트에 진입할 때 엘리먼트 나타나게 하기</h1>
+    
+    <h1>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Harum voluptate sunt ea saepe a, doloremque repudiandae necessitatibus quis rerum adipisci vel accusantium blanditiis at molestias dicta laboriosam qui, nisi assumenda?</h1>
+    <h1>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Harum voluptate sunt ea saepe a, doloremque repudiandae necessitatibus quis rerum adipisci vel accusantium blanditiis at molestias dicta laboriosam qui, nisi assumenda?</h1>
+    <h1 class="el">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Harum voluptate sunt ea saepe a, doloremque repudiandae necessitatibus quis rerum adipisci vel accusantium blanditiis at molestias dicta laboriosam qui, nisi assumenda?</h1>
+    <h1 class="el">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Harum voluptate sunt ea saepe a, doloremque repudiandae necessitatibus quis rerum adipisci vel accusantium blanditiis at molestias dicta laboriosam qui, nisi assumenda?</h1>
+    <h1 class="el">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Harum voluptate sunt ea saepe a, doloremque repudiandae necessitatibus quis rerum adipisci vel accusantium blanditiis at molestias dicta laboriosam qui, nisi assumenda?</h1>
+
+    <script>
+        var els = document.getElementsByClassName('el');
+
+        window.addEventListener('scroll', (e) => {
+            // 뷰포트의 높이
+            var viewPortHeight = window.innerHeight;
+            console.log(viewPortHeight);
+
+            // 뷰포트 탑과 엘리먼트 탑사이의 거리
+            // var y = els.getBoundingClientRect().y;
+            // console.log(y);
+
+            // 여러개의 엘리먼트에 스타일을 적용한다
+            for (var i = 0; i < els.length; i++) {
+                var y = els[i].getBoundingClientRect().y;
+                console.log('y값',y)
+                // console.log('뷰포트값',viewPortHeight)
+                if (viewPortHeight > y + 200) {
+                    els[i].classList.add('opacity-100');
+                }
+                if (viewPortHeight < y + 300) {
+                    els[i].classList.remove('opacity-100');
+                }
+
+            }
+        })
+    </script>
+</body>
+
+</html>
