@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <style>
+        #container{
+            background-color: rgb(202, 202, 202);
+            width: 100%;
+            height: 100px;
+            padding: 2px 0px 0px 15px;
+        }
+        .hidden{
+            display: none;
+        }
+        #close-btn{
+        font-size: 1.2rem;
+        color: #000000;
+        padding: 0.5rem 1rem;
+        float: right;
+        cursor: pointer;
+       }
+    </style>
+
+    <h1>Block Promotion</h1>
+
+    <div id="container">
+            <button id="close-btn">&times;</button>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            </p>
+            <button id="button">다시 보지 않기</button>
+    </div>
+    <script>
+        var Button = document.getElementById('button');
+        var Container = document.getElementById('container');
+        var closeBtn = document.getElementById('close-btn');
+        
+        var Close = localStorage.getItem('closed');
+        if (Close !== null) {
+            Container.classList.add('hidden');
+        }
+        
+        console.log(Close);
+
+        closeBtn.addEventListener('click', (e)=>{
+            Container.classList.add('hidden');
+        })
+
+        Button.addEventListener('click', (e)=>{
+            Container.classList.add('hidden');
+            localStorage.setItem('closed', 'CL');
+        })
+        
+        console.log();
+
+
+    </script>
+
+    
+</body>
+
+</html>

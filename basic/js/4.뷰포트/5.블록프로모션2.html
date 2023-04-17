@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <style>
+        #promotion{
+            background-color: #ddd;
+            padding: 1rem;
+        }
+
+        #close-btn{
+            float: right;
+            cursor: pointer;
+        }
+
+        .hidden{
+            display: none;
+        }
+    </style>
+
+    <h1>Block Promotion</h1>
+
+    <div id="promotion">
+        <span id="close-btn">&times;</span>
+        <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+        </p>
+        <button id="block-btn">다시 보지 않기</button>
+    </div>
+
+    <script>
+        var closeBtn = document.getElementById('close-btn');
+        var blockBtn = document.getElementById('block-btn');
+        var promotion = document.getElementById('promotion');
+        // 4. 페이지가 로드되었을 때
+        // 로컬 스토리지에 blockedAt(Key) 가 있다면
+        if(localStorage.getItem('blockedAt')){ 
+            promotion.classList.add('hidden');
+        }
+
+        // 1. 닫기 버튼을 눌렀을 때
+        closeBtn.addEventListener('click', (e) =>{
+            promotion.classList.add('hidden');
+        })
+
+        // 2. 블록 버튼을 클릭했을 때
+        blockBtn.addEventListener('click', (e) =>{
+            promotion.classList.add('hidden');
+
+            // 3. 로컬 스토리지에 블록된 시간을 저장한다
+            localStorage.setItem('blockedAt', new Date().toLocaleString());
+        })
+    </script>
+
+    
+</body>
+
+</html>
