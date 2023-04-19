@@ -1,0 +1,9 @@
+// 1. react - 기본설치 
+
+// 2. 리액트 프로젝드 기본설치
+// 터미널 -> cd 원하는 파일 경로
+// npx create-react-app react-basic 
+// react-basic부분에는 파일이름이 들어간다
+
+// 3. 서버시작 명령어
+// 터미널 -> cd 원하는 파일 경로 -> npm start
