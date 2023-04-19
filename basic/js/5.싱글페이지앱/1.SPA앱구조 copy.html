@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <style>
+        ul{
+            margin: 0;
+            padding: 0;
+        }
+        #root{
+            background-color: rgb(198, 125, 35);
+            height: 300px;
+            width: 500px;
+        }
+        #container{
+            background-color: rgb(198, 125, 35);
+            height: 300px;
+            width: 500px;
+        }
+    </style>
+     <!-- SPA 앱 구조 만들어보기 -->
+    <h1>SPA 앱 구조 만들어보기</h1>
+
+    <nav>
+        <ul>
+            <li>
+                <a href="#home">Home</a>
+            </li>
+            <li>
+                <a href="#posts">Posts</a>
+            </li>
+            <li>
+                <a href="#contact">Contact</a>
+            </li>
+        </ul>
+    </nav>
+    <div id="container">
+        <div id="root"></div>
+    </div>
+
+
+    
+    <script>
+        // 1.
+        window.addEventListener('hashchange', (e)=>{
+            // console.log(location);
+            // console.log(location.hash);
+
+            // .6
+            router(location.hash);
+        })
+
+        // 10. 페이지가 로드 될때
+        window.addEventListener('load', ()=>{
+            router(location.hash);
+        })
+
+        // 7. 요청 URL과 적절한 페이지를 연결시키는 역할을 한다
+        function router(hash){
+            var url = hash.substr(1); // (1) #을 지우고 보여준다
+            console.log(url);
+
+            // 8.
+            var routes = [
+                {path: 'home', element: Home},  // 라우트객체
+                {path: 'posts', element: Posts},
+                {path: 'post/2', element: Post},
+                {path: 'contact', element: Contact},
+            ]
+
+
+            // 9. 요청 url과 일치하는 path를 가진 라우트의 엘리먼트를
+            // 화면에 랜더링한다
+            for(var i=0; i<routes.length; i++){
+                if(routes[i].path === url){
+                    document
+                    .getElementById('root')
+                    .innerHTML = routes[i].element();
+                }
+            }
+        }
+
+        // 2. 홈
+        function Home(){
+            return`
+            <h1>Home</h1>
+            <p>Welcome to my blog.</p>
+            `
+        }
+
+        // 3. 게시글 목록 페이지
+        function Posts() {
+                return `
+            <h1>Posts</h1>
+            <ul>
+                <li>
+                    <a href="#post/2">Second post</a>
+                </li>
+                <li>
+                    First post
+                </li>
+            </ul>
+            `
+        }
+
+        // 4. 게시글 상세보기 페이지
+        function Post(){
+            
+            // 11. 필요힐 때 서버에 데이터를 요청한다
+            // 게시물 데이터
+            var DATA = {
+                id: 2,
+                content: '시계는 살 수 있지만 시간은 살 수 없습니다.',
+                createdAt: '4월 19일, 2023년0'
+            }
+            return`
+            <h1>Second post</h1>
+            <small>
+                posted <i>${DATA.createdAt}</i>
+            </small>
+            <p>${DATA.content}</p>
+            `
+        }
+
+        // 5. 컨택 페이지
+        function Contact(){
+            return `
+            <h1>Contact</h1>
+            <p>john@example.com</p>
+            `
+        }
+
+
+    </script>
+
+    
+    
+</body>
+
+</html>

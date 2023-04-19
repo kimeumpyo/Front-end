@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <style>
+        #top{
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: aliceblue;
+        }
+        body{
+            height: 5000px;
+        }
+        #bar{
+            height: 10px;
+            width: 100%;
+            background-color: rgb(166, 165, 165);
+        }
+        #barscroll{
+            height: 8px;
+            width: 30%;
+            background-color: rgb(64, 206, 92);
+        }
+        #text-box{
+            margin-top: 150px;
+        }
+
+
+    </style>
+    <div id="top">
+        <h1>Scroll Indicator</h1>
+    
+        <div id="bar">
+            <div id="barscroll"></div>
+        </div>
+    </div>
+    <div id="text-box">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro quaerat animi quas rerum dicta aliquam maiores sed? Obcaecati eius placeat iure corporis esse deleniti, repudiandae dolores quia quo fuga suscipit!</p>
+    </div>
+
+    <script>
+        var Bar = document.getElementById('bar');
+        var Barscroll = document.getElementById('barscroll');
+    
+        
+        
+        
+        
+        window.addEventListener('scroll', (e)=>{
+
+            // body의 총높이??
+            // console.log('총',document.body.scrollHeight);
+            // var scrbar = document.body.scrollHeight;
+
+            
+            // 스크롤지점의 높이
+            console.log(document.documentElement.scrollTop);
+            var scr = document.documentElement.scrollTop;
+
+            // console.log((scr/4699)*100);
+
+            var s = (scr/4699)*100
+            console.log('스크롤지점',s);
+
+            barscroll.style.width = s + "%";
+        })
+    </script>
+
+    
+</body>
+
+</html>

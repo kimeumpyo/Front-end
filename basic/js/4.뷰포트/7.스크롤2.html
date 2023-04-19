@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <style>
+        body{
+            height: 2000px;
+        }
+        .progress-bar{
+            width: 500px;
+            height: 10px;
+            background-color: #ddd;
+        }
+        header{
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+        #gauge{
+            background-color: #0df;
+            width: 0%;
+            height: 100%;
+        }
+    </style>
+
+    <h1>scroll Indicator</h1>
+
+    <header>
+        <div class="progress-bar">
+            <div id="gauge"></div>
+        </div>
+    </header>
+
+    <script>
+        var gauge = document.getElementById("gauge");
+
+        window.addEventListener('scroll', ()=>{
+            // 문서 탑에서 뷰포트 탑까지의 거리
+            var scrollTop = document.documentElement.scrollTop;
+            // 뷰포트의 높이
+            var clientHeight = document.documentElement.clientHeight;
+                // clientHeight = window.innerHeight;
+
+            // 문서 전체의 높이
+            var scrollHeight = document.documentElement.scrollHeight;
+
+            var height = scrollHeight - clientHeight;
+            
+            console.log('scrollTop', scrollTop);
+            console.log('clientHeight', clientHeight);
+            console.log('scrollHeight', scrollHeight);
+
+            var scrolled = (scrollTop / height) * 100;
+            console.log(scrolled);
+
+            gauge.style.width = scrolled + "%";
+        })
+
+        // scrollTop(max: 1404) + clientHeight(625) = scrollHeight(2029)
+        // height = scrollHeight(2029) - clientHeight(625)
+        // scrolled = (scrollTop(0 ~ 1404) / 1404) * 100
+    </script>
+
+    
+</body>
+
+</html>
