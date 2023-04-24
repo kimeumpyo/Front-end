@@ -158,11 +158,11 @@ function Snippet6(){
   ]
 
   const beerList = beers.map((beer, index)=>(
-    <p key={index}>
+    <tr key={index}>
       <td>{beer.name}</td>
       <td>{beer.origin}</td>
       <td>{beer.available ? "예" : "아니오"}</td>
-    </p>
+    </tr>
   ))
 
   return(
@@ -175,7 +175,7 @@ function Snippet6(){
         <th>원산지</th>
         <th>판매중</th>
       </tr>
-      <tr>{beerList}</tr>
+      {beerList}
     </table>
     </>
   )
