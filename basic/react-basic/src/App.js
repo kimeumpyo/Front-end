@@ -169,7 +169,7 @@ function Snippet6(){
     <>
     <h3>Beers</h3>
 
-    <table>
+    <table border="1">
       <tr>
         <th>이름</th>
         <th>원산지</th>
