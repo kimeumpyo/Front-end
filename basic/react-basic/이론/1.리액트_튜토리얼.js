@@ -790,7 +790,7 @@ function Snippet16() {
             <Route path="posts" element={<Posts/>}/>
             <Route path="/post/:postId" element={
               <AuthRequired>
-                <post/>
+                <Post/>
               </AuthRequired>
             }/>
             <Route path="*" element={<NotFound/>}/>
