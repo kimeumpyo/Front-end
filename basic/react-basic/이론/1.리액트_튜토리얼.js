@@ -1,3 +1,4 @@
+
 /*
 
   리액트 튜토리얼
@@ -13,6 +14,8 @@
   할인 목록 만들기
 
 */
+
+import { Link } from "react-router-dom";
 
 /* 
     1 리액트 기초
@@ -594,6 +597,307 @@ function Snippet11(){
   )
 }
 
+// -------------------------------------------------------------------------------------------
+
+/*
+    5 이벤트
+
+*/
+
+function Snippet12(){
+
+    // 2
+    function handleClick() {
+        alert('lol');
+    }
+
+    // onEventName = {eventHandler} 
+
+    // 1
+    return(
+        <>
+            <h2>이벤트 처리</h2>
+            <button onClick={handleClick}> 
+                Botton
+            </button>
+        </>
+    )
+}
+
+// -------------------------------------------------------------------------------------------
+
+/*
+    6 화면 업데이트
+
+        1) useState Hook
+        2) 리액트 라우터
+*/
+
+/*
+    1) useState Hook
+
+    const [state, setState] = useState(initialValue)
+
+    state: 컴포넌트 내의 변수
+    setState(newState): state를 업데이트하는 메서드
+    initialValue: state의 초기값
+*/
+// 임포트가 필요하다
+// import React, { useEffect, useState } from "react";
+
+    function Snippet13(){
+        const [count, setCount] = useState(0);
+        
+        return(
+            <>
+                <p>count: {count}</p>
+                <button onClick={()=> setCount(count + 1)}>
+                    Add
+                </button>
+            </>
+        )
+    }
+
+// -------------------------------------------------------------------------------------------
+
+// Qz
+// function Snippet14() {
+    
+//     // 
+//     const[subscribed, setSubscribed] = useState(false);
+    
+  
+//     return(
+//       <>
+//         <h2>Subscribe Button</h2>
+//         <button onClick={() => setSubscribed(!subscribed)}>
+//           {subscribed ? "구독중" : "구독하기"}
+//         </button>
+//       </>
+//     )
+//   }
+
+// -------------------------------------------------------------------------------------------
+
+// 2) 리액트 라우터(기본)
+
+// 경로설정후 -> npm install react-router-dom
+// 설치된 패키지는 package.josn에서 확인이 가능하다
+
+// 가장 상단에 임포트를 해준다
+// import{ BrowserTouter as Router, Routes, Route, Link, Outlet, useParams} from 'react-router-dom';
+
+
+    // 메인 컴포넌트 
+    function Snippet15(){
+        return(
+            <Router>
+                <nav>
+                    <ul>
+                        <li>
+                            <Link to="/">Home</Link>
+                        </li>
+                        <li>
+                            <Link to="/about">About</Link>
+                        </li>
+                        <li>
+                            <Link to="/posts">Posts</Link>
+                        </li>
+                    </ul>
+                </nav>
+
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/posts" element={<Posts />} />
+                    <Route path="/post/:postId" element={<Post />} />
+                    <Route path="*" element={<NotFound />} />
+                </Routes>
+            </Router>
+        )
+    }
+
+    // 홈
+    function Home() {
+        return <h1>Home</h1>
+    }
+
+    // About
+    function About() {
+        return <h1>About</h1>
+    }
+
+    // 게시물 목록
+    function Posts() {
+        return (
+            <>
+                <h1>Posts</h1>
+                <ul>
+                    <li>
+                        <Link to="/post/p0">Post 1</Link>
+                    </li>
+                    <li>
+                        <Link to="/post/p1">Post 2</Link>
+                    </li>
+                </ul>
+            </>
+        )
+    }
+
+    // 게시물 상세보기
+    function Post() {
+
+        //  useParams: url의 매개변수에 접근할 수 있다
+        const{postId}= useParams();
+
+        return(
+            <>
+                <h1>Title</h1>
+                <p>{postId}</p>
+            </>
+        )
+    }
+
+    // 404 페이지
+    function NotFound() {
+        return <h1>404 NotFound</h1>
+    }
 
 
 
+// -------------------------------------------------------------------------------------------
+
+    // 메인 컴포넌트 
+function Snippet16() {
+    return (
+      <Router>
+        <AuthProvider>
+          <nav>
+            <ul>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/posts">Posts</Link>
+              </li>
+            </ul>
+          </nav>
+  
+          <AuthStatus/>
+  
+          <Routes>
+            <Route path="/" element={<Home/>}/>
+            <Route path="posts" element={<Posts/>}/>
+            <Route path="/post/:postId" element={
+              <AuthRequired>
+                <post/>
+              </AuthRequired>
+            }/>
+            <Route path="*" element={<NotFound/>}/>
+          </Routes>
+          
+        </AuthProvider>
+      </Router>
+    )
+  }
+  
+  // AuthContext
+  const AuthContext = createContext();
+  
+  // 유저데이터 관리
+  function AuthProvider({children}) {
+  
+    const [user, setUser] = useState(null);
+  
+    const value = {user, setUser};
+  
+    return(
+      <AuthContext.Provider value={value}>
+        {children}
+      </AuthContext.Provider>
+    )
+  }
+  
+  // 로그인 상태 확인
+  function AuthStatus() {
+    const {user, setUser} = useContext(AuthContext);
+  
+    return user ? (
+      <p>안녕하세요{user}님P{" "}
+      <button onClick={()=> setUser(null)}>
+        로그아웃
+      </button>
+      </p>
+    ) : (<p>로그인하세요</p>);
+  }
+  
+  // 인증 관리
+  function AuthRequired({children}) {
+    const {user, setUser} = useContext(AuthContext);
+  
+    function handleSubmit(){
+      if(!user){
+        // 로그인화면
+        return (
+          <form onSubmit={handleSubmit}>
+            <h1>로그인</h1>
+            <input type="text" name="username" required/>
+            <button type="submit">로그인</button>
+          </form>
+        )
+      }
+      
+      return children;
+    }
+  }
+  
+  // 홈
+  function Home() {
+      return <h1>Home</h1>
+  }
+  
+  // 게시물 목록
+  function Posts() {
+      return (
+          <>
+              <h1>Posts</h1>
+              <ul>
+                  <li>
+                      <Link to="/post/p0">Post 1</Link>
+                  </li>
+                  <li>
+                      <Link to="/post/p1">Post 2</Link>
+                  </li>
+              </ul>
+          </>
+      )
+  }
+  
+  // 게시물 상세보기
+  function Post() {
+      const{ postId }= useParams();
+  
+      return(
+          <>
+              <h1>Post</h1>
+              <p>{postId}</p>
+          </>
+      )
+  }
+  
+  // 404 페이지
+  function NotFound() {
+      return <h1>404 NotFound</h1>
+  }
+
+// -------------------------------------------------------------------------------------------
+
+// -------------------------------------------------------------------------------------------
+
+// -------------------------------------------------------------------------------------------
+
+// -------------------------------------------------------------------------------------------
+
+// -------------------------------------------------------------------------------------------
+
+// -------------------------------------------------------------------------------------------
