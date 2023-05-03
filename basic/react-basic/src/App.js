@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, Outlet, useParams} from 'react-router-dom';
 
 
@@ -693,144 +693,261 @@ export default App;
 // -------------------------------------------------------------------------------------------
 
 // 메인 컴포넌트 
-function Snippet() {
-  return (
-    <Router>
-      <AuthProvider>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/posts">Posts</Link>
-            </li>
-          </ul>
-        </nav>
+// function Snippet() {
+//   return (
+//     <Router>
+//       <AuthProvider>
+//         <nav>
+//           <ul>
+//             <li>
+//               <Link to="/">Home</Link>
+//             </li>
+//             <li>
+//               <Link to="/posts">Posts</Link>
+//             </li>
+//           </ul>
+//         </nav>
 
-        <AuthStatus/>
+//         <AuthStatus/>
 
-        <Routes>
-          <Route path="/" element={<Home/>}/>
-          <Route path="posts" element={<Posts/>}/>
-          <Route path="/post/:postId" element={
-            <AuthRequired>
-              <Post/>
-            </AuthRequired>
-          }/>
-          <Route path="*" element={<NotFound/>}/>
-        </Routes>
+//         <Routes>
+//           <Route path="/" element={<Home/>}/>
+//           <Route path="posts" element={<Posts/>}/>
+//           <Route path="/post/:postId" element={
+//             <AuthRequired>
+//               <Post/>
+//             </AuthRequired>
+//           }/>
+//           <Route path="*" element={<NotFound/>}/>
+//         </Routes>
         
-      </AuthProvider>
-    </Router>
-  )
-}
+//       </AuthProvider>
+//     </Router>
+//   )
+// }
 
-// AuthContext
-const AuthContext = createContext();
+// // AuthContext
+// const AuthContext = createContext();
 
-// 유저데이터 관리
-// 상위컴포넌트의 state가 업데이트되면
-// 하위컴포넌트들은 차례로 다시 렌더링된다
-function AuthProvider({children}) {
+// // 유저데이터 관리
+// // 상위컴포넌트의 state가 업데이트되면
+// // 하위컴포넌트들은 차례로 다시 렌더링된다
+// function AuthProvider({children}) {
 
-  const [user, setUser] = useState(null);
+//   const [user, setUser] = useState(null);
 
-  const value = {user, setUser};
+//   const value = {user, setUser};
 
-  return(
-    <AuthContext.Provider value={value}>
-      {children}
-    </AuthContext.Provider>
-  )
-}
+//   return(
+//     <AuthContext.Provider value={value}>
+//       {children}
+//     </AuthContext.Provider>
+//   )
+// }
 
-// 로그인 상태 확인
-function AuthStatus() {
-  const {user, setUser} = useContext(AuthContext);
+// // 로그인 상태 확인
+// function AuthStatus() {
+//   const {user, setUser} = useContext(AuthContext);
 
-  return user ? (
-    <p>안녕하세요{user}님{" "}
-    <button onClick={()=> setUser(null)}>
-      로그아웃
-    </button>
-    </p>
-  ) : 
-  (<p>로그인하세요</p>);
-}
+//   return user ? (
+//     <p>안녕하세요 {user}님{" "}
+//     <button onClick={()=> setUser(null)}>
+//       로그아웃
+//     </button>
+//     </p>
+//   ) : 
+//   (<p>로그인하세요</p>);
+// }
 
-// 인증 관리
-function AuthRequired({children}) {
-  const {user, setUser} = useContext(AuthContext);
+// // 인증 관리
+// function AuthRequired({children}) {
+//   const {user, setUser} = useContext(AuthContext);
   
-  // 로그인 처리
-  function handleSubmit(e){
-    e.preventDefault(); // 페이지 새로고침 방지
+//   // 로그인 처리
+//   function handleSubmit(e){
+//     e.preventDefault(); // 페이지 새로고침 방지
 
-    const formData = new FormData(e.target);
+//     const formData = new FormData(e.target);
 
-    // AJAX ( 서버 요청 )
+//     // AJAX ( 서버 요청 )
 
-    // user 업데이트
-    setUser(formData.get("username"));
-  }
+//     // user 업데이트
+//     setUser(formData.get("username"));
+//   }
 
-    if(!user){
-      // 로그인화면
-      return (
-        <form onSubmit={handleSubmit}>
-          <h1>로그인</h1>
-          <input type="text" name="username" required/>
-          <button type="submit">로그인</button>
-        </form>
-      )
-    }
+//     if(!user){
+//       // 로그인화면
+//       return (
+//         <form onSubmit={handleSubmit}>
+//           <h1>로그인</h1>
+//           <input type="text" name="username" required/>
+//           <button type="submit">로그인</button>
+//         </form>
+//       )
+//     }
     
-    return children;
-}
+//     return children;
+// }
 
-// 홈
-function Home() {
-    return <h1>Home</h1>
-}
+// // 홈
+// function Home() {
+//     return <h1>Home</h1>
+// }
 
-// 게시물 목록
-function Posts() {
-    return (
-        <>
-            <h1>Posts</h1>
-            <ul>
-                <li>
-                    <Link to="/post/p0">Post 1</Link>
-                </li>
-                <li>
-                    <Link to="/post/p1">Post 2</Link>
-                </li>
-            </ul>
-        </>
-    )
-}
+// // 게시물 목록
+// function Posts() {
+//     return (
+//         <>
+//             <h1>Posts</h1>
+//             <ul>
+//                 <li>
+//                     <Link to="/post/p0">Post 1</Link>
+//                 </li>
+//                 <li>
+//                     <Link to="/post/p1">Post 2</Link>
+//                 </li>
+//             </ul>
+//         </>
+//     )
+// }
 
-// 게시물 상세보기
-function Post() {
-    const{ postId }= useParams();
+// // 게시물 상세보기
+// function Post() {
+//     const{ postId }= useParams();
 
-    return(
-        <>
-            <h1>Post</h1>
-            <p>{postId}</p>
-        </>
-    )
-}
+//     return(
+//         <>
+//             <h1>Post</h1>
+//             <p>{postId}</p>
+//         </>
+//     )
+// }
 
-// 404 페이지
-function NotFound() {
-    return <h1>404 NotFound</h1>
-}
+// // 404 페이지
+// function NotFound() {
+//     return <h1>404 NotFound</h1>
+// }
+
+// -------------------------------------------------------------------------------------------
+
+/*
+    7 데이터 요청(fetch data)
+      상단에 import useEffect 요청
+      1) useEffect Hook (Hook이 포함된 특별한 메서드)
+      2) 데이터 가져오기 예시
+
+*/
+/*
+    1) useEffect
+    리액트 앱에서 여러가지 효과를 적용할 때 사용한다
+
+    useEffect(effect) : 컴포넌트가 렌더링 될 때마다 effect를 실행한다
+    useEffect(effect, []) : 최초 렌더링 시에만 effect가 실행된다
+    useEffect(effect, [dep1, dep2], ...) : 최초 렌더링 시에 effect가 실행된다,
+    dependency가 바뀔 때 effect가 실행된다
+*/
+
+  // // 1.
+  // function Snippet(){
+  //   const [count, setCount] = useState(0);
+
+  //   // console.log("컴포넌트가 실행되었습니다");
+  //   // 3.
+  //   useEffect(() => {
+  //     console.log('rendered at', new Date().toLocaleDateString());
+  //   }, []);
+
+  //   // 2.
+  //   return(
+  //     <>
+  //       <h1>useEffect</h1>
+  //       <p>{count}</p>
+  //       <button onClick={() => setCount(count + 1)}>
+  //         Add
+  //       </button>
+  //     </>
+  //   )
+  // }
 
 // -------------------------------------------------------------------------------------------
 
-// -------------------------------------------------------------------------------------------
+  // // 2) 데이터를 서버에 요청하는 함수
+
+  // // 1.
+  // function fetchData(){
+  //   const DATA = {
+  //     username: "snoop_dogg",
+  //     image:"https://images.chosun.com/resizer/PpO6bWHMVG_AgS3UQkQBXhXaaVI=/350x350/smart/cloudfront-ap-northeast-1.images.arcpublishing.com/chosun/UD7SPBNDDZUWFUOLLANCSOF65U.jpg",
+  //     dio: "안녕 친구야"
+  //   }
+
+  //   // 2. 데이터를 사져오는데 2초가 걸린다고 가정
+  //   const promise = new Promise((res, rej)=>{
+  //     setTimeout(()=>{
+  //       res(DATA)
+  //     }, 2000)
+  //   })
+  //   return promise
+  // }
+  // // 3.
+  // function Snippet(){
+
+  //   // 변수선언
+  //   const [error, setError] = useState(null);
+  //   const [isLoaded, setIsLoaded] = useState(false);
+  //   const [profile, setProfile] = useState(null);
+
+  //   // 4. 비동기적으로 작동한다 (마지막에 실행)
+  //   useEffect(() => {
+
+  //     // 여기서 서버에 요청
+  //     fetchData()
+
+  //       // 요청 성공시 처리하는 메서드
+  //       .then(data => {
+  //         setProfile(data)
+  //       }) 
+
+  //       // 요청 실패시 처리하는 메서드
+  //       .catch(error => {
+  //         setError(error)
+  //       }) 
+
+  //       // 요청 성공여부와 상관없이 실행되는 메서드
+  //       .finally(() => {
+  //         setIsLoaded(true)
+  //       })
+  //   }, [])
+
+  //   // 5. error는 초기값 null
+  //   if(error){
+  //     return <p>failed to fetch</p>
+  //   }
+
+  //   // 6. isLoaded는 초기값 false
+  //   if (!isLoaded){
+  //     return <p>fetching profile...</p>
+  //   }
+
+  //   // 7.
+  //   return(
+  //     <>
+  //       <h1>Profile</h1>
+  //       <img
+  //       src={profile.image}
+  //       alt={profile.username}
+  //       style={{
+  //         width:'150px',
+  //         height:'150px',
+  //         objectFit:'cover',
+  //         borderRadius:'50%'
+  //       }}
+  //       />
+  //       <h3>{profile.username}</h3>
+  //       <p>{profile.dio}</p>
+  //     </>
+  //   )
+  // }
 
 // -------------------------------------------------------------------------------------------
 

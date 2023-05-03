@@ -768,41 +768,41 @@ function Snippet12(){
 // -------------------------------------------------------------------------------------------
 
     // 메인 컴포넌트 
-function Snippet16() {
-    return (
-      <Router>
-        <AuthProvider>
-          <nav>
-            <ul>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/posts">Posts</Link>
-              </li>
-            </ul>
-          </nav>
-  
-          <AuthStatus/>
-  
-          <Routes>
-            <Route path="/" element={<Home/>}/>
-            <Route path="posts" element={<Posts/>}/>
-            <Route path="/post/:postId" element={
-              <AuthRequired>
-                <Post/>
-              </AuthRequired>
-            }/>
-            <Route path="*" element={<NotFound/>}/>
-          </Routes>
-          
-        </AuthProvider>
-      </Router>
-    )
-  }
+    function Snippet16() {
+        return (
+        <Router> {/* 라우터 */}
+            <AuthProvider> {/* 인증 제공자 */}
+            <nav>
+                <ul>
+                <li>
+                    <Link to="/">Home</Link>
+                </li>
+                <li>
+                    <Link to="/posts">Posts</Link>
+                </li>
+                </ul>
+            </nav>
+    
+            <AuthStatus/> {/* 인증 상태 */}
+    
+            <Routes> {/* 노선 */}
+                <Route path="/" element={<Home/>}/> {/* 노선 */}
+                <Route path="posts" element={<Posts/>}/>
+                <Route path="/post/:postId" element={
+                <AuthRequired> {/* 인증 필수 */}
+                    <Post/>
+                </AuthRequired>
+                }/>
+                <Route path="*" element={<NotFound/>}/>
+            </Routes>
+            
+            </AuthProvider>
+        </Router>
+        )
+    }
   
   // AuthContext
-  const AuthContext = createContext();
+  const AuthContext1 = createContext();
   
   // 유저데이터 관리
   function AuthProvider({children}) {
@@ -812,18 +812,18 @@ function Snippet16() {
     const value = {user, setUser};
   
     return(
-      <AuthContext.Provider value={value}>
+      <AuthContext1.Provider value={value}>
         {children}
-      </AuthContext.Provider>
+      </AuthContext1.Provider>
     )
   }
   
   // 로그인 상태 확인
   function AuthStatus() {
-    const {user, setUser} = useContext(AuthContext);
+    const {user, setUser} = useContext(AuthContext1);
   
     return user ? (
-      <p>안녕하세요{user}님P{" "}
+      <p>안녕하세요 {user}님{" "}
       <button onClick={()=> setUser(null)}>
         로그아웃
       </button>
@@ -833,7 +833,7 @@ function Snippet16() {
   
   // 인증 관리
   function AuthRequired({children}) {
-    const {user, setUser} = useContext(AuthContext);
+    const {user, setUser} = useContext(AuthContext1);
   
     function handleSubmit(){
       if(!user){
@@ -892,8 +892,123 @@ function Snippet16() {
 
 // -------------------------------------------------------------------------------------------
 
+/*
+    7 데이터 요청(fetch data)
+      상단에 import useEffect 요청
+      1) useEffect Hook (Hook이 포함된 특별한 메서드)
+      2) 데이터 가져오기 예시
+
+*/
+/*
+    1) useEffect
+    리액트 앱에서 여러가지 효과를 적용할 때 사용한다
+
+    useEffect(effect) : 컴포넌트가 렌더링 될 때마다 effect를 실행한다
+    useEffect(effect, []) : 최초 렌더링 시에만 effect가 실행된다
+    useEffect(effect, [dep1, dep2], ...) : 최초 렌더링 시에 effect가 실행된다,
+    dependency가 바뀔 때 effect가 실행된다
+*/
+
+  // 1.
+  function Snippet17(){
+    const [count, setCount] = useState(0);
+
+    // console.log("컴포넌트가 실행되었습니다");
+    // 3.
+    useEffect(() => {
+      console.log('rendered at', new Date().toLocaleDateString());
+    }, []);
+
+    // 2.
+    return(
+      <>
+        <h1>useEffect</h1>
+        <p>{count}</p>
+        <button onClick={() => setCount(count + 1)}>
+          Add
+        </button>
+      </>
+    )
+  }
 // -------------------------------------------------------------------------------------------
 
+// 2) 데이터를 서버에 요청하는 함수
+
+  // 1.
+  function fetchData(){
+    const DATA = {
+      username: "snoop_dogg",
+      image:"https://images.chosun.com/resizer/PpO6bWHMVG_AgS3UQkQBXhXaaVI=/350x350/smart/cloudfront-ap-northeast-1.images.arcpublishing.com/chosun/UD7SPBNDDZUWFUOLLANCSOF65U.jpg",
+      dio: "안녕 친구야"
+    }
+
+    // 2. 데이터를 사져오는데 2초가 걸린다고 가정
+    const promise = new Promise((res, rej)=>{
+      setTimeout(()=>{
+        res(DATA)
+      }, 2000)
+    })
+    return promise
+  }
+  // 3.
+  function Snippet(){
+
+    // 변수선언
+    const [error, setError] = useState(null);
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [profile, setProfile] = useState(null);
+
+    // 4. 비동기적으로 작동한다 (마지막에 실행)
+    useEffect(() => {
+
+      // 여기서 서버에 요청
+      fetchData()
+
+        // 요청 성공시 처리하는 메서드
+        .then(data => {
+          setProfile(data)
+        }) 
+
+        // 요청 실패시 처리하는 메서드
+        .catch(error => {
+          setError(error)
+        }) 
+
+        // 요청 성공여부와 상관없이 실행되는 메서드
+        .finally(() => {
+          setIsLoaded(true)
+        })
+    }, [])
+
+    // 5. error는 초기값 null
+    if(error){
+      return <p>failed to fetch</p>
+    }
+
+    // 6. isLoaded는 초기값 false
+    if (!isLoaded){
+      return <p>fetching profile...</p>
+    }
+
+    // 7.
+    return(
+      <>
+        <h1>Profile</h1>
+        <img
+        src={profile.image}
+        alt={profile.username}
+        style={{
+          width:'150px',
+          height:'150px',
+          objectFit:'cover',
+          borderRadius:'50%'
+        }}
+        />
+        <h3>{profile.username}</h3>
+        <p>{profile.dio}</p>
+      </>
+    )
+  }
 // -------------------------------------------------------------------------------------------
 
 // -------------------------------------------------------------------------------------------
