@@ -1,12 +1,12 @@
 import "./App.css";
 import { useState, useEffect, useRef } from "react";
 
-// 1. 객체
+// 1. 객체 (필터 조건)
 const FILTER_MAP = {
   // 2. 메서드
   All: () => true, // 속성 값
-  Done: (task) => task.completed,
-  Active: (task) => !task.completed
+  Done: (task) => task.completed, // 완료된 목록!
+  Active: (task) => !task.completed // 완료가 안된목록!
 }
 
 // 3. Object.keys(객체): 객체의 속성 이름을 문자열 배열로 리턴한다
@@ -30,6 +30,8 @@ export default function App() {
 
   // 10. 아직 로컬스토리지에 자료가 없기때문에 [] 출력
   console.log("10.tasks =>", tasks); // 변경사항을 확인!
+  // 59. 초기값을 All로 설정해두었기 때문
+  console.log("59.filter =>",filter); // All
 
   // 11. 할일을 추가하는 함수 // function addTask() { }
   // 26. 할일을 추가하는 함수
@@ -62,7 +64,7 @@ export default function App() {
 
     setTasks(remainingTasks);
 
-    saveDoc(JSON.stringify(remainingTasks));
+    saveDoc(JSON.stringify(remainingTasks));  
   }
 
   // 13. 할일을 완료상태를 다루는 함수 // function toggleTaskCompleted() { }
@@ -79,15 +81,33 @@ export default function App() {
       return task;
     })
 
-    // 35.
+    // 35. 로컬 스토리지의 값을 불러온다
     setTasks(updatedTasks);
-
     // 36.
     saveDoc(JSON.stringify(updatedTasks));
   }
 
   // 14. 할일을 수정하는 함수
-  function editTask() { }
+  function editTask(id, newName) {
+    // 50.
+    console.log("50.id, newName =>",id, newName);
+
+    const editedTasks = tasks.map(task =>{
+      if(task.id === id){
+        return {...task, name: newName}
+      }
+      //  51. 다른것들은 그대로 리턴한다
+      return task;
+    })
+    // 52.
+    console.log("52.editedTasks =>",editedTasks);
+
+    // 로컬 스토리지의 값을 불러온다
+    setTasks(editedTasks);
+    
+    // 
+    saveDoc(JSON.stringify(editedTasks));
+  }
 
   // 15.
   const filterButtons = FILTER_NAMES.map(name => (
@@ -101,7 +121,8 @@ export default function App() {
   ));
 
   // 16. 할일 목록
-  const taskList = tasks.map(task => (
+  // 61. filter(FILTER_MAP[filter]). 필터링 조건
+  const taskList = tasks.filter(FILTER_MAP[filter]).map(task => (
 
     <Todo             // (9)Todo 컴포넌트
       key={task.id}   // 프롭스 = {값}
@@ -184,7 +205,12 @@ function Form({ addTask }) {
 function FilterButton({ name, isPressed, setFilter }) {
   return (
     <button
-      className="filter-btn">
+      // 19. className="filter-btn"
+      // 62. 필터버튼 선택시 변경
+      className={`filter-btn ${isPressed && "active"}`}
+        // 60.
+        onClick={()=> setFilter(name)}
+      >
       {name}
     </button>
   );
@@ -199,8 +225,34 @@ function Todo({ id, name, completed, deleteTask, toggleTaskCompleted, editTask }
   // 42. 새로운 할일의 이름
   const [newName, setNewName] = useState("");
 
+  // 54. useRef Hook: 엘리먼트에 접근할 수 있다
+  const inputE1 = useRef(null);
+
+  // 56. 어떠한 효과가 필요할 때 useEffect (비동기적으로 작동한다)
+  useEffect(()=>{
+    // 57. 수정중일 때
+    if(isEditing){
+      // 58. useRef는 current 속성에 엘리먼트를 담는다
+      // 가상의 엘리먼트가 실제 HTML에 주입되고 난 뒤에 input에 접근할 수 있다.
+      inputE1.current.focus();
+    }
+  })
+
   // 43. 업데이트 폼 제출
-  function handleSubmit(){}
+  function handleSubmit(e) {
+    // 49.
+    e.preventDefault();
+
+    console.log("49.id, newName =>", id, newName);
+
+    editTask(id, newName);
+
+    // 53. 수정 후 다시 뷰템플릿으로 이동한다
+    setIsEditing(false);
+
+    // 64.
+    setNewName("");
+   }
 
   const viewTemplate = (
     <div className="view-template">
@@ -245,9 +297,35 @@ function Todo({ id, name, completed, deleteTask, toggleTaskCompleted, editTask }
 
   // 45.
   const editingTemplate = (
-    <p>
-      여기서 수정하세요
-    </p>
+    // 47.
+    <form onSubmit={handleSubmit} className="edit-template">
+      <input
+      type="text"
+      className="edit-input"
+      // 48.
+      onChange={(e)=> setNewName(e.target.value)}
+      // 55.
+      ref={inputE1}
+      />
+      {/* 버튼 그룹 */}
+      <div className="edit-btn-group">
+        <button
+        type="button"
+        className="cancel-btn"
+        onClick={()=> setIsEditing(false)}
+        >
+          취소
+        </button>
+        <button
+        type="submit"
+        className="save-btn"
+        // 63. 빈문자열이면 disabled = true
+        disabled={!newName.trim()}
+        >
+          저장
+        </button>
+      </div>
+    </form>
   )
 
   // 23.
