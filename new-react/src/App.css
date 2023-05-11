@@ -1,13 +1,56 @@
+/* 전체선택자(*) : 모든 엘리먼트에 설정*/
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-  }
-
-#container{
-    color: blue;
-    padding: 50px;
+    list-style-type: none;
+    text-decoration-line: none;
 }
-ul{
-    
+
+.main {
+    width: 100%;
+}
+.main-image {
+    background-image: url("data:image/jpeg;base64,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");
+    background-position: center;
+    /* //no-repeat을 해줘야 배경 이미지가 반복생성되지 않는다. */
+    background-repeat: no-repeat;
+    /* //size 속성은 contain을 하면 해당 div 사이즈 안에 꽉차도록 설정됨 */
+    background-size: cover;
+    height: 200px;
+}
+
+.container {
+    width: 40rem;
+    text-align: center;
+    margin: auto;
+}
+
+.menu-stl {
+    background-color: rgb(0, 247, 255);
+    padding: 5px;
+    justify-content: space-around;
+}
+
+.xLine {
+    display: flex;
+}
+
+
+.item {
+    margin: 5px;
+    font-size: x-large;
+    padding: 10px 45px;
+}
+
+.fw{
+    font-weight: 900;
+}
+
+.item:hover {
+    background-color: rgb(255, 255, 255);
+}
+
+nav {
+    width: 300px;
 }
