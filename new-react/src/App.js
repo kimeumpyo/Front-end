@@ -54,6 +54,7 @@ function Snippet() {
           <h2 className="show_h2">미세먼지</h2>
           <hr className="show_hr"></hr>
         </div>
+
         <div className="show_images">
           <div className="image_p">
               <NavLink className="show_image " to="/seoul">
@@ -101,6 +102,8 @@ function Snippet() {
 }
 
 
+
+
       // var ShowIM = document.getElementsByClassName("show_image")
       // var ShowIMs = document.getElementsByClassName("show_images")
 
@@ -115,18 +118,20 @@ function Seoul() {
   return (
     <>
       <h1>서울</h1>
-      <nav className="show_images">
-        <div>
-          <NavLink to="/seoul1">
-            <img className="show_image" src="https://blog.kakaocdn.net/dn/0mySg/btqCUccOGVk/nQ68nZiNKoIEGNJkooELF1/img.jpg" style={{ width: "300px" }}></img>
-          </NavLink>
-        </div>
-        <div>
-          <NavLink to="/seoul2">
-            <img className="show_image" src="https://blog.kakaocdn.net/dn/0mySg/btqCUccOGVk/nQ68nZiNKoIEGNJkooELF1/img.jpg" style={{ width: "300px" }}></img>
-          </NavLink>
-        </div>
-      </nav>
+      <div className="container">
+        <nav className="show_images">
+          <div>
+            <NavLink to="/seoul1">
+              <img className="show_image" src="https://blog.kakaocdn.net/dn/0mySg/btqCUccOGVk/nQ68nZiNKoIEGNJkooELF1/img.jpg" style={{ width: "300px" }}></img>
+            </NavLink>
+          </div>
+          <div>
+            <NavLink to="/seoul2">
+              <img className="show_image" src="https://blog.kakaocdn.net/dn/0mySg/btqCUccOGVk/nQ68nZiNKoIEGNJkooELF1/img.jpg" style={{ width: "300px" }}></img>
+            </NavLink>
+          </div>
+        </nav>
+      </div>
     </>
 
   )
@@ -245,3 +250,80 @@ function Busan2() {
 function NotFound() {
   return <h1>404 NotFound</h1>
 }
+
+////////////////////////////////////
+
+  function fetchData(){
+    const DATA = {
+      username: "snoop_dogg",
+      image:"https://images.chosun.com/resizer/PpO6bWHMVG_AgS3UQkQBXhXaaVI=/350x350/smart/cloudfront-ap-northeast-1.images.arcpublishing.com/chosun/UD7SPBNDDZUWFUOLLANCSOF65U.jpg",
+      dio: "안녕 친구야"
+    }
+
+    // 2. 데이터를 사져오는데 2초가 걸린다고 가정
+    const promise = new Promise((res, rej)=>{
+      setTimeout(()=>{
+        res(DATA)
+      }, 2000)
+    })
+    return promise
+  }
+  // 3.
+  function Snippet(){
+
+    // 변수선언
+    const [error, setError] = useState(null);
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [profile, setProfile] = useState(null);
+
+    // 4. 비동기적으로 작동한다 (마지막에 실행)
+    useEffect(() => {
+
+      // 여기서 서버에 요청
+      fetchData()
+
+        // 요청 성공시 처리하는 메서드
+        .then(data => {
+          setProfile(data)
+        }) 
+
+        // 요청 실패시 처리하는 메서드
+        .catch(error => {
+          setError(error)
+        }) 
+
+        // 요청 성공여부와 상관없이 실행되는 메서드
+        .finally(() => {
+          setIsLoaded(true)
+        })
+    }, [])
+
+    // 5. error는 초기값 null
+    if(error){
+      return <p>failed to fetch</p>
+    }
+
+    // 6. isLoaded는 초기값 false
+    if (!isLoaded){
+      return <p>fetching profile...</p>
+    }
+
+    // 7.
+    return(
+      <>
+        <h1>Profile</h1>
+        <img
+        src={profile.image}
+        alt={profile.username}
+        style={{
+          width:'150px',
+          height:'150px',
+          objectFit:'cover',
+          borderRadius:'50%'
+        }}
+        />
+        <h3>{profile.username}</h3>
+        <p>{profile.dio}</p>
+      </>
+    )
+  }
