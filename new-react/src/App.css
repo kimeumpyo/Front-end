@@ -61,15 +61,13 @@ header {
     width: 20rem;
     height: 100%;
     background-color: #ccc;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding: 0 1rem;
     z-index: 10;
 }
 .side_div{
     margin-top: 3rem;
     height: 12rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding: 0 1rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -98,17 +96,14 @@ header {
 main{
     margin-top: 6rem;
     max-width: 1024px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    margin: 0px auto;
+    padding: 0px 1rem;
 }
 @media  (min-width: 1023px){
     main{
         margin-left: 20rem;
     }
 }
-
 
 .main_h1{
     font-size: 5rem;
@@ -152,7 +147,6 @@ main{
 }
 .image_size{
     width: 100%;
-    height: 30%;
     object-fit: fill;
     margin-top: 1rem;
 }
@@ -166,3 +160,17 @@ main{
 .hidden{
     display: none;
 }
+
+.container{
+    margin-top: 6rem;
+    max-width: 1024px;
+    margin: 0px auto;
+    padding: 0px 1rem;
+}
+
+@media  (min-width: 1023px){
+    .container{
+        margin-left: 20rem;
+    }
+}
+
