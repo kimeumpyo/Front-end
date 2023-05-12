@@ -109,6 +109,7 @@ main{
     }
 }
 
+
 .main_h1{
     font-size: 5rem;
     font-weight: 600;
@@ -161,4 +162,7 @@ main{
 }
 .mt-4{
     margin-top: 1rem;
+}
+.hidden{
+    display: none;
 }

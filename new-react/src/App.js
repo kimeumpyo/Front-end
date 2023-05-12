@@ -37,6 +37,9 @@ function Snippet() {
             <Link className="Link" to="/inchoen">인천</Link>
           </li>
           <li>
+            <Link className="Link" to="/daegu">대구</Link>
+          </li>
+          <li>
             <Link className="Link" to="/busan">부산</Link>
           </li>
         </ul>
@@ -70,8 +73,7 @@ function Snippet() {
           </div>
 
         </div>
-      </main>
-     
+      </main>    
 
       <div className="container">
         <Routes>
@@ -97,6 +99,16 @@ function Snippet() {
     </Router>
   )
 }
+
+
+      // var ShowIM = document.getElementsByClassName("show_image")
+      // var ShowIMs = document.getElementsByClassName("show_images")
+
+      // ShowIM.addEventListener('click', () =>{
+      //   ShowIMs.classList.add("hidden");
+      // });
+    
+
 
 // 서울
 function Seoul() {
