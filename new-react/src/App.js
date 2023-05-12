@@ -1,7 +1,7 @@
 
 import "./App.css";
 import { createContext, useContext, useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link, Outlet, useParams, NavLink } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, Outlet, useParams, NavLink, Map,  } from 'react-router-dom';
 
 
 function App() {
@@ -10,8 +10,26 @@ function App() {
 
 export default App;
 
+
 // 메인 컴포넌트 
 function Snippet() {
+  
+  // 카카오맵
+  const { kakao } = window
+  
+  const Map = () => {
+    useEffect(() => {
+      const map_container = document.getElementById("myMap")
+      const options = {
+        center: new kakao.maps.LatLng(33.450701, 126.570667),
+        level: 3,
+      }
+      const map = new kakao.maps.Map(map_container, options)
+      
+    }, [])
+  }
+ 
+
   return (
     <Router>
       {/* header */}
@@ -55,6 +73,11 @@ function Snippet() {
           <hr className="show_hr"></hr>
         </div>
 
+        {/* map */}
+        {/* <div id="myMap" style={{width:"500px",height:"400px"}}></div> */}
+        <div style={{width:"500px",height:"400px"}}>{Map}카카오맵</div> 
+               
+       
         <div className="show_images">
           <div className="image_p">
               <NavLink className="show_image " to="/seoul">
@@ -78,6 +101,7 @@ function Snippet() {
 
       <div className="container">
         <Routes>
+
           <Route path="/seoul" element={<Seoul />} />
           <Route path="/seoul1" element={<Seoul1 />} />
           <Route path="/seoul2" element={<Seoul2 />} />
@@ -100,17 +124,6 @@ function Snippet() {
     </Router>
   )
 }
-
-
-
-
-      // var ShowIM = document.getElementsByClassName("show_image")
-      // var ShowIMs = document.getElementsByClassName("show_images")
-
-      // ShowIM.addEventListener('click', () =>{
-      //   ShowIMs.classList.add("hidden");
-      // });
-    
 
 
 // 서울
@@ -251,79 +264,79 @@ function NotFound() {
   return <h1>404 NotFound</h1>
 }
 
-////////////////////////////////////
+// ////////////////////////////////////
 
-  function fetchData(){
-    const DATA = {
-      username: "snoop_dogg",
-      image:"https://images.chosun.com/resizer/PpO6bWHMVG_AgS3UQkQBXhXaaVI=/350x350/smart/cloudfront-ap-northeast-1.images.arcpublishing.com/chosun/UD7SPBNDDZUWFUOLLANCSOF65U.jpg",
-      dio: "안녕 친구야"
-    }
+//   function fetchData(){
+//     const DATA = {
+//       username: "snoop_dogg",
+//       image:"https://images.chosun.com/resizer/PpO6bWHMVG_AgS3UQkQBXhXaaVI=/350x350/smart/cloudfront-ap-northeast-1.images.arcpublishing.com/chosun/UD7SPBNDDZUWFUOLLANCSOF65U.jpg",
+//       dio: "안녕 친구야"
+//     }
 
-    // 2. 데이터를 사져오는데 2초가 걸린다고 가정
-    const promise = new Promise((res, rej)=>{
-      setTimeout(()=>{
-        res(DATA)
-      }, 2000)
-    })
-    return promise
-  }
-  // 3.
-  function Snippet(){
+//     // 2. 데이터를 사져오는데 2초가 걸린다고 가정
+//     const promise = new Promise((res, rej)=>{
+//       setTimeout(()=>{
+//         res(DATA)
+//       }, 2000)
+//     })
+//     return promise
+//   }
+//   // 3.
+//   function Snippet(){
 
-    // 변수선언
-    const [error, setError] = useState(null);
-    const [isLoaded, setIsLoaded] = useState(false);
-    const [profile, setProfile] = useState(null);
+//     // 변수선언
+//     const [error, setError] = useState(null);
+//     const [isLoaded, setIsLoaded] = useState(false);
+//     const [profile, setProfile] = useState(null);
 
-    // 4. 비동기적으로 작동한다 (마지막에 실행)
-    useEffect(() => {
+//     // 4. 비동기적으로 작동한다 (마지막에 실행)
+//     useEffect(() => {
 
-      // 여기서 서버에 요청
-      fetchData()
+//       // 여기서 서버에 요청
+//       fetchData()
 
-        // 요청 성공시 처리하는 메서드
-        .then(data => {
-          setProfile(data)
-        }) 
+//         // 요청 성공시 처리하는 메서드
+//         .then(data => {
+//           setProfile(data)
+//         }) 
 
-        // 요청 실패시 처리하는 메서드
-        .catch(error => {
-          setError(error)
-        }) 
+//         // 요청 실패시 처리하는 메서드
+//         .catch(error => {
+//           setError(error)
+//         }) 
 
-        // 요청 성공여부와 상관없이 실행되는 메서드
-        .finally(() => {
-          setIsLoaded(true)
-        })
-    }, [])
+//         // 요청 성공여부와 상관없이 실행되는 메서드
+//         .finally(() => {
+//           setIsLoaded(true)
+//         })
+//     }, [])
 
-    // 5. error는 초기값 null
-    if(error){
-      return <p>failed to fetch</p>
-    }
+//     // 5. error는 초기값 null
+//     if(error){
+//       return <p>failed to fetch</p>
+//     }
 
-    // 6. isLoaded는 초기값 false
-    if (!isLoaded){
-      return <p>fetching profile...</p>
-    }
+//     // 6. isLoaded는 초기값 false
+//     if (!isLoaded){
+//       return <p>fetching profile...</p>
+//     }
 
-    // 7.
-    return(
-      <>
-        <h1>Profile</h1>
-        <img
-        src={profile.image}
-        alt={profile.username}
-        style={{
-          width:'150px',
-          height:'150px',
-          objectFit:'cover',
-          borderRadius:'50%'
-        }}
-        />
-        <h3>{profile.username}</h3>
-        <p>{profile.dio}</p>
-      </>
-    )
-  }
+//     // 7.
+//     return(
+//       <>
+//         <h1>Profile</h1>
+//         <img
+//         src={profile.image}
+//         alt={profile.username}
+//         style={{
+//           width:'150px',
+//           height:'150px',
+//           objectFit:'cover',
+//           borderRadius:'50%'
+//         }}
+//         />
+//         <h3>{profile.username}</h3>
+//         <p>{profile.dio}</p>
+//       </>
+//     )
+//   }
